@@ -1,6 +1,6 @@
 <section class="" [class]="openMenu ? 'open map-container' : 'map-container' ">
   <div [class]="classes">
-    <ol-map [lat]="-16.6958288" [lon]="-49.4443537" [zoom]="4.6" [width]="'100%'" [height]="'100vh'" [loading]="loadingMap"
+    <ol-map [lat]="-14.275989237335484" [lon]="-49.58145030201959" [zoom]="6" [width]="'100%'" [height]="'100vh'" [loading]="loadingMap"
       (onReady)="setMap($event)">
 
       <ol-control class="mobileHide" control="FullScreen" [options]="{ source:'main'}">
@@ -11,6 +11,7 @@
       </ol-control>
       <ol-control control="Zoom">
       </ol-control>
+
 
       <!-- add layers-->
       <ol-layer *ngFor="let layer of layers" [layer]="layer"></ol-layer>

@@ -50,7 +50,7 @@ export function calculateGeodesicArea(polygon: Polygon) {
     let poly = geod.Polygon(false)
 
     for (let i = 0; i < coordinates.length; ++i){
-        poly.AddPoint(coordinates[i][0], coordinates[i][1]);
+        poly.AddPoint(coordinates[i][1], coordinates[i][0]);
     }
 
     poly = poly.Compute(false, true);

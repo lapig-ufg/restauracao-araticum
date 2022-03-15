@@ -720,5 +720,10 @@
     "fotos_camera": "Fotos de Câmara",
     "fotos_drone": "Fotos de Drone",
     "videos_drone": "Vídeos de Drone"
+  },
+  "wellcome": {
+    "title": "Notificação de boas-vindas",
+    "p1": "Bem-vindo ao Módulo de Integração de Dados de Restauração Ecológica e Reflorestamento no bioma Cerrado. Nosso objetivo é apresentar o status das ações de restauração no Cerrado, propiciando a consulta, visualização e análises em nível municipal, estadual e de bacias hidrográficas, na forma de mapas e gráficos, bem como a exportação das informações na forma de arquivos vetoriais e tabelas.",
+    "p2": "Este módulo, integrado à Plataforma de Conhecimento do Cerrado, foi financiado pelo <a target='_blank' href='https://www.wwf.org.br/' alt=' WWF Brasil'> WWF Brasil</a> e contou com as parcerias do <a target='_blank' href='https://lapig.iesa.ufg.br' alt='LAPIG'>LAPIG/UFG</a> e <a target='_blank' href='https://www.instagram.com/rede.araticum/' alt=' Rede Araticum'>Rede Araticum</a>."
   }
 }

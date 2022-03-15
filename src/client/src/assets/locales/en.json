@@ -719,5 +719,10 @@
     "fotos_camera": "Camara Photos",
     "fotos_drone": "Drone Photos",
     "videos_drone": "Drone Videos"
+  },
+  "wellcome": {
+    "title": "Welcome Notification",
+    "p1": "Welcome to the Data Integration Module for Ecological Restoration and Reforestation in the Cerrado Biome. Our objective is to present the status of restoration actions in the Cerrado, providing consultation, visualization and analysis at the municipal, state and hydrographic basin levels, in the form of maps and graphics, as well as the export of information in the form of vector files and tables.",
+    "p2": "This module, integrated into the Cerrado Knowledge Platform, was financed by the <a target='_blank' href='https://www.wwf.org.br/' alt=' WWF Brazil'> WWF Brasil</a> and had partnerships with the <a target='_blank' href='https://lapig.iesa.ufg.br' alt='LAPIG'>LAPIG/UFG</a> and <a target='_blank' href='https://www.instagram.com/rede.araticum/' alt='Araticum Network'>Araticum Network</a>."
   }
 }

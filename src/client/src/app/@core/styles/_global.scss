@@ -498,5 +498,18 @@ table tr{
   }
 }
 
+.message-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p{
+    text-align: justify;
+    text-indent: 50px;
+  }
+  img {
+    max-width: 80%;
+  }
+}
+
 
 

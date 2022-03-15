@@ -14,7 +14,8 @@ export class MainComponent implements OnInit, AfterContentChecked {
   public showLayers: boolean;
   public limit: any;
   public descriptor: Descriptor;
-
+  public showMessage: boolean;
+  public isMobile: boolean;
   constructor(
     private mapService: MapService,
     private localizationService: LocalizationService,
@@ -25,6 +26,19 @@ export class MainComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
+    //IF para identificar quando o caso é mobile.
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+      this.isMobile = true;
+    } else{
+      this.isMobile = false;
+    }
+    let showMessage = localStorage.getItem('showMessage');
+
+    if (showMessage === 'false' || showMessage === null){
+      this.showMessage = true;
+    }else{
+      this.showMessage = false;
+    }
     this.getDescriptor();
   }
   ngAfterContentChecked(): void {
@@ -53,6 +67,11 @@ export class MainComponent implements OnInit, AfterContentChecked {
 
   onChangeLanguage() {
     this.getDescriptor();
+  }
+
+  onMessageHide(evt){
+    localStorage.setItem('showMessage', 'true');
+    this.showMessage = false;
   }
 }
 
