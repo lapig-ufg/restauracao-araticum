@@ -2,8 +2,8 @@
 // include sass color module
 @use 'sass:color';
 //AppBase
-//$primary: #1d3430 !default;
-$primary: #4d4519 !default;
+$primary: #424b34 !default;
+//$primary: #4d4519 !default;
 $accent: lighten($primary, 30%) !default;
 $warn: #ffc107 !default;
 $secondary: #6c757d;

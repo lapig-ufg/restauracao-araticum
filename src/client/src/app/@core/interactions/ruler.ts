@@ -182,10 +182,12 @@ export class RulerAreaCtrl extends RulerControl {
         // const area = getArea(geometry, {
         //     projection: this.component.getMap().getView().getProjection()
         // });
-
-      console.log(geometry)
       // @ts-ignore
-      const area = calculateGeodesicArea(geometry)
+
+      const g = geometry.clone()
+      const geom = g.transform(this.component.getMap().getView().getProjection(), 'EPSG:4326');
+      // @ts-ignore
+      const area = calculateGeodesicArea(geom);
 
       return calculaArea(area);
     }

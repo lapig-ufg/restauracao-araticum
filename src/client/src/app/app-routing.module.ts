@@ -3,13 +3,13 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from "./hotsite/pages/error/error.component";
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./hotsite/hotsite.module')
+  //     .then(m => m.HotsiteModule),
+  // },
   {
     path: '',
-    loadChildren: () => import('./hotsite/hotsite.module')
-      .then(m => m.HotsiteModule),
-  },
-  {
-    path: 'map',
     loadChildren: () => import('./components/components.module')
       .then(m => m.ComponentsModule),
   },

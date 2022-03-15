@@ -334,7 +334,7 @@ export class LeftSideBarComponent implements AfterViewInit {
     const img = this.renderer.createElement('img');
     this.renderer.addClass(div, 'header');
     this.renderer.addClass(img, 'logo');
-    this.renderer.setProperty(img, 'src', '../../../assets/logos/atlas_logo_01.png')
+    this.renderer.setProperty(img, 'src', '../../../assets/logos/logo.png')
     this.renderer.setProperty(img, 'alt', 'Logo');
     this.renderer.appendChild(div, img);
     this.renderer.listen(div, 'click', (event) => {

@@ -1733,7 +1733,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
 
     // @ts-ignore
-    dd.content.push({ image: this.localizationService.translate('area.token.logo'), width: 90, alignment: 'center' });
+    dd.content.push({ image: this.localizationService.translate('area.token.logo'), width: 50, alignment: 'center' });
     // @ts-ignore
     dd.content.push({ text: this.localizationService.translate('area.token.description'), alignment: 'center', margin: [10, 10, 20, 0] });
     // @ts-ignore
