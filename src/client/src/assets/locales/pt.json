@@ -232,6 +232,14 @@
           }
         }
       },
+      "reflorestamento": {
+        "labelGroup": "Reflorestamento",
+        "layers": {
+          "reflorestamento_araticum": {
+            "labelLayer": "Araticum"
+          }
+        }
+      },
       "imagens": {
         "labelGroup": "Mosaico de Imagens",
         "layers": {

@@ -13,24 +13,6 @@
                     "pa_br_rodovias_dnit",
                     "pa_br_estradas_osm"
                 ]
-            },
-            {
-                "idLayer": "armazens_layer",
-                "labelLayer": "translate",
-                "visible": false,
-                "selectedType": "armazens_conab_br",
-                "types": [
-                    "armazens_conab_br"
-                ]
-            },
-            {
-                "idLayer": "frigorificos_layer",
-                "labelLayer": "translate",
-                "visible": false,
-                "selectedType": "limites_frigorificos_2021",
-                "types": [
-                    "limites_frigorificos_2021"
-                ]
             }
         ]
     }
