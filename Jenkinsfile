@@ -102,14 +102,14 @@
             sh "docker rmi $registryprod/$application_name:latest"
         }
 
-        stage ('Pull imagem on DEV') {
-        sshagent(credentials : ['DEV']) {
+        stage ('Pull imagem on PROD') {
+        sshagent(credentials : ['KEY_FULL']) {
             sh "$SERVER_PROD_SSH 'docker pull $registryprod/$application_name:latest'"
                 }
             
         }
 
-        stage('Deploy container on DEV') {
+        stage('Deploy container on PROD') {
 
                         configFileProvider([configFile(fileId: "$File_Json_Id_ARATICUM_PROD", targetLocation: 'container-araticum-deploy-prod.json')]) {
 
@@ -123,7 +123,7 @@
                         }
 
             }            
-        stage('Start container on DEV') {
+        stage('Start container on PROD') {
 
                         final String url = "http://$SERVER_PROD/containers/$application_name/start"
                         final String response = sh(script: "curl -v -X POST -s $url", returnStdout: true).trim()
