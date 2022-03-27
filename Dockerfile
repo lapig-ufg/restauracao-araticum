@@ -7,7 +7,7 @@ ENV BRANCH="main"
 LABEL maintainer="Renato Gomes <renatogomessilverio@gmail.com>"
 
 RUN cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB} && \
-    cd /APP/restauracao-araticum/src/server && npm install && rm -rfv /APP/plataform-base
+    cd /APP/restauracao-araticum/src/server && npm install && rm -rf /APP/plataform-base
     
 ADD ./src/client/dist/client /APP/restauracao-araticum/src/client/dist/client
 
