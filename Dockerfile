@@ -1,8 +1,8 @@
-FROM registry.lapig.iesa.ufg.br/lapig-images-prod/app_araticum:base 
+FROM registry.lapig.iesa.ufg.br/lapig-images-homol/app_araticum:base 
 
 # Clone app and npm install on server
 ENV URL_TO_APPLICATION_GITHUB="https://github.com/lapig-ufg/restauracao-araticum.git"
-ENV BRANCH="main"
+ENV BRANCH="develop"
 
 LABEL maintainer="Renato Gomes <renatogomessilverio@gmail.com>"
 
