@@ -1,16 +1,16 @@
- node {
-
+    node {
+        
     load "$JENKINS_HOME/.envvars"
     def exists=fileExists "src/server/package-lock.json"
     def exists2=fileExists "src/client/package-lock.json"
-    def application_name= "app_araticum"
+    def application_name= "app_agrotoxico"
 
         stage('Checkout') {
-            git branch: 'develop',
-            url: 'https://github.com/lapig-ufg/restauracao-araticum.git'
+            git branch: 'main',
+            url: 'https://github.com/lapig-ufg/agrotoxicos.git'
         }
         stage('Validate') {
-            sh 'git pull origin develop'
+            sh 'git pull origin main'
 
         }
         stage('SonarQube analysis') {
@@ -18,7 +18,7 @@
 		def scannerHome = tool 'sonarqube-scanner';
                     withSonarQubeEnv("sonarqube") {
                     sh "${tool("sonarqube-scanner")}/bin/sonar-scanner \
-                    -Dsonar.projectKey=araticum \
+                    -Dsonar.projectKey=agrotoxicos\
                     -Dsonar.sources=. \
                     -Dsonar.css.node=. \
                     -Dsonar.host.url=$SonarUrl \
@@ -48,14 +48,14 @@
                             echo 'No'
                             sh "cd src/client && npm install" 
                         }
-
+            
                         //VERIFY IF BUILD IS COMPLETE AND NOTIFY IN DISCORD ABOUT OF THE RESULT
                         sh "export NODE_OPTIONS=--max-old-space-size=8096"
                         def status = sh(returnStatus: true, script: "cd src/client && ng build --stats-json --source-map=false --no-progress")
                         if (status != 0) {
                             echo "FAILED BUILD!"
                             currentBuild.result = 'FAILED'
-                            def discordImageSuccess = 'https://www.jenkins.io/images/logos/formal/256.png'
+                        def discordImageSuccess = 'https://www.jenkins.io/images/logos/formal/256.png'
                         def discordImageError = 'https://www.jenkins.io/images/logos/fire/256.png'
                         
                         def Author_Name=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
@@ -92,54 +92,53 @@
                             autoCancelled = true
                             error('Aborting the build.')
     }                               
-
+                
                 }
         }
         stage('Building Image') {
-            dockerImage = docker.build registryhomol + "/$application_name:$BUILD_NUMBER"
+            dockerImage = docker.build registryprod + "/$application_name:$BUILD_NUMBER", "--build-arg  --no-cache -f Dockerfile ."
         }
         stage('Push Image to Registry') {
-
+            
             docker.withRegistry( "$Url_Private_Registry", "$registryCredential" ) {
             dockerImage.push("${env.BUILD_NUMBER}")
             dockerImage.push("latest")
-
+                        
                 }   
-
+                
             }
         stage('Removing image Locally') {
-            sh "docker rmi $registryhomol/$application_name:$BUILD_NUMBER"
-            sh "docker rmi $registryhomol/$application_name:latest"
+            sh "docker rmi $registryprod/$application_name:$BUILD_NUMBER"
+            sh "docker rmi $registryprod/$application_name:latest"
         }
 
-        stage ('Pull imagem on DEV') {
+        stage ('Pull imagem on PROD') {
         sshagent(credentials : ['KEY_FULL']) {
-            sh "$SERVER_HOMOL_SSH 'docker pull $registryhomol/$application_name:latest'"
+            sh "$SERVER_PROD_SSH 'docker pull $registryprod/$application_name:latest'"
                 }
             
         }
+        stage('Deploy container on PROD') {
+                
+                        configFileProvider([configFile(fileId: "$File_Json_Id_AGROTOXICO_PROD", targetLocation: 'container-agrotoxico-deploy-prod.json')]) {
 
-        stage('Deploy container on DEV') {
-
-                        configFileProvider([configFile(fileId: "$File_Json_Id_ARATICUM_HOMOL", targetLocation: 'container-araticum-deploy-homol.json')]) {
-
-                            def url = "http://$SERVER_HOMOL/containers/$application_name?force=true"
+                            def url = "http://$SERVER_PROD/containers/$application_name?force=true"
                             def response = sh(script: "curl -v -X DELETE $url", returnStdout: true).trim()
                             echo response
 
-                            url = "http://$SERVER_HOMOL/containers/create?name=$application_name"
-                            response = sh(script: "curl -v -X POST -H 'Content-Type: application/json' -d @container-araticum-deploy-homol.json -s $url", returnStdout: true).trim()
+                            url = "http://$SERVER_PROD/containers/create?name=$application_name"
+                            response = sh(script: "curl -v -X POST -H 'Content-Type: application/json' -d @container-agrotoxico-deploy-prod.json  -s $url", returnStdout: true).trim()
                             echo response
                         }
-
+    
             }            
-        stage('Start container on DEV') {
+        stage('Start container on PROD') {
 
-                        final String url = "http://$SERVER_HOMOL/containers/$application_name/start"
+                        final String url = "http://$SERVER_PROD/containers/$application_name/start"
                         final String response = sh(script: "curl -v -X POST -s $url", returnStdout: true).trim()
                         echo response                    
-
-
+                    
+                
             }                      
         stage('Send message to Discord') {
 
@@ -180,7 +179,7 @@
                                 thumbnail: 'SUCCESS'.equals(currentBuild.currentResult) ? discordImageSuccess : discordImageError              
 
             }         
-
+        
         stage('Send message to Telegram') {
 
                             def Author_Name=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
@@ -198,5 +197,5 @@
                                 """)
                             }
         }
-
+        
         }
