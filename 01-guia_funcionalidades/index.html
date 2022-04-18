@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Funcionalidades - Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Funcionalidades";
+        var mkdocs_page_input_path = "01-guia_funcionalidades.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guia do usuário</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_dados_geograficos/">Dados Geográficos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_metricas_de_qualidade/">Métricas de Qualidade</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Funcionalidades</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dashboard">Dashboard</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#visualizacao-das-areas-desmatadas">Visualização das áreas desmatadas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upload-de-dados-geograficos">Upload de dados geográficos</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_relatorios/">Relatórios</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dados</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Vetoriais</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_rasters/">Rasters</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_mapas/">Servidor de mapas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_execucao_dpat/">Deployment da arquitetura do Cerrado DPAT</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-metricas_de_avaliacao/">Métricas de Avaliação</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Guia do usuário &raquo;</li><li>Funcionalidades</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="funcionalidades">Funcionalidades</h1>
+<h2 id="dashboard">Dashboard</h2>
+<p>O dashboard do Cerrado DPAT é formado por cinco elementos principais:</p>
+<p><img alt="Dashboard do Cerrado DPAT." src="../imgs/01/dashboard.jpg" title="Dashboard do Cerrado DPAT." /></p>
+<p><strong>1 - Controle de Visualização</strong></p>
+<p>Permite o controle do nível de zoom do mapa, além de ocultar e ativar a visualização da “Camada de Dados”. Também fornece ao usuário o acesso aos materiais explicativos da plataforma, tais como vídeos de eventos e tutoriais.</p>
+<p><strong>2 - Camada de Dados</strong></p>
+<p>Agrega todos os <a href="/01-guia_dados_geograficos/">dados</a> que podem ser exibidos no mapa, agrupados nas seguintes seções: Desmatamento; Áreas Especiais; Áreas Declaradas; Uso da Terra; Infraestrutura; Geofísico; Edafoclimáticos; Acervo de Imagens. Também permite ao usuário, com opções agrupadas em abas, o controle do mapa base (Mapbox, Google Maps e Bing), dos limites que são mostrados no mapa, e o upload de uma área de interesse que pode ser enviada nos formatos shapefile, geojson e kml.</p>
+<p><img alt="Camadas de dados que podem ser ativadas e visualizadas no mapa." src="../imgs/01/camadadedados.jpg" title="Camadas de dados que podem ser ativadas e visualizadas no mapa." /></p>
+<p><strong>3 - Mapa interativo</strong></p>
+<p>Área onde todas as camadas de dados são visualizadas.</p>
+<p><strong>4 - Legenda</strong></p>
+<p>Legenda correspondente às camadas de dados habilitadas para visualização.</p>
+<p><strong>5 - Estatísticas de Desmatamento sobre o PRODES-Cerrado</strong></p>
+<p>Expõe as estatísticas de desmatamento e uso do solo de acordo com a unidade de análise escolhida pelo usuário (Estado ou Município). Por padrão, exibe para todo o bioma Cerrado, o total anual da área desmatada no período 2000-2019. De acordo com o ano de interesse do usuário e, a partir do cruzamento com dados do Cadastro Ambiental Rural (CAR), também apresenta o total desmatado em Área de Preservação Permanente (APP) e em Reserva Legal (RL) nos dez municípios com a maior área desmatada dentro destas categorias.</p>
+<p><img alt="Estatísticas gerais para municípios, estados e todo o bioma Cerrado." src="../imgs/01/estatisticas_desmatamento.jpg" title="Estatísticas gerais para municípios, estados e todo o bioma Cerrado." /></p>
+<h2 id="visualizacao-das-areas-desmatadas">Visualização das áreas desmatadas</h2>
+<p>Essa seção tem por objetivo espacializar o total desmatado, detectado em cada ano, pelos sistemas PRODES-Cerrado e DETER-Cerrado. Estes dados podem ser ativados para dois níveis: município e polígono.</p>
+<p><img alt=" Visualização de dados em nível municipal." src="../imgs/01/camdados_desmatamento.png" /></p>
+<p>Destaca-se também a possibilidade de ativar os polígonos interseccionados com propriedades participantes do projeto FIP ABC, assim como todas as áreas desmatadas visitadas em campo, com os respectivos dados coletados em cada área. Uma outra forma de visualização do dado PRODES-Cerrado é por total acumulado anual. Ou seja, a área antrópica total do bioma Cerrado para cada ano.</p>
+<p>Para verificar a <a href="/01-guia_metricas_de_qualidade/#superficie-de-susceptibilidade-ao-desmatamento">suscetibilidade ao desmatamento</a> dos polígonos detectados a partir de 2016, foram criadas duas superfícies. Estas camadas, com resolução de 100m, foram concebidas a partir dos padrões observados nos desmatamentos pequenos (&lt; 0,5 km²) e grandes (&gt; 0,5 km²) ocorridos entre os anos de 2010 e 2015.</p>
+<h2 id="upload-de-dados-geograficos">Upload de dados geográficos</h2>
+<p>Considerando as necessidades específicas de cada usuário da ferramenta Cerrado DPAT, a aba “Upload” (localizada na “Camada de Dados”) permite a submissão de arquivos shapefile e geojson (compactados em .zip) ou .kml e .kmz (produzidos pelo Google Earth). Após a submissão do arquivo espacial, os limites da área de interesse já podem ser visualizados no mapa. Um token, numérico e em QR Code, também é criado para eventuais compartilhamentos.</p>
+<p><img alt=" Visualização de dados em nível municipal." src="../imgs/01/uploaddadosqrcode.jpg" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-guia_metricas_de_qualidade/" class="btn btn-neutral float-left" title="Métricas de Qualidade"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../01-guia_relatorios/" class="btn btn-neutral float-right" title="Relatórios">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-guia_metricas_de_qualidade/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../01-guia_relatorios/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

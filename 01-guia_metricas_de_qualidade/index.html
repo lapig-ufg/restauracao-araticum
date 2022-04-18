@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Métricas de Qualidade - Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "M\u00e9tricas de Qualidade";
+        var mkdocs_page_input_path = "01-guia_metricas_de_qualidade.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guia do usuário</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_dados_geograficos/">Dados Geográficos</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Métricas de Qualidade</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#processos-de-validacao">Processos de validação</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#campo">Campo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#validacao-amostral">Validação amostral</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#analises-automaticas">Análises automáticas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#superficie-de-susceptibilidade-ao-desmatamento">Superfície de Susceptibilidade ao Desmatamento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#b-fast-monitor">B-Fast Monitor</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_funcionalidades/">Funcionalidades</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_relatorios/">Relatórios</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dados</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Vetoriais</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_rasters/">Rasters</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_mapas/">Servidor de mapas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_execucao_dpat/">Deployment da arquitetura do Cerrado DPAT</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-metricas_de_avaliacao/">Métricas de Avaliação</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Guia do usuário &raquo;</li><li>Métricas de Qualidade</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="metricas-de-qualidade">Métricas de Qualidade</h1>
+<h2 id="processos-de-validacao">Processos de validação</h2>
+<h3 id="campo">Campo</h3>
+<p>Durante a vigência do projeto FIP Monitoramento foram realizadas <a href="/04-metricas_de_avaliacao/#dados-de-campos">quatro atividades de campo</a>. Essas atividades foram conduzidas com o propósito de coletar dados que pudesse subsidiar tanto o processo de validação dos produto PRODES-Cerrado e DETER-Cerrado, quanto a calibração dos critérios utilizados durante o processo de inspeção visual realizado no âmbito da validação amostral.</p>
+<p><img alt="Desmatamento detectado pelo PRODES-Cerrado no ano de 2017 e visitado durante o 1º campo realizado." src="../imgs/01/campo_1.png" title="Desmatamento detectado pelo PRODES-Cerrado no ano de 2017 e visitado durante o 1º campo realizado." /></p>
+<h3 id="validacao-amostral">Validação amostral</h3>
+<p>Uma <a href="/04-metricas_de_avaliacao/#dados-de-validacao-amostral">validação amostral</a> foi realizada, a partir da interpretação visual em imagens de satélite, para o mapa PRODES-Cerrado com as classes referentes ao desmatamentos realizados até o ano de 2019. A análise do resultado deste processo proporcionou a publicação do artigo "<em>Quality assessment of the PRODES Cerrado deforestation data</em>" na revista acadêmica <a href="https://www.journals.elsevier.com/remote-sensing-applications-society-and-environment">Remote Sensing Applications: Society and Environment</a>. </p>
+<h2 id="analises-automaticas">Análises automáticas</h2>
+<h3 id="superficie-de-susceptibilidade-ao-desmatamento">Superfície de Susceptibilidade ao Desmatamento</h3>
+<p>Duas superfícies de susceptibilidade foram <a href="/04-metricas_de_avaliacao/#construcao-das-superficies">criadas</a> com o propósito de espacializar as áreas com alto potencial para desmatamentos pequenos e grandes. Estes produtos foram obtidas a partir da compilação de 11 métricas espacialmente explicitas, a verificação dos respectivos pesos na ocorrência de eventos de supressão da vegetação nativa e a espacialização da probabilidade de ocorrência deste fenômeno.</p>
+<p><img alt="Superfícies de Susceptibilidade a Desmatamentos superiores e inferiores a 0,5 km² para o bioma Cerrado." src="../imgs/01/superficies_2_tamanhos.jpg" title="Superfícies de Susceptibilidade a Desmatamentos superiores e inferiores a 0,5 km² para o bioma Cerrado." /></p>
+<p>O exemplo abaixo apresenta a superfície de susceptibilidade aos desmatamentos grandes no Oeste Baiano juntamente com os polígonos detectados pelo PRODES-Cerrado 2016 e 2017. Observa-se que diversos polígonos com áreas grandes se encontram na região com alta susceptibilidade a desmatamentos grandes, enquanto desmatamentos com pequenas áreas estão localizados em área menos susceptíveis a desmatamentos maiores que 0,5 km². Com isto, pode-se observar a boa aderência do modelo em relação aos dados do PRODES-Cerrado. Os detalhes da sua construção podem ser visualizados <a href="/04-metricas_de_avaliacao/#construcao-das-superficies">aqui</a></p>
+<p><img alt="Superfície de Susceptibilidade a Desmatamentos superiores a 0,5 km² para o Oeste Baiano." src="../imgs/01/suscep_oeste_baiano.png" title="Superfície de Susceptibilidade a Desmatamentos superiores a 0,5 km² para o Oeste Baiano." />  </p>
+<p>Publicações:  </p>
+<ul>
+<li><a href="/pdfs/AGU_Nogueira_et_al.pdf">A deforestation probability surface in support of the vegetation monitoring in the Brazilian Cerrado biome</a>    </li>
+<li><a href="https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLII-3-W12-2020/213/2020/isprs-archives-XLII-3-W12-2020-213-2020.pdf">Deforestation Polygon Assessment Tool: Providing comprehensive information on deforestation in the brazilian Cerrado biome</a>  </li>
+</ul>
+<h3 id="b-fast-monitor">B-Fast Monitor</h3>
+<p>A quebra da tendência temporal, a partir de 2015, dos valores de NDVI referentes a cada pixel MODIS, com resolução espacial de 250 metros, presente nos polígonos detectados pelo PRODES-Cerrado, foi verificada pelo método B-Fast Monitor.</p>
+<p>Após a sua execução, entre 2016 e 2018 (i.e. 525.038 pixels), foi observado que cerca de 82% dos polígonos apresentaram pixels com quebras em suas séries temporais, e dentre estes, polígonos com área de pelo menos 0,25 km² apresentaram mais de 50% dos pixels com quebras, um indicativo da eficiência deste método em detectar desmatamentos grandes. Em contrapartida, os polígonos que apresentaram até 25% de pixels com quebra representam cerca de 46% do total de polígonos do PRODES-Cerrado, porém este valor é equivalente a uma área total de 2.369 km², que representa apenas 11% do total desmatamento entre 2016 e 2018.</p>
+<p><img alt="Resultado da execução do Bfast-Monitor para um polígono PRODES-Cerrado em Mateiros-TO e fotografia obtida com sobrevoo de drone durante a visita de campo." src="../imgs/01/bfast.png" title="Resultado da execução do Bfast-Monitor para um polígono PRODES-Cerrado em Mateiros-TO e fotografia obtida com sobrevoo de drone durante a visita de campo." /></p>
+<p>A figura acima apresenta um exemplo de polígono de desmatamento detectado pelo PRODES-Cerrado em 2017 e também confirmado automaticamente pelo Bfast-Monitor. Nela é possível observar um polígono com uma área total de 18 km² no município de Mateiros-TO, onde sua imagem MODIS apresenta 350 pixels sendo que 218 destes sofreram rupturas.</p>
+<p>Por fim, é importante ressaltar que do total de 21.869 km² de áreas desmatadas entre 2016 e 2018 no bioma Cerrado, o Bfast-Monitor foi capaz de identificar 15.550 km² de polígonos que apresentaram pelo menos 50% de quebras em suas séries temporais, o que representa ~71% do total. Nas demais áreas também foram identificados pixels com quebras, porém em menor proporção, o que indica a presença de desmatamento de tamanho inferior a 0,25 km², o que devido a resolução do pixel MODIS se torna mais difícil de ser identificado. De forma geral, foi possível observar uma convergência entre os resultados gerados pelo Bfast-Monitor e os dados divulgados pelo PRODES-Cerrado.  </p>
+<p>Publicações:  </p>
+<ul>
+<li><a href="/pdfs/AGU_Parente_et_al.pdf">Assessing land-cover changes in the Brazilian Cerrado biome based on the time-series analysis of MODIS and Landsat datasets</a>  </li>
+<li><a href="https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLII-3-W12-2020/213/2020/isprs-archives-XLII-3-W12-2020-213-2020.pdf">Deforestation Polygon Assessment Tool: Providing comprehensive information on deforestation in the Brazilian Cerrado biome</a>  </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-guia_dados_geograficos/" class="btn btn-neutral float-left" title="Dados Geográficos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../01-guia_funcionalidades/" class="btn btn-neutral float-right" title="Funcionalidades">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-guia_dados_geograficos/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../01-guia_funcionalidades/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

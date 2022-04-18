@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Dados Geográficos - Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Dados Geogr\u00e1ficos";
+        var mkdocs_page_input_path = "01-guia_dados_geograficos.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guia do usuário</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Dados Geográficos</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#desmatamento">Desmatamento</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#areas-especiais">Áreas especiais</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#areas-declaradas">Áreas declaradas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uso-da-terra">Uso da terra</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#infraestrutura">Infraestrutura</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geofisico">Geofísico</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#edafoclimaticos">Edafoclimáticos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#acervo-de-imagens">Acervo de imagens</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_metricas_de_qualidade/">Métricas de Qualidade</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_funcionalidades/">Funcionalidades</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_relatorios/">Relatórios</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dados</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Vetoriais</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_rasters/">Rasters</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_mapas/">Servidor de mapas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_execucao_dpat/">Deployment da arquitetura do Cerrado DPAT</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-metricas_de_avaliacao/">Métricas de Avaliação</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Guia do usuário &raquo;</li><li>Dados Geográficos</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dados-geograficos">Dados Geográficos</h1>
+<p>Com o objetivo de contextualizar os desmatamentos detectados pelos sistemas PRODES-Cerrado e DETER-Cerrado, um conjunto de dados disponibilizados por diferentes instituições foi incorporado ao Cerrado DPAT. Alguns destes dados passaram por um processo de revisão ou edição. Essas interferências foram necessárias para que dados não georreferenciados por meio de coordenadas (ex: lista com endereços de armazens e frigoríficos) pudessem ser incorporados ao banco de dados. </p>
+<h2 id="desmatamento">Desmatamento</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">PRODES-Cerrado</td>
+<td align="center">Incrementos anuais de desmatamento por corte raso registrados pelo sistema PRODES-Cerrado.</td>
+<td align="center">2002-2019</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/">Inpe</a></td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/download/dataset/cerrado-prodes/vector/yearly_deforestation_2002_2019_cerrado_biome.zip">Download</a></td>
+</tr>
+<tr>
+<td align="center">DETER-Cerrado</td>
+<td align="center">Avisos de evidências de alteração da vegetação nativa registrados pelo sistema DETER-Cerrado.</td>
+<td align="center">2018-2020</td>
+<td align="center">1:500.000</td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/">Inpe</a></td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/downloads/">Download</a></td>
+</tr>
+<tr>
+<td align="center">Área antrópica</td>
+<td align="center">Máscara de área acumulada de supressão da vegetação nativa até 2000.</td>
+<td align="center">2000</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/">Inpe</a></td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/download/dataset/cerrado-prodes/vector/accumulated_deforestation_up_to_2000_cerrado_biome.zip">Download</a></td>
+</tr>
+<tr>
+<td align="center">Susceptibilidade ao desmatamento</td>
+<td align="center">Áreas com alto potencial de serem desmatadas.</td>
+<td align="center">2016</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="http://cerradodpat.ufg.br/">Lapig/UFG</a></td>
+<td align="center"><a href="https://cerradodpat.ufg.br/#/plataforma">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="areas-especiais">Áreas especiais</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Detalhes</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Terras indigenas</td>
+<td align="center">Limite das terras indígenas brasileiras.</td>
+<td align="center">2017</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.gov.br/funai/pt-br">Funai</a></td>
+<td align="center"><a href="http://www.planalto.gov.br/ccivil_03/LEIS/L6001.htm">Lei nº 6.001, de 19 de dezembro de 1973</a></td>
+<td align="center"><a href="http://www.funai.gov.br/index.php/shape">Download</a></td>
+</tr>
+<tr>
+<td align="center">Comunidades quilombolas</td>
+<td align="center">Limite dos territórios quilombolas no Cerrado.</td>
+<td align="center">2020</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.incra.gov.br/pt/">Incra</a></td>
+<td align="center"></td>
+<td align="center"><a href="http://acervofundiario.incra.gov.br/acervo/acv.php">Download</a></td>
+</tr>
+<tr>
+<td align="center">Unidades de conservação</td>
+<td align="center">Limites das unidades de conservação de proteção integral e uso sustentável (federais e estaduais).</td>
+<td align="center">2017</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.mma.gov.br/">MMA</a></td>
+<td align="center"><a href="http://www.planalto.gov.br/ccivil_03/leis/L9985.htm">Lei nº 9.985, de 18 de julho de 2000</a></td>
+<td align="center"><a href="http://mapas.mma.gov.br/i3geo/datadownload.htm">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="areas-declaradas">Áreas declaradas</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Detalhes</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Propriedades rurais</td>
+<td align="center">Propriedades rurais inscritas no Cadastro Ambiental Rural (CAR)</td>
+<td align="center">2020</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.car.gov.br/">SICAR</a></td>
+<td align="center"><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm">Lei nº 12.651, de 25 de maio de 2012</a></td>
+<td align="center"><a href="https://www.car.gov.br/publico/municipios/downloads">Download</a></td>
+</tr>
+<tr>
+<td align="center">Reserva Legal</td>
+<td align="center">Área da propriedade com a função de assegurar o uso econômico de modo sustentável dos recursos naturais do imóvel rural, auxiliar a conservação e a reabilitação dos processos ecológicos e promover a conservação da biodiversidade.</td>
+<td align="center">2020</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.car.gov.br/">SICAR</a></td>
+<td align="center"><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm">Lei nº 12.651, de 25 de maio de 2012</a></td>
+<td align="center"><a href="https://www.car.gov.br/publico/municipios/downloads">Download</a></td>
+</tr>
+<tr>
+<td align="center">Área de Preservação Permanente (APP)</td>
+<td align="center">Área protegida, coberta ou não por vegetação nativa, com a função ambiental de preservar os recursos hídricos, a paisagem, a estabilidade geológica e a biodiversidade, facilitar o fluxo gênico de fauna e flora, proteger o solo e assegurar o bem-estar das populações humana.</td>
+<td align="center">2020</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.car.gov.br/">SICAR</a></td>
+<td align="center"><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm">Lei nº 12.651, de 25 de maio de 2012</a></td>
+<td align="center"><a href="https://www.car.gov.br/publico/municipios/downloads">Download</a></td>
+</tr>
+<tr>
+<td align="center">Nascentes de rios</td>
+<td align="center">Ponto correspondente ao afloramento natural do lençol freático que apresenta perenidade e dá início a um curso d’água.</td>
+<td align="center">2020</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.car.gov.br/">SICAR</a></td>
+<td align="center"><a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm">Lei nº 12.651, de 25 de maio de 2012</a></td>
+<td align="center"><a href="https://www.car.gov.br/publico/municipios/downloads">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="uso-da-terra">Uso da terra</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Detalhes</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">PROBIO Cerrado</td>
+<td align="center">Mapa de uso e cobertura da Terra.</td>
+<td align="center">2002</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="https://www.mma.gov.br/">Ministério do Meio Ambiente (MMA)</a></td>
+<td align="center"><a href="http://dx.doi.org/10.1590/S0100-204X2008000100020">Mapeamento semidetalhado do uso da terra do bioma Cerrado</a></td>
+<td align="center"><a href="http://mapas.mma.gov.br/i3geo/datadownload.htm">Download</a></td>
+</tr>
+<tr>
+<td align="center">TerraClass Cerrado</td>
+<td align="center">Mapa de uso e cobertura da Terra.</td>
+<td align="center">2013</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="https://www.mma.gov.br/">Ministério do Meio Ambiente (MMA)</a></td>
+<td align="center"><a href="https://www.mma.gov.br/publicacoes/biomas/category/62-cerrado?download=1139:mapeamento-do-uso-e-cobertura-da-terra-do-cerrado">Projeto Terraclass Cerrado</a></td>
+<td align="center"><a href="http://www.dpi.inpe.br/tccerrado/dados/2013/">Download</a></td>
+</tr>
+<tr>
+<td align="center">Vegetação pretérita</td>
+<td align="center">Mapa com as fisionomias existentes antes da conversão em área antríópica.</td>
+<td align="center">2019</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="https://www.ibge.gov.br/">IBGE</a></td>
+<td align="center"><a href="https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=263011">Manual Técnico da Vegetação Brasileira</a></td>
+<td align="center"><a href="https://geoftp.ibge.gov.br/informacoes_ambientais/vegetacao/vetores/escala_250_mil/versao_2019/">Download</a></td>
+</tr>
+<tr>
+<td align="center">Agricultura</td>
+<td align="center">Áreas cultivadas por soja, milho e algodão durante a safra 2013/14.</td>
+<td align="center">Safra 2013/14</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="https://agrosatelite.com.br/">Agrosatélite</a></td>
+<td align="center"><a href="https://agrosatelite.com.br/wp-content/uploads/2019/03/Analise_geoespacial_da_dinamica_das_culturas_anuais_no_bioma_Cerrado_2000a2014.pdf">Análise geoespacial da dinâmica das culturas anuais no bioma Cerrado</a></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">Floresta Plantada</td>
+<td align="center">Recorte do mapeamento global de silvicultura para o bioma Cerrado disponibilizado pelo portal Global Forest Watch.</td>
+<td align="center">2013-2014</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="http://terrabrasilis.dpi.inpe.br/">Transparent World/Global Forest Watch (GFW)</a></td>
+<td align="center"><a href="https://www.wri.org/publication/mapping-tree-plantations?utm_campaign=plantations&amp;utm_source=blog&amp;utm_medium=learnmore&amp;utm_term=technicalnote_plantations&amp;utm_content=hyperlink">Mapping Tree Plantations with Multispectral Imagery: Preliminary Results for Seven Tropical Countries</a></td>
+<td align="center"><a href="https://data.globalforestwatch.org/datasets/baae47df61ed4a73a6f54f00cb4207e0_5">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="infraestrutura">Infraestrutura</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Malha viária</td>
+<td align="center">Malha viária (rodovias federais e estaduais) revisada a partir dos dados disponibilizados pela plataforma do OpenStreetMap.</td>
+<td align="center">2020</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://www.openstreetmap.org/about">Open Street Maps</a></td>
+<td align="center"><a href="http://download.geofabrik.de/south-america.html">Download</a></td>
+</tr>
+<tr>
+<td align="center">Armazéns</td>
+<td align="center">Localização dos armazéns destinados a armazenamento e controle de produção no Brasil.</td>
+<td align="center">2017</td>
+<td align="center">ND</td>
+<td align="center"><a href="https://portaldeinformacoes.conab.gov.br/armazem">Companhia Nacional de Abastecimento (CONAB) </a></td>
+<td align="center"><a href="https://maps.lapig.iesa.ufg.br/lapig.html">Download</a></td>
+</tr>
+<tr>
+<td align="center">Frigoríficos</td>
+<td align="center">Dado produzido a partir de informações de Matadouros e/ou Frigoríficos Bovinos do Brasil aptos a exportação (SIF-MAPA), com localização revisada pelo LAPIG-UFG.</td>
+<td align="center">2017</td>
+<td align="center">ND</td>
+<td align="center"><a href="http://www.agricultura.gov.br/assuntos/inspecao/produtos-animal/sif">Ministério da Agricultura, Pecuária e Abastecimento (MAPA)</a></td>
+<td align="center"><a href="https://maps.lapig.iesa.ufg.br/lapig.html">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="geofisico">Geofísico</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Detalhes</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Altitude</td>
+<td align="center">Altitude em relação ao nivel do mar expressa em um modelo digital de terreno (MDE-SRTM).</td>
+<td align="center">2000</td>
+<td align="center">1:150.000 (resolução espacial de 30m)</td>
+<td align="center"><a href="https://www2.jpl.nasa.gov/srtm/">NASA/USGS</a></td>
+<td align="center"><a href="https://www2.jpl.nasa.gov/srtm/SRTM_paper.pdf">The Shuttle Radar Topography Mission</a></td>
+<td align="center"><a href="https://earthexplorer.usgs.gov/">Download</a></td>
+</tr>
+<tr>
+<td align="center">Declividade</td>
+<td align="center">Métrica, expressa em porcentagem, adotada para representar a diferença de altura entre dois pontos e a distância horizontal entre estes dois pontos. Revela o quão ingreme é o relevo. Obtida a partir dos dados altimétricos do SRTM.</td>
+<td align="center">2000</td>
+<td align="center">1:150.000 (resolução espacial de 30m)</td>
+<td align="center"><a href="https://www2.jpl.nasa.gov/srtm/">NASA/USGS</a></td>
+<td align="center"><a href="https://www2.jpl.nasa.gov/srtm/SRTM_paper.pdf">The Shuttle Radar Topography Mission</a></td>
+<td align="center"><a href="https://earthexplorer.usgs.gov/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="edafoclimaticos">Edafoclimáticos</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Detalhes</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Solos</td>
+<td align="center">Revisão e conversão para o meio digital dos levantamentos de solos produzidos pelo Projeto RADAMBRASIL.</td>
+<td align="center">2019</td>
+<td align="center">1:250.000</td>
+<td align="center"><a href="http://ibge.gov.br/">IBGE</a></td>
+<td align="center"><a href="ftp://geoftp.ibge.gov.br/informacoes_ambientais/pedologia/vetores/escala_250_mil/versao_2019/">Manual de Pedologia</a></td>
+<td align="center"><a href="ftp://geoftp.ibge.gov.br/informacoes_ambientais/pedologia/vetores/escala_250_mil/versao_2019/">Download</a></td>
+</tr>
+<tr>
+<td align="center">Precipitação acumulada anual média</td>
+<td align="center">Média de precipitação acumulada anual, entre os anos de 2000 e 2014, obtida por meio da interpolação entre dados TRMM e estações meteorológicas do INMET.</td>
+<td align="center">2000-2013</td>
+<td align="center">1:150.000 (resolução espacial de 30m)</td>
+<td align="center">TRMM/INMET</td>
+<td align="center">-</td>
+<td align="center"><a href="https://cerradodpat.ufg.br/#/plataforma">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="acervo-de-imagens">Acervo de imagens</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Dado</th>
+<th align="center">Descrição</th>
+<th align="center">Data</th>
+<th align="center">Escala</th>
+<th align="center">Fonte</th>
+<th align="center">Detalhes</th>
+<th align="center">Baixar dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Mosaico Landsat</td>
+<td align="center">Imagens de satélite inspecionadas pelo INPE para a construção do PRODES-Cerrado.</td>
+<td align="center">2000-2019</td>
+<td align="center">1:150.000 (resolução espacial de 30m)</td>
+<td align="center">NASA/USGS/INPE</td>
+<td align="center"><a href="https://www.usgs.gov/core-science-systems/nli/landsat">Landsat Missions</a></td>
+<td align="center"><a href="/03-dad_rasters/#processo-de-atualizacao">Download</a></td>
+</tr>
+<tr>
+<td align="center">Mosaico Sentinel</td>
+<td align="center">Imagens de satélite com resulução espacial de 10 metros, com data diferente das imagens utilizadas para a produção do PRODES-Cerrado.</td>
+<td align="center">2018-2019</td>
+<td align="center">1:50.000 (resolução espacial de 10m)</td>
+<td align="center"><a href="https://www.esa.int/">ESA</a></td>
+<td align="center"><a href="https://sentinel.esa.int/web/sentinel/home">Sentinel Missions</a></td>
+<td align="center"><a href="/03-dad_rasters/#processo-de-atualizacao">Download</a></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="HOME"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../01-guia_metricas_de_qualidade/" class="btn btn-neutral float-right" title="Métricas de Qualidade">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../01-guia_metricas_de_qualidade/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

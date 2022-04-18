@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Deployment da arquitetura do Cerrado DPAT - Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deployment da arquitetura do Cerrado DPAT";
+        var mkdocs_page_input_path = "02-arq_execucao_dpat.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guia do usuário</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_dados_geograficos/">Dados Geográficos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_metricas_de_qualidade/">Métricas de Qualidade</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_funcionalidades/">Funcionalidades</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_relatorios/">Relatórios</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dados</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Vetoriais</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_rasters/">Rasters</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_mapas/">Servidor de mapas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deployment da arquitetura do Cerrado DPAT</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">Restaurando e disponibilizando o banco de dados FIP-Cerrado</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-do-ows-server">Deployment do OWS Server</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-da-aplicacao-cerrado-dpat">Deployment da aplicação Cerrado DPAT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ambiente-de-desenvolvimento">Ambiente de Desenvolvimento</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ambiente-de-producao">Ambiente de Produção</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#script-completo-com-execucao-completa-para-producao">Script completo com execução completa para Produção</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-metricas_de_avaliacao/">Métricas de Avaliação</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Arquitetura de Software &raquo;</li><li>Deployment da arquitetura do Cerrado DPAT</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introducao">Introdução</h1>
+<p>Conforme detalhado na seção <a href="/02-arq_geral">Arquitetura de Software</a>, para execução do Cerrado DPAT são necessárias 3 estruturas criadas e funcionais na máquina do usuário:</p>
+<ol>
+<li>
+<p>O Banco de Dados <code>fip_cerrado</code> restaurado no serviço do PostgreSQL devidamente instalado com a extensão PostGis.</p>
+</li>
+<li>
+<p>O serviço <em>OWS Server</em> devidamente configurado e executando em um IP e porta.</p>
+</li>
+<li>
+<p>O <em>Application Server</em> e client (Front-end) da aplicação compilados e executando.</p>
+</li>
+</ol>
+<h2 id="restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">Restaurando e disponibilizando o banco de dados FIP-Cerrado</h2>
+<p>Para restaurar o banco <code>fip_cerrado</code> no PostgreSQL, é necessário ter o serviço PostgreSQL executando na máquina do usuário. Para tal, pode-se utilizar o tutorial neste <a href="https://medium.com/@thiago.reis/instalando-e-configurando-postgresql-no-ubuntu-86716cda5894">link</a> para instalar e executar o PostgreSQL e o PGAdmin3.</p>
+<p>Ao final do tutorial, deve-se verificar qual a versão do PostgreSQL instalado (ver: <a href="https://phoenixnap.com/kb/check-postgresql-version">link</a>) e também instalar a extensão do Postgis para a versão adequada de acordo com o tutorial deste <a href="https://computingforgeeks.com/how-to-install-postgis-on-ubuntu-debian/">link</a> no <strong>Step 4: Install PostGIS on Ubuntu 20.04/18.04 / Debian 10</strong>.</p>
+<p>Com o PostgreSQL e o PostGIS instalados, em seguida é necessário realizar o download do último backup disponibilizado no <a href="https://drive.google.com/file/d/19nVhry3bvHpV_oY861saBV9prXpfnFtd/view?usp=sharing">endereço</a> e extraí-lo.</p>
+<pre><code class="language-sh">$ tar -xfv BKP_BANCO_DADOS_FIP_CERRADO.tar.gz
+</code></pre>
+<p>Em seguida, deve-se exportar a variável de senha do banco de dados configurada anteriormente.</p>
+<pre><code class="language-sh">$ export PGPASSWORD= &lt;db_password&gt;
+</code></pre>
+<p>Após exportação da senha, deve criar o banco de dados no serviço PostgreSQL. Este passo pode ser realizado por linha de comando ou com ajuda do PGAdmin3. Ambos os passos estão demonstrados abaixo.</p>
+<pre><code class="language-sh">$ psql -h &lt;host_address&gt; -U &lt;db_user&gt; -c &quot;create database fip_cerado;&quot;
+</code></pre>
+<p><img alt="Criação Database via PGAdmin3." src="../imgs/02/database.png" /></p>
+<p>Após a criação do banco de dados, deve-se criar as extensões do PostGis e PlPGSql para uso das funções na aplicação.</p>
+<pre><code class="language-sh">$ psql -h &lt;host_address&gt; -U &lt;db_user&gt; -d fip_cerrado -c &quot;create extension postgis;&quot;
+
+$ psql -h &lt;host_address&gt; -U &lt;db_user&gt; -d fip_cerrado -c &quot;create extension plpgsql;&quot;
+</code></pre>
+<p>Agora de fato pode-se restaurar o banco de dados baixado e extraído para a database <code>fip_cerrado</code> criada, o que pode ser alcançada através do comando.</p>
+<pre><code class="language-sh">$ pg_restore -U fip_cerrado -h &lt;host_address&gt; -v -j 24 --format=d -C -d fip_cerrado fip_cerrado.sql/
+</code></pre>
+<p>Por fim, com o banco restaurado, deve-se criar/executar algumas funções auxiliares SQL para criação das <a href="https://www.postgresqltutorial.com/postgresql-materialized-views/">Materialized Views</a> e algumas funções SQL customizadas para o Cerrado DPAT. Para tal, deve-se acessar o <a href="https://github.com/lapig-ufg/d-pat/blob/master/src/server/scripts/bd_funcoes/ImportantFunctions.sql">arquivo .sql</a> e executá-lo da seguinte forma:</p>
+<pre><code class="language-sh">$ psql -h &lt;host_address&gt; -U &lt;db_user&gt; -d fip_cerrado -a -f &lt;ImportantFunctions.sql&gt;
+</code></pre>
+<h2 id="deployment-do-ows-server">Deployment do OWS Server</h2>
+<p>A fim facilitar/automatizar todo o processo de execução do OWS Server foi criado um script que executa todos os passos necessários. Este script deverá executar as seguintes tarefas:</p>
+<ul>
+<li>Download do contâiner do OWS Server presente no <a href="https://drive.google.com/file/d/11WLTneFgdKC4Cb31TludwAZ-6jd4YkrG/view?usp=sharing">endereço</a></li>
+<li>Cria a estrutura de pastas necessárias (ows-cache, catalog e dpat-files) para funcionamento do OWS Server.</li>
+<li>Constrói a aplicação do OWS Server e a disponibiliza em um IP e porta.</li>
+</ul>
+<p>Conforme mencionado anteriormente, a estrutura do OWS Server foi construída com o apoio do <a href="https://www.docker.com/">Docker</a>, portanto para instalação do mesmo, deve-se seguir os passos definidos nos tutoriais de acordo com o sistema operacional, seja ele <a href="https://docs.docker.com/engine/install/debian/">Debian</a> ou <a href="https://docs.docker.com/engine/install/centos/">CentOS</a>. Além do Docker, o script também faz uso das seguintes dependências:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Dependência</th>
+<th>Tutorial para Instalação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Perl</td>
+<td><a href="https://learn.perl.org/installing/unix_linux.html">https://learn.perl.org/installing/unix_linux.html</a></td>
+</tr>
+<tr>
+<td align="center">wget</td>
+<td><a href="https://www.cyberciti.biz/faq/how-to-install-wget-togetrid-of-error-bash-wget-command-not-found/">https://www.cyberciti.biz/faq/how-to-install-wget-togetrid-of-error-bash-wget-command-not-found/</a></td>
+</tr>
+<tr>
+<td align="center">curl</td>
+<td><a href="https://www.cyberciti.biz/faq/how-to-install-curl-command-on-a-ubuntu-linux/">https://www.cyberciti.biz/faq/how-to-install-curl-command-on-a-ubuntu-linux/</a></td>
+</tr>
+<tr>
+<td align="center">Git</td>
+<td><a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03">https://gist.github.com/derhuerst/1b15ff4652a867391f03</a></td>
+</tr>
+</tbody>
+</table>
+<p>Após instalação do Docker e das dependências mínimas para o script, deve-se executar o script <a href="https://drive.google.com/file/d/1dPdvaUiVkGHB_sz4dWifuj5z8bUH-PT_/view?usp=sharing"><code>start-ows.sh</code></a> através do comando:</p>
+<pre><code class="language-sh">$ ./start-ows.sh
+</code></pre>
+<p>Inicialmente o script irá pedir ao usuário que informe o local onde o OWS deverá criar a estrutura de pastas necessárias para funcionamento. Na imagem abaixo, o usuário terá informado o caminho <code>/mnt/hd02</code>. É importante ressaltar que este deverá ser um caminho válido na máquina do usuário, porém, como o OWS Server está armazenado em um contâiner Docker, o script irá mapear automaticamente este caminho para <code>/STORAGE</code> dentro da estrutura do Docker.</p>
+<p><img alt="Estrutura de pastas" src="../imgs/02/ows-standalone/exec-ows-1.png" /></p>
+<p>Em seguida, deve-se informar o diretório onde o cache deverá ser armazenado. Na imagem abaixo, o usuário terá informado novamente o caminho <code>/mnt/hd02</code>.</p>
+<p><img alt="Estrutura de pastas" src="../imgs/02/ows-standalone/exec-ows-2.png" /></p>
+<p>Em seguida, o script irá pedir para que o usuário informe o host (endereço) de onde está rodando o serviço do Banco de dados PostgreSQL, bem como, a porta de execução, o nome do banco de dados e a senha do banco. Estes dados são necessários para configurar o acesso do Mapserver ao banco de dados a fim de criar as camadas de dados vetoriais.</p>
+<p><img alt="Host do BD" src="../imgs/02/ows-standalone/exec-ows-3.png" /></p>
+<p><img alt="Porta do DB" src="../imgs/02/ows-standalone/exec-ows-4.png" /></p>
+<p><img alt="Nome do DB" src="../imgs/02/ows-standalone/exec-ows-5.png" /></p>
+<p><img alt="Senha do BD" src="../imgs/02/ows-standalone/exec-ows-6.png" /></p>
+<p>Após a inicialização do das variáveis necessárias para conectar o OWS Server com o banco de dados, o script irá realizar automaticamente o download do contâiner do OWS Server e importá-lo corretamente no Docker instalado na máquina do usuário.</p>
+<p><img alt="Download OWS" src="../imgs/02/ows-standalone/exec-ows-7.png" /></p>
+<p>Após a importação correta do contâiner, o OWS Server deverá estar executando e aguardando requisições em <strong>localhost</strong> ou <strong>127.0.0.1</strong> na <strong>porta 5000</strong>. A imagem abaixo apresenta um exemplo de requsição feita através do <em>curl</em> no endereço <code>http://127.0.0.1:5000/ows</code>, que recebe uma pequena página HTML criada pelo MapServer.</p>
+<p><img alt="Requisicao ao OWS" src="../imgs/02/ows-standalone/exec-ows-8.png" /></p>
+<p>Após a execução do OWS Server, também é necessário mover os arquivos Raster presentes no <a href="https://drive.google.com/file/d/1L2pW2PudSsmwGQMhPGXbZd5sJvBmEcSW/view?usp=sharing">link</a> para dentro da pasta <code>catalog</code> criada no caminho informado pelo usuário no início do script.</p>
+<p>Por fim, vale ressaltar que uma vez que o contâiner do OWS Server esteja configurado e funcionando não é mais necessário executar o script <code>start-ows.sh</code>. Já existe um script na raiz do contâiner que é responsável por executar o OWS Server imediatamente após o contâiner ser inicializado. Portanto, basta executar:</p>
+<pre><code class="language-sh">$ docker restart OWS bash
+</code></pre>
+<p>E caso deseja entrar no contâiner e verificar os arquivos internos, tais como <strong>logs</strong> de requisições, basta executar:</p>
+<pre><code class="language-sh">$ docker exec -it OWS bash
+$ cd /APP/lapig-maps/src/ows/log
+$ tail -f ows-mapserv.log
+</code></pre>
+<h2 id="deployment-da-aplicacao-cerrado-dpat">Deployment da aplicação Cerrado DPAT</h2>
+<p>Para execução do Cerrado DPAT é importante ressaltar que o Banco de Dados deve estar restaurado e acessível conforme abordado na <a href="/02-arq_execucao_dpat/#restaurando-e-disponibilizando-o-banco-de-dados-fip-cerrado">seção</a> e também deve-se ter o <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">OWS Server</a> funcionando corretamente.</p>
+<p>A seguir será abordado duas maneiras de executar a aplicação Cerrado DPAT em ambientes de Desenvolvimento e Produção. Para o ambiente de desenvolvimento será detalhado um passo a passo partindo do pressuposto que um programador irá dar manutenção ou continuidade no Cerrado DPAT. Já o ambiente de produção, será disponibilizado um script que executa todos os passos para disponibilizar o Cerrado DPAT em uma porta da máquina que está sendo executado. </p>
+<p>Em seguida, certifique-se de criar corretamente um arquivo <code>.env</code> conforme abordado na <a href="02-arq_servidor_de_aplicacao.md/#servidor-de-aplicacao">seção</a>. Um exemplo de arquivo <code>.env</code> criado durante o processo de execução do script para o ambiente de Produção pode ser observado abaixo:</p>
+<pre><code>APP_PRODUCAO='/STORAGE/dpat-files'
+CLIENT_DIR='/../client/dist/lapig-dpat/'
+LANG_DIR='/lang'
+LOG_DIR='/log/'
+TMP='/tmp/'
+FIELD_DATA_DIR='/campo-dpat/'
+UPLOAD_DATA_DIR='/upload-dpat/'
+DOWNLOAD_DATA_DIR='/download-dpat/'
+
+PG_USER='db_user'
+PG_HOST='127.0.0.1'
+PG_DATABASE='fip_cerrado'
+PG_PASSWORD='db_password'
+PG_PORT='db_port'
+PG_DEBUG=true
+
+PORT=3000
+OWS_HOST='http://172.18.0.8:5000'
+OWS_DOMAINS='http://172.18.0.8:5000'
+NDVI_DOMAIN='127.0.0.1:4200'
+</code></pre>
+<h3 id="ambiente-de-desenvolvimento">Ambiente de Desenvolvimento</h3>
+<p>Assim como abordado na <a href="/02-arq_geral/#arquitetura-de-software">seção</a>, o Cerrado DPAT foi construído com NodeJS como <em>Application Server</em> e Angular como cliente (<em>WebMap Client</em>). Portanto, primeiramente é necessária a instalação destes componentes na máquina do desenvolvedor. Para tal, pode-se seguir o passo-a-passo elaborado neste <a href="https://www.tecmint.com/install-angular-cli-on-linux/">link</a></p>
+<p>Para execução do Cerrado DPAT em ambiente de desenvolvimento, primeiramente é necessário realizar um <a href="https://github.com/UNIVALI-LITE/Portugol-Studio/wiki/Fazendo-um-Fork-do-reposit%C3%B3rio"><code>fork</code></a> do projeto para a sua conta pessoal do Github e em seguida executar um <a href="https://docs.github.com/pt/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository"><code>git clone</code></a> do <a href="https://github.com/lapig-ufg/d-pat">repositório do projeto</a>.</p>
+<p>Para inicializar o servidor de aplicação (<em>Application Server</em>) deve-se executar o passo-a-passo descrito na <a href="/02-arq_servidor_de_aplicacao/#servidor-de-aplicacao">seção</a>. A execução da mesma irá inicializar o <em>Application Server</em> em localhost na porta 3000. Para verificar o seu funcionamento, pode-se realizar a requisição abaixo em um navegador qualquer, que deverá apresentar um resultado semelhante a <a href="https://cerradodpat.ufg.br/service/deforestation/largest?year=2019&amp;amount=15">este</a>.</p>
+<pre><code>http://localhost:3000/service/deforestation/largest?year=2019&amp;amount=15
+</code></pre>
+<p>Em seguida, para inicializar o <em>WebMap Client</em> localizado na pasta <a href="https://github.com/lapig-ufg/d-pat/tree/master/src/client"><code>src/client</code></a>, basta navegar até a pasta <strong>client</strong> e instalar as dependências listadas no <strong>package.json</strong> através do comando:</p>
+<pre><code>$ npm install
+</code></pre>
+<p>Após a devida instalação das dependências, pode-se então compilar e inicializar a aplicação. Mais uma vez, a fim de facilitar, foi criado um script <a href="https://github.com/lapig-ufg/d-pat/blob/master/src/client/start.sh"><code>start.sh</code></a> para inicializar o <em>WebMap Client</em>, portanto basta executar:</p>
+<pre><code>$ ./src/client/start.sh
+</code></pre>
+<p>Ao finalizar a compilação do projeto, a aplicação estará executando em localhost na porta padrão do Angular, que é a porta 4200. Portanto, para acessar a página Web criada pela aplicação, acesse pelo navegador:</p>
+<pre><code>http://localhost:4200
+</code></pre>
+<h3 id="ambiente-de-producao">Ambiente de Produção</h3>
+<p>Em seguida, uma segunda maneira de disponibilizar o Cerrado DPAT é em ambiente de produção. É importante ressaltar que o <em>OWS Server</em> deve estar executando para que o Cerrado DPAT faça as requisições de imagens das diferentes camadas utilizadas pelo sistema.</p>
+<p>Para facilitar o processo de <em>deployment</em> em produção, foi criado um <a href="https://drive.google.com/file/d/1JFpmJtAHU37jYrBeAJ8BEjmiEeuSn7XQ/view?usp=sharing">script</a> que realiza todos os passos necessários para execução do Cerrado DPAT em produção. Para executar o script basta executar em um Terminal:</p>
+<pre><code class="language-sh">$ ./start-dpat.sh
+</code></pre>
+<p>Assim como detalhado na seção de <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">Deployment do OWS Server</a>, este script irá pedir ao usuário que informe os parâmetros <strong>endereço, nome, porta, usuário e senha</strong> do Banco de Dados, de forma a alterar corretamente o arquivo de configuração do ambiente, <code>.env</code> corretamente.</p>
+<p>Em seguida, após pedir as informações do Banco de Dados, o script irá pedir ao usário que informe o local onde a estrutura de pastas do Cerrado DPAT deverá ser criada e também qual o endereço de IP da máquina de produção onde será realizado o <em>deployment</em> assim como informado nas imagens abaixo.</p>
+<p><img alt="Senha do BD" src="../imgs/02/ows-standalone/dpat-1.png" /></p>
+<p><img alt="Senha do BD" src="../imgs/02/ows-standalone/dpat-2.png" /></p>
+<p>Basicamente o script deverá criar e ajustar automaticamente as variáveis de ambiente do Cerrado DPAT, realizar o download e importação do <a href="https://drive.google.com/file/d/1QKiBeo9II2auQik1jJdBACnHp4qrfc0f/view?usp=sharing">contâiner docker</a> onde todas as dependências do projeto já estão devidamente ajustadas e executar os passos necessários para compilar e disponibilizar a aplicação no endereço de IP informado na execução do script na <strong>porta 3000</strong>, assim como apresentado na imagem abaixo.</p>
+<h2 id="script-completo-com-execucao-completa-para-producao">Script completo com execução completa para Produção</h2>
+<p>Por fim, também foi criado um <a href="https://drive.google.com/file/d/1V6jRqeOUpqApvpaARRRB_iiN7D3GlFAV/view?usp=sharing">script</a> que realiza todos os passos abordados nas seções <a href="/02-arq_execucao_dpat/#execucao-do-ows-server">Deployment do OWS Server</a> e <a href="/02-arq_execucao_dpat/#execucao-da-aplicacao-cerrado-dpat">Deployment do Cerrado DPAT</a>. Para tal, basta executar em Terminal.</p>
+<pre><code class="language-sh">$ ./start-dpat+ows.sh
+</code></pre>
+<p>Após execução dos scripts o OWS Server estará executando na máquina do usuário na porta <strong>5000</strong> e o Cerrado DPAT também na máquina do usuário na porta <strong>3000</strong>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-arq_servidor_de_aplicacao/" class="btn btn-neutral float-left" title="Servidor de aplicação"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04-metricas_de_avaliacao/" class="btn btn-neutral float-right" title="Métricas de Avaliação">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-arq_servidor_de_aplicacao/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04-metricas_de_avaliacao/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

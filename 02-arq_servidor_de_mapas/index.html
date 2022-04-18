@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Servidor de mapas - Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Servidor de mapas";
+        var mkdocs_page_input_path = "02-arq_servidor_de_mapas.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">HOME</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guia do usuário</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_dados_geograficos/">Dados Geográficos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_metricas_de_qualidade/">Métricas de Qualidade</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_funcionalidades/">Funcionalidades</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-guia_relatorios/">Relatórios</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dados</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_vetoriais/">Vetoriais</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-dad_rasters/">Rasters</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Arquitetura de Software</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_geral/">Visão geral</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Servidor de mapas</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#servico-de-interoperabilidade">Serviço de interoperabilidade</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#processo-de-atualizacao">Processo de atualização</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#disponibilizacao-da-camada-no-application-server">Disponibilização da camada no Application Server</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_servidor_de_aplicacao/">Servidor de aplicação</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-arq_execucao_dpat/">Deployment da arquitetura do Cerrado DPAT</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../04-metricas_de_avaliacao/">Métricas de Avaliação</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Arquitetura de Software &raquo;</li><li>Servidor de mapas</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="servidor-de-mapas">Servidor de Mapas</h1>
+<p>O OWS Server é responsável por encaminhar as requisições ao Mapserver a fim de gerar a visualização dos dados geográficos e organizar para que as imagens geradas sejam armazenadas em cache para melhorar o desempenho em requisições futuras. O código-fonte para o OWS Server se encontra no repositório <a href="https://github.com/lapig-ufg/lapig-maps">Github</a> do LAPIG/UFG.</p>
+<p><img alt="Arquitetura OWS." src="../imgs/02/ows-schema.png" /></p>
+<p>Devido a facilidade em lidar com a arquitetura de WebServices, o código em NodeJS foi criado para também realizar o controle de cache das imagens processadas pelo Mapserver. Para tal, uma customização foi criada a fim de se associar uma chave (<code>cacheKey</code>) a cada imagem de cada camada configurada no Mapserver. Esta imagem é armazenada em um sistema de arquivos (pasta) chamada <code>OWS-Cache</code>, de modo que, em futuras requisições para uma determinada imagem, é verificada se a imagem já existe na <code>OWS-Cache</code> ou não. Caso exista, a imagem é retornada na requisição, caso não exista, o código NodeJS envia a requisição para o Mapserver processar e gerá-la, armazenando-a no <code>OWS-Cache</code>. O método que realiza esta verificação é o método <code>OgcServer.ows</code> que faz parte do Controlador da aplicação em NodeJS.</p>
+<pre><code>src/controllers/ogc-server.js
+</code></pre>
+<pre><code class="language-js">OgcServer.ows = function(request, response) {
+    var params = Internal.getParams(request);
+    response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+
+    Internal.setHeaders(params, request, response);
+        var cacheKey = Internal.getCacheKey(params);
+
+        if(cacheKey &amp;&amp; (config['cacheEnable'] || Internal.isWmsGetCap(params)) ) {
+            Internal.doRequestWithCache(cacheKey, params, response);
+        } else {
+            Internal.doRequest(params, response);
+        }
+}
+</code></pre>
+<p>Esta customização pode ser encontrada no código NodeJS no repositório específico para o código NodeJS no <a href="https://github.com/lapig-ufg/lapig-maps/tree/master/src/ows">Github</a>. A configuração da pasta onde serão gerados os caches é feita no arquivo <a href="https://github.com/lapig-ufg/lapig-maps/blob/master/src/ows/config.js">config.js</a> na linha 41 através da variável <code>cacheDir</code>.</p>
+<h2 id="servico-de-interoperabilidade">Serviço de interoperabilidade</h2>
+<p>A interoperabilidade é uma tecnologia que possibilita o compartilhamento de dados entre sistemas, independente do local físico de armazenamento e da tecnologia utilizada em cada servidor de dados.
+No Geoprocessamento, a interoperabilidade pode ser aplicada para promover o intercâmbio de dados geográficos entre diferentes softwares de SIG.
+O OCG (Open Geospatial Consortium, Inc.) é uma organização que tem como objetivo principal viabilizar o intercâmbio de dados geográficos através da criação de especificações que simplificam a interação entre diferentes fontes de dados. Desta forma, os principais serviços especificados pela OGC são:</p>
+<ul>
+<li><em><strong>Web Map Service - WMS</strong></em>: produz mapas dinâmicos partir de dados georreferenciados em um servidor remoto. Esses mapas são geralmente apresentados no formato de figura (PNG, JPEG ou GIF). Também é possível consultar os atributos dos elementos que compõem os mapas. </li>
+<li><em><strong>Web Feature Service - WFS</strong></em>: define um serviço para recuperação de objetos (<em>features</em>) espaciais. Diferentemente do WMS, o WFS devolve o dado e não uma "figura" do dado. </li>
+<li><em><strong>Tile Map Service - TMS</strong></em>: define um serviço que fornece imagens de dados geográficos a partir de URLs para porções (<em>tiles</em>) definidas pelo conjunto de coordenadas {z} {x} {y} do dado georeferenciado. O TMS é mais amplamente suportado pelos navegadores Web. <ul>
+<li><em><strong>UTFGrid</strong></em>: usam uma combinação de codificação JSON e arquivos grid ASCII que estão ao lado de cada bloco de imagem do mapa. Desta forma, uma tabela de pesquisa em JSON fornece o conjunto completo de atributos que viabiliza a devolução de dados sobre aquele grid, permitindo interatividade com o mapas.</li>
+</ul>
+</li>
+</ul>
+<p>Desta forma, uma representação visual da interoperabilidade entre serviços pode ser encontrada no <a href="http://wiki.dpi.inpe.br/lib/exe/fetch.php?media=cap349_2009:interoperabilidade_2010.pdf">link</a> e apresentada abaixo.</p>
+<p><img alt="Interoperabilidade entre serviços." src="../imgs/02/interoperabilidade.png" /></p>
+<p>Por fim, a tabela abaixo apresenta os tipos de serviços fornecidos pelo Cerrado DPAT bem como suas URLs de acesso, onde <code>&lt;ows_host&gt;</code> representa o domínio onde o OWS Server está hospedado e <code>&lt;layername&gt;</code> representa a camada configurada no Mapfile:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de Requisição</th>
+<th>Fonte</th>
+<th>Descrição</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WMS</td>
+<td>OWS Server</td>
+<td>Retorna uma imagem com a legenda da camada (<code>&lt;layername&gt;</code>) especificada no <a href="https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view">mapfile</a>..</td>
+<td><code>https://&lt;ows_host&gt;/ows?TRANSPARENT=TRUE&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=&lt;layername&gt;&amp;format=image/png</code></td>
+</tr>
+<tr>
+<td>WMS</td>
+<td>OWS Server</td>
+<td>Retorna uma imagem com a composição de camadas identificadas pelas layers, com o foco no enquadramento para a geometria definida pela função <a href="https://postgis.net/docs/ST_Extent.html">ST_EXTENT</a> do Postgis. Por fim, o parâmetro <code>&lt;sql_applied_on_MSFILTER&gt;</code> especifica a query que deverá ser aplicada para filtrar dados em todas as camadas que possuam <code>MSFILTER</code> em sua configuração no Mapserver.</td>
+<td><code>https://&lt;ows_host&gt;/ows?SERVICE=WMS&amp;REQUEST=GetMap&amp;VERSION=1.1.1&amp;layers=&lt;layername1&gt;,&lt;layername2&gt;, ... &amp;bbox=&lt;bounding_box&gt;&amp;TRANSPARENT=TRUE&amp;srs=EPSG:4674&amp;width=768&amp;height=768&amp;format=image/png&amp;styles=&amp;ENHANCE=TRUE&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;</code></td>
+</tr>
+<tr>
+<td>TMS</td>
+<td>OWS Server</td>
+<td>Retorna uma imagem com a composição de camadas identificadas pelas layers, com o foco no enquadramento para a geometria definida pela função <a href="https://postgis.net/docs/ST_Extent.html">ST_EXTENT</a> do Postgis. Por fim, o parâmetro <code>&lt;sql_applied_on_MSFILTER&gt;</code> especifica a query que deverá ser aplicada para filtrar dados em todas as camadas que possuam <code>MSFILTER</code> em sua configuração no Mapserver.</td>
+<td><code>https://&lt;ows_host&gt;/ows?layers=&lt;layername&gt;&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;&amp;mode=tile&amp;tile=&lt;{z}&gt;+&lt;{x}&gt;+&lt;{y}&gt;&amp;tilemode=gmap&amp;map.imagetype=png</code></td>
+</tr>
+<tr>
+<td>TMS</td>
+<td>Mapbox</td>
+<td>Retorna a composição do mapa Geopolítico fornecido pela <a href="https://www.mapbox.com/">Mapbox</a></td>
+<td><code>https://api.tiles.mapbox.com/v4/mapbox.light/&lt;{z}&gt;/&lt;{x}&gt;/&lt;{y}&gt;.png?access_token=&lt;chave_de_acesso&gt;.</code></td>
+</tr>
+<tr>
+<td>TMS</td>
+<td>Google Maps</td>
+<td>Retorna a composição de imagens do mapa fornecido pela API do GoogleMaps.</td>
+<td><code>https://mt{0-3}.google.com/vt/lyrs=m&amp;x=&lt;{x}&gt;&amp;y=&lt;{y}&gt;&amp;z=&lt;{z}&gt;</code></td>
+</tr>
+<tr>
+<td>TMS</td>
+<td>World Shaded Relief</td>
+<td>Retorna a composição de mapas de Relevo fornecido pelo ArcGis.</td>
+<td><code>https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/&lt;{z}&gt;/&lt;{y}&gt;/&lt;{x}&gt;</code></td>
+</tr>
+<tr>
+<td>UTFGrid</td>
+<td>OWS Server</td>
+<td>Retorna os dados referentes aos atributos definidos na camada fornecida pelo OWS Server para o <layername> especificado na requisição para o tile {z},{x},{y}.</td>
+<td><code>https://&lt;ows_host&gt;/ows?layers=&lt;layername&gt;&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;&amp;mode=tile&amp;tile=&lt;{z}&gt;+&lt;{x}&gt;+&lt;{y}&gt;&amp;tilemode=gmap&amp;map.imagetype=utfgrid</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="processo-de-atualizacao">Processo de atualização</h2>
+<p>Um dado geográfico é disponbilizado pelo Mapserver como uma camada. Assim como abordado na seção de <a href="/02-arq_servidor_de_mapas/#servico-de-interoperabilidade">serviços de interoperabilidade</a> os dados devem estar armazenados em uma pasta de catálogo dos dados (pasta catalog) configurável no arquivo <a href="https://github.com/lapig-ufg/lapig-maps/blob/master/src/ows/config.js">config.js</a> através da variável <code>cacheDir</code>.</p>
+<p>O Mapserver utiliza um arquivo de configuração para renderização de dados geoespaciais chamado de Mapfile. O principal objetivo do Mapfile é definir as camadas que podem ser "desenhadas" pelo Mapserver, como ler estes dados (uma vez que eles podem ser vetores ou matrizes) e como renderizá-los, definindo cores, símbolos, rótulos, legendas e etc. Desta forma, o Mapfile inclui informações sobre:</p>
+<ul>
+<li>Quais camadas devem ser renderizadas;</li>
+<li>Onde está o foco geográfico do mapa;</li>
+<li>Qual projeção está sendo usada;</li>
+<li>Qual o formato gráfico de saída;</li>
+<li>Configuração da legenda e a escala utilizada;</li>
+</ul>
+<p>A figura abaixo apresenta o Mapfile da camada dos desmatamentos PRODES-Cerrado presente no Cerrado DPAT. Esta mesma figura pode representar um exemplo prático para criação de um Mapfile com conexão com Banco de Dados e assim obter dados em formato vetorial. Portanto, segue a especificação de cada item destacado na imagem:</p>
+<p><img alt="Exemplo de Mapfile para dados Vetoriais." src="../imgs/02/mapfile.png" /></p>
+<ol>
+<li>
+<p>Apresenta o nome da camada, bem como a fonte de onde este dado será carregado. No exemplo este dado é acessado pela comunicação com Postgis devidamente autenticado;</p>
+</li>
+<li>
+<p>Determina o foco do dado para a extensão do Cerrado;</p>
+</li>
+<li>
+<p>Apresenta os metadados da camada;</p>
+</li>
+<li>
+<p>Cria uma variável para validação e filtragem dos dados por meio do <a href="https://mapserver.gis.umn.edu/pl/cgi/runsub.html">runtime substitution</a>;</p>
+</li>
+<li>
+<p>Define a projeção do dado apresentado;</p>
+</li>
+<li>
+<p>Define o tipo do dado apresentado;</p>
+</li>
+<li>
+<p>Define a estrutura dos dados que são enviados via UTFGrid. Para tal é importante definir um identificador único (UTFITEM) e os dados a serem enviados através da tupla {"chave_acesso" : "coluna_banco_dados"} em UTFDATA que irão compor o JSON gerado.</p>
+</li>
+<li>
+<p>Define uma classificação para os dados a fim de customizar a coloração de acordo com um critério. A classificação estabelecida também irá compor a legenda.</p>
+</li>
+</ol>
+<p>Um segundo tipo de camada de dados presente no Cerrado DPAT é oriundo de dados matriciais, ou seja, imagens TIF. Portanto, para criação de um Mapfile para um TIF é necessário alterar as sessões (1) - onde deve-se apresentar a localização do arquivo TIF no sistema de arquivos através da diretiva 'DATA'; (6) - alterar para o tipo de dados Raster e (8), onde o critério para classificação se dá de acordo com o valor do pixel em um ponto. Portanto, o Mapfile para arquivos matriciais se dá conforme imagem abaixo.</p>
+<p><img alt="Exemplo de Mapfile para dados Matriciais." src="../imgs/02/mapfile2.png" /></p>
+<p>Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes no Cerrado DPAT está na pasta compartilhada do projeto no <a href="https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view?usp=sharing">link</a>.</p>
+<h2 id="disponibilizacao-da-camada-no-application-server">Disponibilização da camada no Application Server</h2>
+<p>Após a criação da camada no OWS Server, para que esta camada seja apresentada na interface Web do Cerrado DPAT é necessária a sua inserção no <em>Application Server</em>. A fim de facilitar a disponibilização de diversas camadas, foi criada uma estrutura nomeada de <code>descriptor</code> que descreve as principais configurações de uma camada a ser apresentada no Cerrado DPAT, tais como: filtros de dados, tipos diferentes de camadas e outros. A estrutura completa do <strong>descriptor</strong> encontra-se no repositório do projeto no Github, especificamente no arquivo <a href="https://github.com/lapig-ufg/d-pat/blob/master/src/server/controllers/map.js">map.js</a>.</p>
+<p>Segue abaixo as configurações das camadas apresentadas acima dentro da estrutura do descriptor. Primeiramente, iremos disponibilizar a camada <code>bi_ce_prodes_desmatamento_100_fip</code> que representa um dado vetorial no qual é possível aplicar diversos filtros. A variável <code>languageJson</code> representa o acesso ao arquivo .json responsável pela internacionalização da aplicação, ou seja, apresenta textos em diferentes idiomas de acordo com o valor recebido como parâmetro <code>language</code>.  </p>
+<pre><code class="language-js">Controller.descriptor = function (request, response) {
+
+    var language = request.param('lang')
+
+    var result = {
+      regionFilterDefault: &quot;&quot;,
+      type: languageJson[&quot;descriptor&quot;][&quot;type_of_information_label&quot;][language],
+      groups: [{
+        id: &quot;desmatamento&quot;,
+        label: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;label&quot;][language],
+        group_expanded: true,
+        layers: [{
+          id: &quot;desmatamento_prodes&quot;,
+          label: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;][&quot;label&quot;][language],
+          visible: true,
+          selectedType: &quot;bi_ce_prodes_desmatamento_100_fip&quot;,
+          metadata: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;]['metadata'],
+          types: [
+            {
+              value: &quot;bi_ce_prodes_desmatamento_100_fip&quot;,
+              Viewvalue: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;][&quot;types&quot;][&quot;bi_ce_prodes_desmatamento_100_fip&quot;][&quot;view_value&quot;][language],
+              opacity: 1,
+              order: 1,
+              download: ['csv', 'shp'],
+              regionFilter: true,
+              timeLabel: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;][&quot;types&quot;][&quot;bi_ce_prodes_desmatamento_100_fip&quot;][&quot;timelabel&quot;][language],
+              timeSelected: &quot;year=2019&quot;,
+              timeHandler: &quot;msfilter&quot;,
+              times: [{
+                value: &quot;year=2002&quot;,
+                Viewvalue: &quot;2000/2002&quot;,
+                year: 2002
+              },
+              {
+                value: &quot;year=2004&quot;,
+                Viewvalue: &quot;2002/2004&quot;,
+                year: 2004
+              },
+              {
+                value: &quot;year=2006&quot;,
+                Viewvalue: &quot;2004/2006&quot;,
+                year: 2006
+              },
+              {
+                value: &quot;year=2008&quot;,
+                Viewvalue: &quot;2006/2008&quot;,
+                year: 2008
+              },
+              {
+                value: &quot;year=2010&quot;,
+                Viewvalue: &quot;2008/2010&quot;,
+                year: 2010
+              },
+              {
+                value: &quot;year=2012&quot;,
+                Viewvalue: &quot;2010/2012&quot;,
+                year: 2012
+              },
+              {
+                value: &quot;year=2013&quot;,
+                Viewvalue: &quot;2012/2013&quot;,
+                year: 2013
+              },
+              {
+                value: &quot;year=2014&quot;,
+                Viewvalue: &quot;2013/2014&quot;,
+                year: 2014
+              },
+              {
+                value: &quot;year=2015&quot;,
+                Viewvalue: &quot;2014/2015&quot;,
+                year: 2015
+              },
+              {
+                value: &quot;year=2016&quot;,
+                Viewvalue: &quot;2015/2016&quot;,
+                year: 2016
+              },
+              {
+                value: &quot;year=2017&quot;,
+                Viewvalue: &quot;2016/2017&quot;,
+                year: 2017
+              },
+              {
+                value: &quot;year=2018&quot;,
+                Viewvalue: &quot;2017/2018&quot;,
+                year: 2018
+              },
+              {
+                value: &quot;year=2019&quot;,
+                Viewvalue: &quot;2018/2019&quot;,
+                year: 2019
+              }
+            }]
+       },
+       {
+          id: &quot;susceptibilidade&quot;,
+          label: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;][&quot;label&quot;][language],
+          visible: false,
+          selectedType: &quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;,
+          metadata: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;]['metadata'],
+          types: [{
+            value: &quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;,
+            Viewvalue: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;][&quot;types&quot;][&quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;][&quot;view_value&quot;][language],
+            order: 5,
+            download: ['tif'],
+            opacity: 1
+          },
+          {
+            value: &quot;bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig&quot;,
+            Viewvalue: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;][&quot;types&quot;][&quot;bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig&quot;][&quot;view_value&quot;][language],
+            order: 5,
+            download: ['tif'],
+            opacity: 1
+          }
+          ]
+        }
+            }]
+        }]
+    };
+
+    response.send(result);
+    response.end();
+};
+</code></pre>
+<p>Os diversos parâmetros setados na variável <code>result</code> são interpretados pela aplicação Front-end em Angular, de modo a criar a interface apresentada na imagem abaixo. Dentre estes parâmetros, destaca-se o <code>layers</code> que irão indicar quais camadas estarão no card <strong>Desmatamento PRODES-Cerrado</strong>. No exemplo acima, está selecionada a camada <code>bi_ce_prodes_desmatamento_100_fip</code> através da variável <em>selectedType</em>, e logo abaixo apresenta-se o vetor <code>types</code> que apresenta os tipos de camadas PRODES-Cerrado estão disponíveis. Por fim, destaca-se o vetor do parâmetro <code>times</code>, que apresenta diversos filtros que podem ser aplicados em um tipo de layer específico. No exemplo acima, ele é utilizado para filtrar os polígonos por ano, aplicando a query apresentada em <code>value</code> (de cada filtro) como parâmetro <strong>MSFILTER</strong> na camada descrita no Mapserver.</p>
+<p><img alt="Exemplo descriptor para PRODES-Cerrado." src="../imgs/02/telaCamada.png" /></p>
+<p>Por fim, o segundo exemplo apresenta a disponibilização da camada <code>bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig</code> criada acima a partir de uma imagem Raster no formato TIF. O grande diferencial desta é a impossibilidade de aplicar quaisquer filtro na imagem por se tratar de um dado matricial estático, logo o parâmetro <code>times</code> não é utilizado. Portanto, de acordo com a imagem abaixo, que apresenta a estrutura criada no Front-end para esta representação no <em>descriptor</em>.</p>
+<p><img alt="Exemplo descriptor para PRODES-Cerrado." src="../imgs/02/telaCamadas2.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-arq_geral/" class="btn btn-neutral float-left" title="Visão geral"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-arq_servidor_de_aplicacao/" class="btn btn-neutral float-right" title="Servidor de aplicação">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-arq_geral/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-arq_servidor_de_aplicacao/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
