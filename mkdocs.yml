@@ -2,7 +2,7 @@ site_name: Documentação - Plataforma da Rede de Articulação pela Restauraç�
 site_author: Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade
 
 theme:
-  name: material
+    name: material
   palette:
     primary: teal
     - scheme: default
@@ -13,6 +13,7 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+
 
 nav:
   - 'HOME': 'index.md'
