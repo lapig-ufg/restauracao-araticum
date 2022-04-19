@@ -3,7 +3,6 @@ site_author: Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade
 
 theme:
   name: material
-  custom_dir: overrides
 
 nav:
   - 'HOME': 'index.md'
