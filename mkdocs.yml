@@ -3,16 +3,16 @@ site_author: Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade
 
 theme:
     name: material
-  palette:
-    primary: teal
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+      palette:
+        primary: teal
+        - scheme: default
+          toggle:
+            icon: material/toggle-switch-off-outline
+            name: Switch to dark mode
+        - scheme: slate
+          toggle:
+            icon: material/toggle-switch
+            name: Switch to light mode
 
 
 nav:
