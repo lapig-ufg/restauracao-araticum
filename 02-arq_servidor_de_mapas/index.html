@@ -1,900 +1,126 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-        <meta name="author" content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade">
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
-    
-    
-      
-        <title>Servidor de mapas - Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.120efc48.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
-        
-      
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#servidor-de-mapas" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado" class="md-header__button md-logo" aria-label="Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Servidor de mapas
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado" class="md-nav__button md-logo" aria-label="Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    Documentação - Plataforma da Rede de Articulação pela Restauração do Cerrado
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        HOME
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
-          Guia do usuário
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Guia do usuário" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Guia do usuário
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-guia_dados_geograficos/" class="md-nav__link">
-        Dados Geográficos
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-guia_metricas_de_qualidade/" class="md-nav__link">
-        Métricas de Qualidade
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-guia_funcionalidades/" class="md-nav__link">
-        Funcionalidades
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-guia_relatorios/" class="md-nav__link">
-        Relatórios
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          Dados
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Dados" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Dados
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-dad_vetoriais/" class="md-nav__link">
-        Vetoriais
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-dad_rasters/" class="md-nav__link">
-        Rasters
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4">
-          Arquitetura de Software
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Arquitetura de Software" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Arquitetura de Software
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-arq_geral/" class="md-nav__link">
-        Visão geral
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Servidor de mapas
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Servidor de mapas
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#servico-de-interoperabilidade" class="md-nav__link">
-    Serviço de interoperabilidade
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#processo-de-atualizacao" class="md-nav__link">
-    Processo de atualização
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disponibilizacao-da-camada-no-application-server" class="md-nav__link">
-    Disponibilização da camada no Application Server
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-arq_servidor_de_aplicacao/" class="md-nav__link">
-        Servidor de aplicação
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-arq_execucao_dpat/" class="md-nav__link">
-        Deployment da arquitetura do Cerrado DPAT
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-metricas_de_avaliacao/" class="md-nav__link">
-        Métricas de Avaliação
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#servico-de-interoperabilidade" class="md-nav__link">
-    Serviço de interoperabilidade
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#processo-de-atualizacao" class="md-nav__link">
-    Processo de atualização
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disponibilizacao-da-camada-no-application-server" class="md-nav__link">
-    Disponibilização da camada no Application Server
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-
-
-<h1 id="servidor-de-mapas">Servidor de Mapas</h1>
-<p>O OWS Server é responsável por encaminhar as requisições ao Mapserver a fim de gerar a visualização dos dados geográficos e organizar para que as imagens geradas sejam armazenadas em cache para melhorar o desempenho em requisições futuras. O código-fonte para o OWS Server se encontra no repositório <a href="https://github.com/lapig-ufg/lapig-maps">Github</a> do LAPIG/UFG.</p>
-<p><img alt="Arquitetura OWS." src="../imgs/02/ows-schema.png" /></p>
-<p>Devido a facilidade em lidar com a arquitetura de WebServices, o código em NodeJS foi criado para também realizar o controle de cache das imagens processadas pelo Mapserver. Para tal, uma customização foi criada a fim de se associar uma chave (<code>cacheKey</code>) a cada imagem de cada camada configurada no Mapserver. Esta imagem é armazenada em um sistema de arquivos (pasta) chamada <code>OWS-Cache</code>, de modo que, em futuras requisições para uma determinada imagem, é verificada se a imagem já existe na <code>OWS-Cache</code> ou não. Caso exista, a imagem é retornada na requisição, caso não exista, o código NodeJS envia a requisição para o Mapserver processar e gerá-la, armazenando-a no <code>OWS-Cache</code>. O método que realiza esta verificação é o método <code>OgcServer.ows</code> que faz parte do Controlador da aplicação em NodeJS.</p>
-<pre><code>src/controllers/ogc-server.js
-</code></pre>
-<pre><code class="language-js">OgcServer.ows = function(request, response) {
-    var params = Internal.getParams(request);
-    response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
-
-    Internal.setHeaders(params, request, response);
-        var cacheKey = Internal.getCacheKey(params);
-
-        if(cacheKey &amp;&amp; (config['cacheEnable'] || Internal.isWmsGetCap(params)) ) {
-            Internal.doRequestWithCache(cacheKey, params, response);
-        } else {
-            Internal.doRequest(params, response);
-        }
-}
-</code></pre>
-<p>Esta customização pode ser encontrada no código NodeJS no repositório específico para o código NodeJS no <a href="https://github.com/lapig-ufg/lapig-maps/tree/master/src/ows">Github</a>. A configuração da pasta onde serão gerados os caches é feita no arquivo <a href="https://github.com/lapig-ufg/lapig-maps/blob/master/src/ows/config.js">config.js</a> na linha 41 através da variável <code>cacheDir</code>.</p>
-<h2 id="servico-de-interoperabilidade">Serviço de interoperabilidade</h2>
-<p>A interoperabilidade é uma tecnologia que possibilita o compartilhamento de dados entre sistemas, independente do local físico de armazenamento e da tecnologia utilizada em cada servidor de dados.
-No Geoprocessamento, a interoperabilidade pode ser aplicada para promover o intercâmbio de dados geográficos entre diferentes softwares de SIG.
-O OCG (Open Geospatial Consortium, Inc.) é uma organização que tem como objetivo principal viabilizar o intercâmbio de dados geográficos através da criação de especificações que simplificam a interação entre diferentes fontes de dados. Desta forma, os principais serviços especificados pela OGC são:</p>
-<ul>
-<li><em><strong>Web Map Service - WMS</strong></em>: produz mapas dinâmicos partir de dados georreferenciados em um servidor remoto. Esses mapas são geralmente apresentados no formato de figura (PNG, JPEG ou GIF). Também é possível consultar os atributos dos elementos que compõem os mapas. </li>
-<li><em><strong>Web Feature Service - WFS</strong></em>: define um serviço para recuperação de objetos (<em>features</em>) espaciais. Diferentemente do WMS, o WFS devolve o dado e não uma "figura" do dado. </li>
-<li><em><strong>Tile Map Service - TMS</strong></em>: define um serviço que fornece imagens de dados geográficos a partir de URLs para porções (<em>tiles</em>) definidas pelo conjunto de coordenadas {z} {x} {y} do dado georeferenciado. O TMS é mais amplamente suportado pelos navegadores Web. <ul>
-<li><em><strong>UTFGrid</strong></em>: usam uma combinação de codificação JSON e arquivos grid ASCII que estão ao lado de cada bloco de imagem do mapa. Desta forma, uma tabela de pesquisa em JSON fornece o conjunto completo de atributos que viabiliza a devolução de dados sobre aquele grid, permitindo interatividade com o mapas.</li>
-</ul>
-</li>
-</ul>
-<p>Desta forma, uma representação visual da interoperabilidade entre serviços pode ser encontrada no <a href="http://wiki.dpi.inpe.br/lib/exe/fetch.php?media=cap349_2009:interoperabilidade_2010.pdf">link</a> e apresentada abaixo.</p>
-<p><img alt="Interoperabilidade entre serviços." src="../imgs/02/interoperabilidade.png" /></p>
-<p>Por fim, a tabela abaixo apresenta os tipos de serviços fornecidos pelo Cerrado DPAT bem como suas URLs de acesso, onde <code>&lt;ows_host&gt;</code> representa o domínio onde o OWS Server está hospedado e <code>&lt;layername&gt;</code> representa a camada configurada no Mapfile:</p>
-<table>
-<thead>
-<tr>
-<th>Tipo de Requisição</th>
-<th>Fonte</th>
-<th>Descrição</th>
-<th>URL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WMS</td>
-<td>OWS Server</td>
-<td>Retorna uma imagem com a legenda da camada (<code>&lt;layername&gt;</code>) especificada no <a href="https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view">mapfile</a>..</td>
-<td><code>https://&lt;ows_host&gt;/ows?TRANSPARENT=TRUE&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=&lt;layername&gt;&amp;format=image/png</code></td>
-</tr>
-<tr>
-<td>WMS</td>
-<td>OWS Server</td>
-<td>Retorna uma imagem com a composição de camadas identificadas pelas layers, com o foco no enquadramento para a geometria definida pela função <a href="https://postgis.net/docs/ST_Extent.html">ST_EXTENT</a> do Postgis. Por fim, o parâmetro <code>&lt;sql_applied_on_MSFILTER&gt;</code> especifica a query que deverá ser aplicada para filtrar dados em todas as camadas que possuam <code>MSFILTER</code> em sua configuração no Mapserver.</td>
-<td><code>https://&lt;ows_host&gt;/ows?SERVICE=WMS&amp;REQUEST=GetMap&amp;VERSION=1.1.1&amp;layers=&lt;layername1&gt;,&lt;layername2&gt;, ... &amp;bbox=&lt;bounding_box&gt;&amp;TRANSPARENT=TRUE&amp;srs=EPSG:4674&amp;width=768&amp;height=768&amp;format=image/png&amp;styles=&amp;ENHANCE=TRUE&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;</code></td>
-</tr>
-<tr>
-<td>TMS</td>
-<td>OWS Server</td>
-<td>Retorna uma imagem com a composição de camadas identificadas pelas layers, com o foco no enquadramento para a geometria definida pela função <a href="https://postgis.net/docs/ST_Extent.html">ST_EXTENT</a> do Postgis. Por fim, o parâmetro <code>&lt;sql_applied_on_MSFILTER&gt;</code> especifica a query que deverá ser aplicada para filtrar dados em todas as camadas que possuam <code>MSFILTER</code> em sua configuração no Mapserver.</td>
-<td><code>https://&lt;ows_host&gt;/ows?layers=&lt;layername&gt;&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;&amp;mode=tile&amp;tile=&lt;{z}&gt;+&lt;{x}&gt;+&lt;{y}&gt;&amp;tilemode=gmap&amp;map.imagetype=png</code></td>
-</tr>
-<tr>
-<td>TMS</td>
-<td>Mapbox</td>
-<td>Retorna a composição do mapa Geopolítico fornecido pela <a href="https://www.mapbox.com/">Mapbox</a></td>
-<td><code>https://api.tiles.mapbox.com/v4/mapbox.light/&lt;{z}&gt;/&lt;{x}&gt;/&lt;{y}&gt;.png?access_token=&lt;chave_de_acesso&gt;.</code></td>
-</tr>
-<tr>
-<td>TMS</td>
-<td>Google Maps</td>
-<td>Retorna a composição de imagens do mapa fornecido pela API do GoogleMaps.</td>
-<td><code>https://mt{0-3}.google.com/vt/lyrs=m&amp;x=&lt;{x}&gt;&amp;y=&lt;{y}&gt;&amp;z=&lt;{z}&gt;</code></td>
-</tr>
-<tr>
-<td>TMS</td>
-<td>World Shaded Relief</td>
-<td>Retorna a composição de mapas de Relevo fornecido pelo ArcGis.</td>
-<td><code>https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/&lt;{z}&gt;/&lt;{y}&gt;/&lt;{x}&gt;</code></td>
-</tr>
-<tr>
-<td>UTFGrid</td>
-<td>OWS Server</td>
-<td>Retorna os dados referentes aos atributos definidos na camada fornecida pelo OWS Server para o <layername> especificado na requisição para o tile {z},{x},{y}.</td>
-<td><code>https://&lt;ows_host&gt;/ows?layers=&lt;layername&gt;&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;&amp;mode=tile&amp;tile=&lt;{z}&gt;+&lt;{x}&gt;+&lt;{y}&gt;&amp;tilemode=gmap&amp;map.imagetype=utfgrid</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="processo-de-atualizacao">Processo de atualização</h2>
-<p>Um dado geográfico é disponbilizado pelo Mapserver como uma camada. Assim como abordado na seção de <a href="/02-arq_servidor_de_mapas/#servico-de-interoperabilidade">serviços de interoperabilidade</a> os dados devem estar armazenados em uma pasta de catálogo dos dados (pasta catalog) configurável no arquivo <a href="https://github.com/lapig-ufg/lapig-maps/blob/master/src/ows/config.js">config.js</a> através da variável <code>cacheDir</code>.</p>
-<p>O Mapserver utiliza um arquivo de configuração para renderização de dados geoespaciais chamado de Mapfile. O principal objetivo do Mapfile é definir as camadas que podem ser "desenhadas" pelo Mapserver, como ler estes dados (uma vez que eles podem ser vetores ou matrizes) e como renderizá-los, definindo cores, símbolos, rótulos, legendas e etc. Desta forma, o Mapfile inclui informações sobre:</p>
-<ul>
-<li>Quais camadas devem ser renderizadas;</li>
-<li>Onde está o foco geográfico do mapa;</li>
-<li>Qual projeção está sendo usada;</li>
-<li>Qual o formato gráfico de saída;</li>
-<li>Configuração da legenda e a escala utilizada;</li>
-</ul>
-<p>A figura abaixo apresenta o Mapfile da camada dos desmatamentos PRODES-Cerrado presente no Cerrado DPAT. Esta mesma figura pode representar um exemplo prático para criação de um Mapfile com conexão com Banco de Dados e assim obter dados em formato vetorial. Portanto, segue a especificação de cada item destacado na imagem:</p>
-<p><img alt="Exemplo de Mapfile para dados Vetoriais." src="../imgs/02/mapfile.png" /></p>
-<ol>
-<li>
-<p>Apresenta o nome da camada, bem como a fonte de onde este dado será carregado. No exemplo este dado é acessado pela comunicação com Postgis devidamente autenticado;</p>
-</li>
-<li>
-<p>Determina o foco do dado para a extensão do Cerrado;</p>
-</li>
-<li>
-<p>Apresenta os metadados da camada;</p>
-</li>
-<li>
-<p>Cria uma variável para validação e filtragem dos dados por meio do <a href="https://mapserver.gis.umn.edu/pl/cgi/runsub.html">runtime substitution</a>;</p>
-</li>
-<li>
-<p>Define a projeção do dado apresentado;</p>
-</li>
-<li>
-<p>Define o tipo do dado apresentado;</p>
-</li>
-<li>
-<p>Define a estrutura dos dados que são enviados via UTFGrid. Para tal é importante definir um identificador único (UTFITEM) e os dados a serem enviados através da tupla {"chave_acesso" : "coluna_banco_dados"} em UTFDATA que irão compor o JSON gerado.</p>
-</li>
-<li>
-<p>Define uma classificação para os dados a fim de customizar a coloração de acordo com um critério. A classificação estabelecida também irá compor a legenda.</p>
-</li>
-</ol>
-<p>Um segundo tipo de camada de dados presente no Cerrado DPAT é oriundo de dados matriciais, ou seja, imagens TIF. Portanto, para criação de um Mapfile para um TIF é necessário alterar as sessões (1) - onde deve-se apresentar a localização do arquivo TIF no sistema de arquivos através da diretiva 'DATA'; (6) - alterar para o tipo de dados Raster e (8), onde o critério para classificação se dá de acordo com o valor do pixel em um ponto. Portanto, o Mapfile para arquivos matriciais se dá conforme imagem abaixo.</p>
-<p><img alt="Exemplo de Mapfile para dados Matriciais." src="../imgs/02/mapfile2.png" /></p>
-<p>Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes no Cerrado DPAT está na pasta compartilhada do projeto no <a href="https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view?usp=sharing">link</a>.</p>
-<h2 id="disponibilizacao-da-camada-no-application-server">Disponibilização da camada no Application Server</h2>
-<p>Após a criação da camada no OWS Server, para que esta camada seja apresentada na interface Web do Cerrado DPAT é necessária a sua inserção no <em>Application Server</em>. A fim de facilitar a disponibilização de diversas camadas, foi criada uma estrutura nomeada de <code>descriptor</code> que descreve as principais configurações de uma camada a ser apresentada no Cerrado DPAT, tais como: filtros de dados, tipos diferentes de camadas e outros. A estrutura completa do <strong>descriptor</strong> encontra-se no repositório do projeto no Github, especificamente no arquivo <a href="https://github.com/lapig-ufg/d-pat/blob/master/src/server/controllers/map.js">map.js</a>.</p>
-<p>Segue abaixo as configurações das camadas apresentadas acima dentro da estrutura do descriptor. Primeiramente, iremos disponibilizar a camada <code>bi_ce_prodes_desmatamento_100_fip</code> que representa um dado vetorial no qual é possível aplicar diversos filtros. A variável <code>languageJson</code> representa o acesso ao arquivo .json responsável pela internacionalização da aplicação, ou seja, apresenta textos em diferentes idiomas de acordo com o valor recebido como parâmetro <code>language</code>.  </p>
-<pre><code class="language-js">Controller.descriptor = function (request, response) {
-
-    var language = request.param('lang')
-
-    var result = {
-      regionFilterDefault: &quot;&quot;,
-      type: languageJson[&quot;descriptor&quot;][&quot;type_of_information_label&quot;][language],
-      groups: [{
-        id: &quot;desmatamento&quot;,
-        label: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;label&quot;][language],
-        group_expanded: true,
-        layers: [{
-          id: &quot;desmatamento_prodes&quot;,
-          label: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;][&quot;label&quot;][language],
-          visible: true,
-          selectedType: &quot;bi_ce_prodes_desmatamento_100_fip&quot;,
-          metadata: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;]['metadata'],
-          types: [
-            {
-              value: &quot;bi_ce_prodes_desmatamento_100_fip&quot;,
-              Viewvalue: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;][&quot;types&quot;][&quot;bi_ce_prodes_desmatamento_100_fip&quot;][&quot;view_value&quot;][language],
-              opacity: 1,
-              order: 1,
-              download: ['csv', 'shp'],
-              regionFilter: true,
-              timeLabel: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;desmatamento_prodes&quot;][&quot;types&quot;][&quot;bi_ce_prodes_desmatamento_100_fip&quot;][&quot;timelabel&quot;][language],
-              timeSelected: &quot;year=2019&quot;,
-              timeHandler: &quot;msfilter&quot;,
-              times: [{
-                value: &quot;year=2002&quot;,
-                Viewvalue: &quot;2000/2002&quot;,
-                year: 2002
-              },
-              {
-                value: &quot;year=2004&quot;,
-                Viewvalue: &quot;2002/2004&quot;,
-                year: 2004
-              },
-              {
-                value: &quot;year=2006&quot;,
-                Viewvalue: &quot;2004/2006&quot;,
-                year: 2006
-              },
-              {
-                value: &quot;year=2008&quot;,
-                Viewvalue: &quot;2006/2008&quot;,
-                year: 2008
-              },
-              {
-                value: &quot;year=2010&quot;,
-                Viewvalue: &quot;2008/2010&quot;,
-                year: 2010
-              },
-              {
-                value: &quot;year=2012&quot;,
-                Viewvalue: &quot;2010/2012&quot;,
-                year: 2012
-              },
-              {
-                value: &quot;year=2013&quot;,
-                Viewvalue: &quot;2012/2013&quot;,
-                year: 2013
-              },
-              {
-                value: &quot;year=2014&quot;,
-                Viewvalue: &quot;2013/2014&quot;,
-                year: 2014
-              },
-              {
-                value: &quot;year=2015&quot;,
-                Viewvalue: &quot;2014/2015&quot;,
-                year: 2015
-              },
-              {
-                value: &quot;year=2016&quot;,
-                Viewvalue: &quot;2015/2016&quot;,
-                year: 2016
-              },
-              {
-                value: &quot;year=2017&quot;,
-                Viewvalue: &quot;2016/2017&quot;,
-                year: 2017
-              },
-              {
-                value: &quot;year=2018&quot;,
-                Viewvalue: &quot;2017/2018&quot;,
-                year: 2018
-              },
-              {
-                value: &quot;year=2019&quot;,
-                Viewvalue: &quot;2018/2019&quot;,
-                year: 2019
-              }
-            }]
-       },
-       {
-          id: &quot;susceptibilidade&quot;,
-          label: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;][&quot;label&quot;][language],
-          visible: false,
-          selectedType: &quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;,
-          metadata: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;]['metadata'],
-          types: [{
-            value: &quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;,
-            Viewvalue: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;][&quot;types&quot;][&quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;][&quot;view_value&quot;][language],
-            order: 5,
-            download: ['tif'],
-            opacity: 1
-          },
-          {
-            value: &quot;bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig&quot;,
-            Viewvalue: languageJson[&quot;descriptor&quot;][&quot;desmatamento&quot;][&quot;layers&quot;][&quot;susceptibilidade&quot;][&quot;types&quot;][&quot;bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig&quot;][&quot;view_value&quot;][language],
-            order: 5,
-            download: ['tif'],
-            opacity: 1
-          }
-          ]
-        }
-            }]
-        }]
-    };
-
-    response.send(result);
-    response.end();
-};
-</code></pre>
-<p>Os diversos parâmetros setados na variável <code>result</code> são interpretados pela aplicação Front-end em Angular, de modo a criar a interface apresentada na imagem abaixo. Dentre estes parâmetros, destaca-se o <code>layers</code> que irão indicar quais camadas estarão no card <strong>Desmatamento PRODES-Cerrado</strong>. No exemplo acima, está selecionada a camada <code>bi_ce_prodes_desmatamento_100_fip</code> através da variável <em>selectedType</em>, e logo abaixo apresenta-se o vetor <code>types</code> que apresenta os tipos de camadas PRODES-Cerrado estão disponíveis. Por fim, destaca-se o vetor do parâmetro <code>times</code>, que apresenta diversos filtros que podem ser aplicados em um tipo de layer específico. No exemplo acima, ele é utilizado para filtrar os polígonos por ano, aplicando a query apresentada em <code>value</code> (de cada filtro) como parâmetro <strong>MSFILTER</strong> na camada descrita no Mapserver.</p>
-<p><img alt="Exemplo descriptor para PRODES-Cerrado." src="../imgs/02/telaCamada.png" /></p>
-<p>Por fim, o segundo exemplo apresenta a disponibilização da camada <code>bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig</code> criada acima a partir de uma imagem Raster no formato TIF. O grande diferencial desta é a impossibilidade de aplicar quaisquer filtro na imagem por se tratar de um dado matricial estático, logo o parâmetro <code>times</code> não é utilizado. Portanto, de acordo com a imagem abaixo, que apresenta a estrutura criada no Front-end para esta representação no <em>descriptor</em>.</p>
-<p><img alt="Exemplo descriptor para PRODES-Cerrado." src="../imgs/02/telaCamadas2.png" /></p>
-
-              
-            </article>
-          </div>
-        </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../02-arq_geral/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Visão geral" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Visão geral
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../02-arq_servidor_de_aplicacao/" class="md-footer__link md-footer__link--next" aria-label="Next: Servidor de aplicação" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Servidor de aplicação
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.6e54b5cd.min.js"></script>
-      
-    
-  </body>
-</html>
+<!doctype html><html lang=pt class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="A Articulação pela Restauração do Cerrado é uma rede colaborativa e multisetorial, que visa atuar como uma coalizão cujo objetivo é promover a restauração em larga escala do Bioma."><meta name=author content="Luiz Pascoal, Renato Gomes Silvério e Tharles de Sousa Andrade"><link href=https://araticum.lapig.iesa.ufg.br/02-arq_servidor_de_mapas/ rel=canonical><link rel=icon href=../imgs/logos/favicon.ico><meta name=generator content="mkdocs-1.3.0, mkdocs-material-8.2.9"><title>Servidor de mapas - Plataforma da Rede de Articulação pela Restauração do Cerrado</title><link rel=stylesheet href=../assets/stylesheets/main.120efc48.min.css><link rel=stylesheet href=../assets/stylesheets/palette.9647289d.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=teal data-md-color-accent=blue-grey> <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#servidor-de-mapas class=md-skip> Ir para o conteúdo </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Cabeçalho> <a href=.. title="Plataforma da Rede de Articulação pela Restauração do Cerrado" class="md-header__button md-logo" aria-label="Plataforma da Rede de Articulação pela Restauração do Cerrado" data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"> <path d=M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z /> <path d=M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z style="fill-opacity: 0.5"/> <path d=M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z /> <path d=M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z style="fill-opacity: 0.25"/> </svg> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> Plataforma da Rede de Articulação pela Restauração do Cerrado </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Servidor de mapas </span> </div> </div> </div> <form class=md-header__option data-md-component=palette> <input class=md-option data-md-color-media data-md-color-scheme=default data-md-color-primary=teal data-md-color-accent=blue-grey aria-label="Switch to dark mode" type=radio name=__palette id=__palette_1> <label class="md-header__button md-icon" title="Switch to dark mode" for=__palette_2 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg> </label> <input class=md-option data-md-color-media data-md-color-scheme=slate data-md-color-primary=red data-md-color-accent=red aria-label="Switch to light mode" type=radio name=__palette id=__palette_2> <label class="md-header__button md-icon" title="Switch to light mode" for=__palette_1 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> </label> </form> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Buscar placeholder=Buscar autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg> </label> <nav class=md-search__options aria-label=Pesquisar> <a href=javascript:void(0) class="md-search__icon md-icon" aria-label=Compartilhar data-clipboard data-clipboard-text data-md-component=search-share tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg> </a> <button type=reset class="md-search__icon md-icon" aria-label=Limpar tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg> </button> </nav> <div class=md-search__suggest data-md-component=search-suggest></div> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Inicializando a pesquisa </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/lapig-ufg/restauracao-araticum title="Ir ao repositório" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> lapig-ufg/restauracao-araticum </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class=md-tabs aria-label=Abas data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=.. class=md-tabs__link> HOME </a> </li> <li class=md-tabs__item> <a href=../01-guia_dados_geograficos/ class=md-tabs__link> Guia do usuário </a> </li> <li class=md-tabs__item> <a href=../03-dad_vetoriais/ class=md-tabs__link> Dados </a> </li> <li class=md-tabs__item> <a href=../02-arq_geral/ class="md-tabs__link md-tabs__link--active"> Arquitetura de Software </a> </li> <li class=md-tabs__item> <a href=../04-metricas_de_avaliacao/ class=md-tabs__link> Métricas de Avaliação </a> </li> </ul> </div> </nav> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary md-nav--lifted" aria-label=Navegação data-md-level=0> <label class=md-nav__title for=__drawer> <a href=.. title="Plataforma da Rede de Articulação pela Restauração do Cerrado" class="md-nav__button md-logo" aria-label="Plataforma da Rede de Articulação pela Restauração do Cerrado" data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"> <path d=M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z /> <path d=M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z style="fill-opacity: 0.5"/> <path d=M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z /> <path d=M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z style="fill-opacity: 0.25"/> </svg> </a> Plataforma da Rede de Articulação pela Restauração do Cerrado </label> <div class=md-nav__source> <a href=https://github.com/lapig-ufg/restauracao-araticum title="Ir ao repositório" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> lapig-ufg/restauracao-araticum </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=.. class=md-nav__link> HOME </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_2 type=checkbox id=__nav_2> <label class=md-nav__link for=__nav_2> Guia do usuário <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Guia do usuário" data-md-level=1> <label class=md-nav__title for=__nav_2> <span class="md-nav__icon md-icon"></span> Guia do usuário </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../01-guia_dados_geograficos/ class=md-nav__link> Dados Geográficos </a> </li> <li class=md-nav__item> <a href=../01-guia_metricas_de_qualidade/ class=md-nav__link> Métricas de Qualidade </a> </li> <li class=md-nav__item> <a href=../01-guia_funcionalidades/ class=md-nav__link> Funcionalidades </a> </li> <li class=md-nav__item> <a href=../01-guia_relatorios/ class=md-nav__link> Relatórios </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_3 type=checkbox id=__nav_3> <label class=md-nav__link for=__nav_3> Dados <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Dados data-md-level=1> <label class=md-nav__title for=__nav_3> <span class="md-nav__icon md-icon"></span> Dados </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../03-dad_vetoriais/ class=md-nav__link> Vetoriais </a> </li> <li class=md-nav__item> <a href=../03-dad_rasters/ class=md-nav__link> Rasters </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_4 type=checkbox id=__nav_4 checked> <label class=md-nav__link for=__nav_4> Arquitetura de Software <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Arquitetura de Software" data-md-level=1> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> Arquitetura de Software </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../02-arq_geral/ class=md-nav__link> Visão geral </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Servidor de mapas <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> Servidor de mapas </a> <nav class="md-nav md-nav--secondary" aria-label=Índice> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Índice </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#servico-de-interoperabilidade class=md-nav__link> Serviço de interoperabilidade </a> </li> <li class=md-nav__item> <a href=#processo-de-atualizacao class=md-nav__link> Processo de atualização </a> </li> <li class=md-nav__item> <a href=#disponibilizacao-da-camada-no-application-server class=md-nav__link> Disponibilização da camada no Application Server </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../02-arq_servidor_de_aplicacao/ class=md-nav__link> Servidor de aplicação </a> </li> <li class=md-nav__item> <a href=../02-arq_execucao_dpat/ class=md-nav__link> Deployment da arquitetura do Cerrado DPAT </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../04-metricas_de_avaliacao/ class=md-nav__link> Métricas de Avaliação </a> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label=Índice> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Índice </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#servico-de-interoperabilidade class=md-nav__link> Serviço de interoperabilidade </a> </li> <li class=md-nav__item> <a href=#processo-de-atualizacao class=md-nav__link> Processo de atualização </a> </li> <li class=md-nav__item> <a href=#disponibilizacao-da-camada-no-application-server class=md-nav__link> Disponibilização da camada no Application Server </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/lapig-ufg/restauracao-araticum/edit/master/docs/02-arq_servidor_de_mapas.md title="Editar esta página" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg> </a> <h1 id=servidor-de-mapas>Servidor de Mapas<a class=headerlink href=#servidor-de-mapas title="Permanent link">&para;</a></h1> <p>O OWS Server é responsável por encaminhar as requisições ao Mapserver a fim de gerar a visualização dos dados geográficos e organizar para que as imagens geradas sejam armazenadas em cache para melhorar o desempenho em requisições futuras. O código-fonte para o OWS Server se encontra no repositório <a href=https://github.com/lapig-ufg/lapig-maps>Github</a> do LAPIG/UFG.</p> <p><img alt="Arquitetura OWS." src=../imgs/02/ows-schema.png></p> <p>Devido a facilidade em lidar com a arquitetura de WebServices, o código em NodeJS foi criado para também realizar o controle de cache das imagens processadas pelo Mapserver. Para tal, uma customização foi criada a fim de se associar uma chave (<code>cacheKey</code>) a cada imagem de cada camada configurada no Mapserver. Esta imagem é armazenada em um sistema de arquivos (pasta) chamada <code>OWS-Cache</code>, de modo que, em futuras requisições para uma determinada imagem, é verificada se a imagem já existe na <code>OWS-Cache</code> ou não. Caso exista, a imagem é retornada na requisição, caso não exista, o código NodeJS envia a requisição para o Mapserver processar e gerá-la, armazenando-a no <code>OWS-Cache</code>. O método que realiza esta verificação é o método <code>OgcServer.ows</code> que faz parte do Controlador da aplicação em NodeJS.</p> <div class=highlight><pre><span></span><code>src/controllers/ogc-server.js
+</code></pre></div> <p><code>js OgcServer.ows = function(request, response) { var params = Internal.getParams(request); response.setHeader("Access-Control-Allow-Origin", "*"); Internal.setHeaders(params, request, response); var cacheKey = Internal.getCacheKey(params); if(cacheKey &amp;&amp; (config['cacheEnable'] || Internal.isWmsGetCap(params)) ) { Internal.doRequestWithCache(cacheKey, params, response); } else { Internal.doRequest(params, response); } }</code> Esta customização pode ser encontrada no código NodeJS no repositório específico para o código NodeJS no <a href=https://github.com/lapig-ufg/lapig-maps/tree/master/src/ows>Github</a>. A configuração da pasta onde serão gerados os caches é feita no arquivo <a href=https://github.com/lapig-ufg/lapig-maps/blob/master/src/ows/config.js>config.js</a> na linha 41 através da variável <code>cacheDir</code>.</p> <h2 id=servico-de-interoperabilidade>Serviço de interoperabilidade<a class=headerlink href=#servico-de-interoperabilidade title="Permanent link">&para;</a></h2> <p>A interoperabilidade é uma tecnologia que possibilita o compartilhamento de dados entre sistemas, independente do local físico de armazenamento e da tecnologia utilizada em cada servidor de dados. No Geoprocessamento, a interoperabilidade pode ser aplicada para promover o intercâmbio de dados geográficos entre diferentes softwares de SIG. O OCG (Open Geospatial Consortium, Inc.) é uma organização que tem como objetivo principal viabilizar o intercâmbio de dados geográficos através da criação de especificações que simplificam a interação entre diferentes fontes de dados. Desta forma, os principais serviços especificados pela OGC são:</p> <ul> <li><em><strong>Web Map Service - WMS</strong></em>: produz mapas dinâmicos partir de dados georreferenciados em um servidor remoto. Esses mapas são geralmente apresentados no formato de figura (PNG, JPEG ou GIF). Também é possível consultar os atributos dos elementos que compõem os mapas. </li> <li><em><strong>Web Feature Service - WFS</strong></em>: define um serviço para recuperação de objetos (<em>features</em>) espaciais. Diferentemente do WMS, o WFS devolve o dado e não uma "figura" do dado. </li> <li><em><strong>Tile Map Service - TMS</strong></em>: define um serviço que fornece imagens de dados geográficos a partir de URLs para porções (<em>tiles</em>) definidas pelo conjunto de coordenadas {z} {x} {y} do dado georeferenciado. O TMS é mais amplamente suportado pelos navegadores Web. <ul> <li><em><strong>UTFGrid</strong></em>: usam uma combinação de codificação JSON e arquivos grid ASCII que estão ao lado de cada bloco de imagem do mapa. Desta forma, uma tabela de pesquisa em JSON fornece o conjunto completo de atributos que viabiliza a devolução de dados sobre aquele grid, permitindo interatividade com o mapas.</li> </ul> </li> </ul> <p>Desta forma, uma representação visual da interoperabilidade entre serviços pode ser encontrada no <a href="http://wiki.dpi.inpe.br/lib/exe/fetch.php?media=cap349_2009:interoperabilidade_2010.pdf">link</a> e apresentada abaixo.</p> <p><img alt="Interoperabilidade entre serviços." src=../imgs/02/interoperabilidade.png></p> <p>Por fim, a tabela abaixo apresenta os tipos de serviços fornecidos pelo Cerrado DPAT bem como suas URLs de acesso, onde <code>&lt;ows_host&gt;</code> representa o domínio onde o OWS Server está hospedado e <code>&lt;layername&gt;</code> representa a camada configurada no Mapfile:</p> <table> <thead> <tr> <th>Tipo de Requisição</th> <th>Fonte</th> <th>Descrição</th> <th>URL</th> </tr> </thead> <tbody> <tr> <td>WMS</td> <td>OWS Server</td> <td>Retorna uma imagem com a legenda da camada (<code>&lt;layername&gt;</code>) especificada no <a href=https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view>mapfile</a>..</td> <td><code>https://&lt;ows_host&gt;/ows?TRANSPARENT=TRUE&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=&lt;layername&gt;&amp;format=image/png</code></td> </tr> <tr> <td>WMS</td> <td>OWS Server</td> <td>Retorna uma imagem com a composição de camadas identificadas pelas layers, com o foco no enquadramento para a geometria definida pela função <a href=https://postgis.net/docs/ST_Extent.html>ST_EXTENT</a> do Postgis. Por fim, o parâmetro <code>&lt;sql_applied_on_MSFILTER&gt;</code> especifica a query que deverá ser aplicada para filtrar dados em todas as camadas que possuam <code>MSFILTER</code> em sua configuração no Mapserver.</td> <td><code>https://&lt;ows_host&gt;/ows?SERVICE=WMS&amp;REQUEST=GetMap&amp;VERSION=1.1.1&amp;layers=&lt;layername1&gt;,&lt;layername2&gt;, ... &amp;bbox=&lt;bounding_box&gt;&amp;TRANSPARENT=TRUE&amp;srs=EPSG:4674&amp;width=768&amp;height=768&amp;format=image/png&amp;styles=&amp;ENHANCE=TRUE&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;</code></td> </tr> <tr> <td>TMS</td> <td>OWS Server</td> <td>Retorna uma imagem com a composição de camadas identificadas pelas layers, com o foco no enquadramento para a geometria definida pela função <a href=https://postgis.net/docs/ST_Extent.html>ST_EXTENT</a> do Postgis. Por fim, o parâmetro <code>&lt;sql_applied_on_MSFILTER&gt;</code> especifica a query que deverá ser aplicada para filtrar dados em todas as camadas que possuam <code>MSFILTER</code> em sua configuração no Mapserver.</td> <td><code>https://&lt;ows_host&gt;/ows?layers=&lt;layername&gt;&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;&amp;mode=tile&amp;tile=&lt;{z}&gt;+&lt;{x}&gt;+&lt;{y}&gt;&amp;tilemode=gmap&amp;map.imagetype=png</code></td> </tr> <tr> <td>TMS</td> <td>Mapbox</td> <td>Retorna a composição do mapa Geopolítico fornecido pela <a href=https://www.mapbox.com/ >Mapbox</a></td> <td><code>https://api.tiles.mapbox.com/v4/mapbox.light/&lt;{z}&gt;/&lt;{x}&gt;/&lt;{y}&gt;.png?access_token=&lt;chave_de_acesso&gt;.</code></td> </tr> <tr> <td>TMS</td> <td>Google Maps</td> <td>Retorna a composição de imagens do mapa fornecido pela API do GoogleMaps.</td> <td><code>https://mt{0-3}.google.com/vt/lyrs=m&amp;x=&lt;{x}&gt;&amp;y=&lt;{y}&gt;&amp;z=&lt;{z}&gt;</code></td> </tr> <tr> <td>TMS</td> <td>World Shaded Relief</td> <td>Retorna a composição de mapas de Relevo fornecido pelo ArcGis.</td> <td><code>https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/&lt;{z}&gt;/&lt;{y}&gt;/&lt;{x}&gt;</code></td> </tr> <tr> <td>UTFGrid</td> <td>OWS Server</td> <td>Retorna os dados referentes aos atributos definidos na camada fornecida pelo OWS Server para o <layername> especificado na requisição para o tile {z},{x},{y}.</td> <td><code>https://&lt;ows_host&gt;/ows?layers=&lt;layername&gt;&amp;MSFILTER=&lt;sql_applied_on_MSFILTER&gt;&amp;mode=tile&amp;tile=&lt;{z}&gt;+&lt;{x}&gt;+&lt;{y}&gt;&amp;tilemode=gmap&amp;map.imagetype=utfgrid</code></td> </tr> </tbody> </table> <h2 id=processo-de-atualizacao>Processo de atualização<a class=headerlink href=#processo-de-atualizacao title="Permanent link">&para;</a></h2> <p>Um dado geográfico é disponbilizado pelo Mapserver como uma camada. Assim como abordado na seção de <a href=/02-arq_servidor_de_mapas/#servico-de-interoperabilidade>serviços de interoperabilidade</a> os dados devem estar armazenados em uma pasta de catálogo dos dados (pasta catalog) configurável no arquivo <a href=https://github.com/lapig-ufg/lapig-maps/blob/master/src/ows/config.js>config.js</a> através da variável <code>cacheDir</code>.</p> <p>O Mapserver utiliza um arquivo de configuração para renderização de dados geoespaciais chamado de Mapfile. O principal objetivo do Mapfile é definir as camadas que podem ser "desenhadas" pelo Mapserver, como ler estes dados (uma vez que eles podem ser vetores ou matrizes) e como renderizá-los, definindo cores, símbolos, rótulos, legendas e etc. Desta forma, o Mapfile inclui informações sobre:</p> <ul> <li>Quais camadas devem ser renderizadas;</li> <li>Onde está o foco geográfico do mapa;</li> <li>Qual projeção está sendo usada;</li> <li>Qual o formato gráfico de saída;</li> <li>Configuração da legenda e a escala utilizada;</li> </ul> <p>A figura abaixo apresenta o Mapfile da camada dos desmatamentos PRODES-Cerrado presente no Cerrado DPAT. Esta mesma figura pode representar um exemplo prático para criação de um Mapfile com conexão com Banco de Dados e assim obter dados em formato vetorial. Portanto, segue a especificação de cada item destacado na imagem:</p> <p><img alt="Exemplo de Mapfile para dados Vetoriais." src=../imgs/02/mapfile.png></p> <ol> <li> <p>Apresenta o nome da camada, bem como a fonte de onde este dado será carregado. No exemplo este dado é acessado pela comunicação com Postgis devidamente autenticado;</p> </li> <li> <p>Determina o foco do dado para a extensão do Cerrado;</p> </li> <li> <p>Apresenta os metadados da camada;</p> </li> <li> <p>Cria uma variável para validação e filtragem dos dados por meio do <a href=https://mapserver.gis.umn.edu/pl/cgi/runsub.html>runtime substitution</a>;</p> </li> <li> <p>Define a projeção do dado apresentado;</p> </li> <li> <p>Define o tipo do dado apresentado;</p> </li> <li> <p>Define a estrutura dos dados que são enviados via UTFGrid. Para tal é importante definir um identificador único (UTFITEM) e os dados a serem enviados através da tupla {"chave_acesso" : "coluna_banco_dados"} em UTFDATA que irão compor o JSON gerado.</p> </li> <li> <p>Define uma classificação para os dados a fim de customizar a coloração de acordo com um critério. A classificação estabelecida também irá compor a legenda.</p> </li> </ol> <p>Um segundo tipo de camada de dados presente no Cerrado DPAT é oriundo de dados matriciais, ou seja, imagens TIF. Portanto, para criação de um Mapfile para um TIF é necessário alterar as sessões (1) - onde deve-se apresentar a localização do arquivo TIF no sistema de arquivos através da diretiva 'DATA'; (6) - alterar para o tipo de dados Raster e (8), onde o critério para classificação se dá de acordo com o valor do pixel em um ponto. Portanto, o Mapfile para arquivos matriciais se dá conforme imagem abaixo.</p> <p><img alt="Exemplo de Mapfile para dados Matriciais." src=../imgs/02/mapfile2.png></p> <p>Por fim, o Mapfile utilizado para disponibilizar todas as camadas presentes no Cerrado DPAT está na pasta compartilhada do projeto no <a href="https://drive.google.com/file/d/1gO9dMdxy15wIK5gIIdlkBKlgy-D7JNHH/view?usp=sharing">link</a>.</p> <h2 id=disponibilizacao-da-camada-no-application-server>Disponibilização da camada no Application Server<a class=headerlink href=#disponibilizacao-da-camada-no-application-server title="Permanent link">&para;</a></h2> <p>Após a criação da camada no OWS Server, para que esta camada seja apresentada na interface Web do Cerrado DPAT é necessária a sua inserção no <em>Application Server</em>. A fim de facilitar a disponibilização de diversas camadas, foi criada uma estrutura nomeada de <code>descriptor</code> que descreve as principais configurações de uma camada a ser apresentada no Cerrado DPAT, tais como: filtros de dados, tipos diferentes de camadas e outros. A estrutura completa do <strong>descriptor</strong> encontra-se no repositório do projeto no Github, especificamente no arquivo <a href=https://github.com/lapig-ufg/d-pat/blob/master/src/server/controllers/map.js>map.js</a>.</p> <p>Segue abaixo as configurações das camadas apresentadas acima dentro da estrutura do descriptor. Primeiramente, iremos disponibilizar a camada <code>bi_ce_prodes_desmatamento_100_fip</code> que representa um dado vetorial no qual é possível aplicar diversos filtros. A variável <code>languageJson</code> representa o acesso ao arquivo .json responsável pela internacionalização da aplicação, ou seja, apresenta textos em diferentes idiomas de acordo com o valor recebido como parâmetro <code>language</code>. </p> <div class=highlight><pre><span></span><code><a id=__codelineno-1-1 name=__codelineno-1-1 href=#__codelineno-1-1></a><span class=nx>Controller</span><span class=p>.</span><span class=nx>descriptor</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>request</span><span class=p>,</span> <span class=nx>response</span><span class=p>)</span> <span class=p>{</span>
+<a id=__codelineno-1-2 name=__codelineno-1-2 href=#__codelineno-1-2></a>
+<a id=__codelineno-1-3 name=__codelineno-1-3 href=#__codelineno-1-3></a>    <span class=kd>var</span> <span class=nx>language</span> <span class=o>=</span> <span class=nx>request</span><span class=p>.</span><span class=nx>param</span><span class=p>(</span><span class=s1>&#39;lang&#39;</span><span class=p>)</span>
+<a id=__codelineno-1-4 name=__codelineno-1-4 href=#__codelineno-1-4></a>
+<a id=__codelineno-1-5 name=__codelineno-1-5 href=#__codelineno-1-5></a>    <span class=kd>var</span> <span class=nx>result</span> <span class=o>=</span> <span class=p>{</span>
+<a id=__codelineno-1-6 name=__codelineno-1-6 href=#__codelineno-1-6></a>      <span class=nx>regionFilterDefault</span><span class=o>:</span> <span class=s2>&quot;&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-7 name=__codelineno-1-7 href=#__codelineno-1-7></a>      <span class=nx>type</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;type_of_information_label&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-8 name=__codelineno-1-8 href=#__codelineno-1-8></a>      <span class=nx>groups</span><span class=o>:</span> <span class=p>[{</span>
+<a id=__codelineno-1-9 name=__codelineno-1-9 href=#__codelineno-1-9></a>        <span class=nx>id</span><span class=o>:</span> <span class=s2>&quot;desmatamento&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-10 name=__codelineno-1-10 href=#__codelineno-1-10></a>        <span class=nx>label</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;label&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-11 name=__codelineno-1-11 href=#__codelineno-1-11></a>        <span class=nx>group_expanded</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-1-12 name=__codelineno-1-12 href=#__codelineno-1-12></a>        <span class=nx>layers</span><span class=o>:</span> <span class=p>[{</span>
+<a id=__codelineno-1-13 name=__codelineno-1-13 href=#__codelineno-1-13></a>          <span class=nx>id</span><span class=o>:</span> <span class=s2>&quot;desmatamento_prodes&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-14 name=__codelineno-1-14 href=#__codelineno-1-14></a>          <span class=nx>label</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento_prodes&quot;</span><span class=p>][</span><span class=s2>&quot;label&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-15 name=__codelineno-1-15 href=#__codelineno-1-15></a>          <span class=nx>visible</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-1-16 name=__codelineno-1-16 href=#__codelineno-1-16></a>          <span class=nx>selectedType</span><span class=o>:</span> <span class=s2>&quot;bi_ce_prodes_desmatamento_100_fip&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-17 name=__codelineno-1-17 href=#__codelineno-1-17></a>          <span class=nx>metadata</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento_prodes&quot;</span><span class=p>][</span><span class=s1>&#39;metadata&#39;</span><span class=p>],</span>
+<a id=__codelineno-1-18 name=__codelineno-1-18 href=#__codelineno-1-18></a>          <span class=nx>types</span><span class=o>:</span> <span class=p>[</span>
+<a id=__codelineno-1-19 name=__codelineno-1-19 href=#__codelineno-1-19></a>            <span class=p>{</span>
+<a id=__codelineno-1-20 name=__codelineno-1-20 href=#__codelineno-1-20></a>              <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;bi_ce_prodes_desmatamento_100_fip&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-21 name=__codelineno-1-21 href=#__codelineno-1-21></a>              <span class=nx>Viewvalue</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento_prodes&quot;</span><span class=p>][</span><span class=s2>&quot;types&quot;</span><span class=p>][</span><span class=s2>&quot;bi_ce_prodes_desmatamento_100_fip&quot;</span><span class=p>][</span><span class=s2>&quot;view_value&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-22 name=__codelineno-1-22 href=#__codelineno-1-22></a>              <span class=nx>opacity</span><span class=o>:</span> <span class=mf>1</span><span class=p>,</span>
+<a id=__codelineno-1-23 name=__codelineno-1-23 href=#__codelineno-1-23></a>              <span class=nx>order</span><span class=o>:</span> <span class=mf>1</span><span class=p>,</span>
+<a id=__codelineno-1-24 name=__codelineno-1-24 href=#__codelineno-1-24></a>              <span class=nx>download</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;csv&#39;</span><span class=p>,</span> <span class=s1>&#39;shp&#39;</span><span class=p>],</span>
+<a id=__codelineno-1-25 name=__codelineno-1-25 href=#__codelineno-1-25></a>              <span class=nx>regionFilter</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-1-26 name=__codelineno-1-26 href=#__codelineno-1-26></a>              <span class=nx>timeLabel</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento_prodes&quot;</span><span class=p>][</span><span class=s2>&quot;types&quot;</span><span class=p>][</span><span class=s2>&quot;bi_ce_prodes_desmatamento_100_fip&quot;</span><span class=p>][</span><span class=s2>&quot;timelabel&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-27 name=__codelineno-1-27 href=#__codelineno-1-27></a>              <span class=nx>timeSelected</span><span class=o>:</span> <span class=s2>&quot;year=2019&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-28 name=__codelineno-1-28 href=#__codelineno-1-28></a>              <span class=nx>timeHandler</span><span class=o>:</span> <span class=s2>&quot;msfilter&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-29 name=__codelineno-1-29 href=#__codelineno-1-29></a>              <span class=nx>times</span><span class=o>:</span> <span class=p>[{</span>
+<a id=__codelineno-1-30 name=__codelineno-1-30 href=#__codelineno-1-30></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2002&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-31 name=__codelineno-1-31 href=#__codelineno-1-31></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2000/2002&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-32 name=__codelineno-1-32 href=#__codelineno-1-32></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2002</span>
+<a id=__codelineno-1-33 name=__codelineno-1-33 href=#__codelineno-1-33></a>              <span class=p>},</span>
+<a id=__codelineno-1-34 name=__codelineno-1-34 href=#__codelineno-1-34></a>              <span class=p>{</span>
+<a id=__codelineno-1-35 name=__codelineno-1-35 href=#__codelineno-1-35></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2004&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-36 name=__codelineno-1-36 href=#__codelineno-1-36></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2002/2004&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-37 name=__codelineno-1-37 href=#__codelineno-1-37></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2004</span>
+<a id=__codelineno-1-38 name=__codelineno-1-38 href=#__codelineno-1-38></a>              <span class=p>},</span>
+<a id=__codelineno-1-39 name=__codelineno-1-39 href=#__codelineno-1-39></a>              <span class=p>{</span>
+<a id=__codelineno-1-40 name=__codelineno-1-40 href=#__codelineno-1-40></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2006&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-41 name=__codelineno-1-41 href=#__codelineno-1-41></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2004/2006&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-42 name=__codelineno-1-42 href=#__codelineno-1-42></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2006</span>
+<a id=__codelineno-1-43 name=__codelineno-1-43 href=#__codelineno-1-43></a>              <span class=p>},</span>
+<a id=__codelineno-1-44 name=__codelineno-1-44 href=#__codelineno-1-44></a>              <span class=p>{</span>
+<a id=__codelineno-1-45 name=__codelineno-1-45 href=#__codelineno-1-45></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2008&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-46 name=__codelineno-1-46 href=#__codelineno-1-46></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2006/2008&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-47 name=__codelineno-1-47 href=#__codelineno-1-47></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2008</span>
+<a id=__codelineno-1-48 name=__codelineno-1-48 href=#__codelineno-1-48></a>              <span class=p>},</span>
+<a id=__codelineno-1-49 name=__codelineno-1-49 href=#__codelineno-1-49></a>              <span class=p>{</span>
+<a id=__codelineno-1-50 name=__codelineno-1-50 href=#__codelineno-1-50></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2010&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-51 name=__codelineno-1-51 href=#__codelineno-1-51></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2008/2010&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-52 name=__codelineno-1-52 href=#__codelineno-1-52></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2010</span>
+<a id=__codelineno-1-53 name=__codelineno-1-53 href=#__codelineno-1-53></a>              <span class=p>},</span>
+<a id=__codelineno-1-54 name=__codelineno-1-54 href=#__codelineno-1-54></a>              <span class=p>{</span>
+<a id=__codelineno-1-55 name=__codelineno-1-55 href=#__codelineno-1-55></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2012&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-56 name=__codelineno-1-56 href=#__codelineno-1-56></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2010/2012&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-57 name=__codelineno-1-57 href=#__codelineno-1-57></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2012</span>
+<a id=__codelineno-1-58 name=__codelineno-1-58 href=#__codelineno-1-58></a>              <span class=p>},</span>
+<a id=__codelineno-1-59 name=__codelineno-1-59 href=#__codelineno-1-59></a>              <span class=p>{</span>
+<a id=__codelineno-1-60 name=__codelineno-1-60 href=#__codelineno-1-60></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2013&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-61 name=__codelineno-1-61 href=#__codelineno-1-61></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2012/2013&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-62 name=__codelineno-1-62 href=#__codelineno-1-62></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2013</span>
+<a id=__codelineno-1-63 name=__codelineno-1-63 href=#__codelineno-1-63></a>              <span class=p>},</span>
+<a id=__codelineno-1-64 name=__codelineno-1-64 href=#__codelineno-1-64></a>              <span class=p>{</span>
+<a id=__codelineno-1-65 name=__codelineno-1-65 href=#__codelineno-1-65></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2014&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-66 name=__codelineno-1-66 href=#__codelineno-1-66></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2013/2014&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-67 name=__codelineno-1-67 href=#__codelineno-1-67></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2014</span>
+<a id=__codelineno-1-68 name=__codelineno-1-68 href=#__codelineno-1-68></a>              <span class=p>},</span>
+<a id=__codelineno-1-69 name=__codelineno-1-69 href=#__codelineno-1-69></a>              <span class=p>{</span>
+<a id=__codelineno-1-70 name=__codelineno-1-70 href=#__codelineno-1-70></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2015&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-71 name=__codelineno-1-71 href=#__codelineno-1-71></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2014/2015&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-72 name=__codelineno-1-72 href=#__codelineno-1-72></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2015</span>
+<a id=__codelineno-1-73 name=__codelineno-1-73 href=#__codelineno-1-73></a>              <span class=p>},</span>
+<a id=__codelineno-1-74 name=__codelineno-1-74 href=#__codelineno-1-74></a>              <span class=p>{</span>
+<a id=__codelineno-1-75 name=__codelineno-1-75 href=#__codelineno-1-75></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2016&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-76 name=__codelineno-1-76 href=#__codelineno-1-76></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2015/2016&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-77 name=__codelineno-1-77 href=#__codelineno-1-77></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2016</span>
+<a id=__codelineno-1-78 name=__codelineno-1-78 href=#__codelineno-1-78></a>              <span class=p>},</span>
+<a id=__codelineno-1-79 name=__codelineno-1-79 href=#__codelineno-1-79></a>              <span class=p>{</span>
+<a id=__codelineno-1-80 name=__codelineno-1-80 href=#__codelineno-1-80></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2017&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-81 name=__codelineno-1-81 href=#__codelineno-1-81></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2016/2017&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-82 name=__codelineno-1-82 href=#__codelineno-1-82></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2017</span>
+<a id=__codelineno-1-83 name=__codelineno-1-83 href=#__codelineno-1-83></a>              <span class=p>},</span>
+<a id=__codelineno-1-84 name=__codelineno-1-84 href=#__codelineno-1-84></a>              <span class=p>{</span>
+<a id=__codelineno-1-85 name=__codelineno-1-85 href=#__codelineno-1-85></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2018&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-86 name=__codelineno-1-86 href=#__codelineno-1-86></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2017/2018&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-87 name=__codelineno-1-87 href=#__codelineno-1-87></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2018</span>
+<a id=__codelineno-1-88 name=__codelineno-1-88 href=#__codelineno-1-88></a>              <span class=p>},</span>
+<a id=__codelineno-1-89 name=__codelineno-1-89 href=#__codelineno-1-89></a>              <span class=p>{</span>
+<a id=__codelineno-1-90 name=__codelineno-1-90 href=#__codelineno-1-90></a>                <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;year=2019&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-91 name=__codelineno-1-91 href=#__codelineno-1-91></a>                <span class=nx>Viewvalue</span><span class=o>:</span> <span class=s2>&quot;2018/2019&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-92 name=__codelineno-1-92 href=#__codelineno-1-92></a>                <span class=nx>year</span><span class=o>:</span> <span class=mf>2019</span>
+<a id=__codelineno-1-93 name=__codelineno-1-93 href=#__codelineno-1-93></a>              <span class=p>}</span>
+<a id=__codelineno-1-94 name=__codelineno-1-94 href=#__codelineno-1-94></a>            <span class=p>}]</span>
+<a id=__codelineno-1-95 name=__codelineno-1-95 href=#__codelineno-1-95></a>       <span class=p>},</span>
+<a id=__codelineno-1-96 name=__codelineno-1-96 href=#__codelineno-1-96></a>       <span class=p>{</span>
+<a id=__codelineno-1-97 name=__codelineno-1-97 href=#__codelineno-1-97></a>          <span class=nx>id</span><span class=o>:</span> <span class=s2>&quot;susceptibilidade&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-98 name=__codelineno-1-98 href=#__codelineno-1-98></a>          <span class=nx>label</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;susceptibilidade&quot;</span><span class=p>][</span><span class=s2>&quot;label&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-99 name=__codelineno-1-99 href=#__codelineno-1-99></a>          <span class=nx>visible</span><span class=o>:</span> <span class=kc>false</span><span class=p>,</span>
+<a id=__codelineno-1-100 name=__codelineno-1-100 href=#__codelineno-1-100></a>          <span class=nx>selectedType</span><span class=o>:</span> <span class=s2>&quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-101 name=__codelineno-1-101 href=#__codelineno-1-101></a>          <span class=nx>metadata</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;susceptibilidade&quot;</span><span class=p>][</span><span class=s1>&#39;metadata&#39;</span><span class=p>],</span>
+<a id=__codelineno-1-102 name=__codelineno-1-102 href=#__codelineno-1-102></a>          <span class=nx>types</span><span class=o>:</span> <span class=p>[{</span>
+<a id=__codelineno-1-103 name=__codelineno-1-103 href=#__codelineno-1-103></a>            <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-104 name=__codelineno-1-104 href=#__codelineno-1-104></a>            <span class=nx>Viewvalue</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;susceptibilidade&quot;</span><span class=p>][</span><span class=s2>&quot;types&quot;</span><span class=p>][</span><span class=s2>&quot;bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig&quot;</span><span class=p>][</span><span class=s2>&quot;view_value&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-105 name=__codelineno-1-105 href=#__codelineno-1-105></a>            <span class=nx>order</span><span class=o>:</span> <span class=mf>5</span><span class=p>,</span>
+<a id=__codelineno-1-106 name=__codelineno-1-106 href=#__codelineno-1-106></a>            <span class=nx>download</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;tif&#39;</span><span class=p>],</span>
+<a id=__codelineno-1-107 name=__codelineno-1-107 href=#__codelineno-1-107></a>            <span class=nx>opacity</span><span class=o>:</span> <span class=mf>1</span>
+<a id=__codelineno-1-108 name=__codelineno-1-108 href=#__codelineno-1-108></a>          <span class=p>},</span>
+<a id=__codelineno-1-109 name=__codelineno-1-109 href=#__codelineno-1-109></a>          <span class=p>{</span>
+<a id=__codelineno-1-110 name=__codelineno-1-110 href=#__codelineno-1-110></a>            <span class=nx>value</span><span class=o>:</span> <span class=s2>&quot;bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-111 name=__codelineno-1-111 href=#__codelineno-1-111></a>            <span class=nx>Viewvalue</span><span class=o>:</span> <span class=nx>languageJson</span><span class=p>[</span><span class=s2>&quot;descriptor&quot;</span><span class=p>][</span><span class=s2>&quot;desmatamento&quot;</span><span class=p>][</span><span class=s2>&quot;layers&quot;</span><span class=p>][</span><span class=s2>&quot;susceptibilidade&quot;</span><span class=p>][</span><span class=s2>&quot;types&quot;</span><span class=p>][</span><span class=s2>&quot;bi_ce_susceptibilidade_desmatamento_maiores_100_na_lapig&quot;</span><span class=p>][</span><span class=s2>&quot;view_value&quot;</span><span class=p>][</span><span class=nx>language</span><span class=p>],</span>
+<a id=__codelineno-1-112 name=__codelineno-1-112 href=#__codelineno-1-112></a>            <span class=nx>order</span><span class=o>:</span> <span class=mf>5</span><span class=p>,</span>
+<a id=__codelineno-1-113 name=__codelineno-1-113 href=#__codelineno-1-113></a>            <span class=nx>download</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;tif&#39;</span><span class=p>],</span>
+<a id=__codelineno-1-114 name=__codelineno-1-114 href=#__codelineno-1-114></a>            <span class=nx>opacity</span><span class=o>:</span> <span class=mf>1</span>
+<a id=__codelineno-1-115 name=__codelineno-1-115 href=#__codelineno-1-115></a>          <span class=p>}</span>
+<a id=__codelineno-1-116 name=__codelineno-1-116 href=#__codelineno-1-116></a>          <span class=p>]</span>
+<a id=__codelineno-1-117 name=__codelineno-1-117 href=#__codelineno-1-117></a>        <span class=p>}</span>
+<a id=__codelineno-1-118 name=__codelineno-1-118 href=#__codelineno-1-118></a>            <span class=p>}]</span>
+<a id=__codelineno-1-119 name=__codelineno-1-119 href=#__codelineno-1-119></a>        <span class=p>}]</span>
+<a id=__codelineno-1-120 name=__codelineno-1-120 href=#__codelineno-1-120></a>    <span class=p>};</span>
+<a id=__codelineno-1-121 name=__codelineno-1-121 href=#__codelineno-1-121></a>
+<a id=__codelineno-1-122 name=__codelineno-1-122 href=#__codelineno-1-122></a>    <span class=nx>response</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span><span class=nx>result</span><span class=p>);</span>
+<a id=__codelineno-1-123 name=__codelineno-1-123 href=#__codelineno-1-123></a>    <span class=nx>response</span><span class=p>.</span><span class=nx>end</span><span class=p>();</span>
+<a id=__codelineno-1-124 name=__codelineno-1-124 href=#__codelineno-1-124></a><span class=p>};</span>
+</code></pre></div> <p>Os diversos parâmetros setados na variável <code>result</code> são interpretados pela aplicação Front-end em Angular, de modo a criar a interface apresentada na imagem abaixo. Dentre estes parâmetros, destaca-se o <code>layers</code> que irão indicar quais camadas estarão no card <strong>Desmatamento PRODES-Cerrado</strong>. No exemplo acima, está selecionada a camada <code>bi_ce_prodes_desmatamento_100_fip</code> através da variável <em>selectedType</em>, e logo abaixo apresenta-se o vetor <code>types</code> que apresenta os tipos de camadas PRODES-Cerrado estão disponíveis. Por fim, destaca-se o vetor do parâmetro <code>times</code>, que apresenta diversos filtros que podem ser aplicados em um tipo de layer específico. No exemplo acima, ele é utilizado para filtrar os polígonos por ano, aplicando a query apresentada em <code>value</code> (de cada filtro) como parâmetro <strong>MSFILTER</strong> na camada descrita no Mapserver.</p> <p><img alt="Exemplo descriptor para PRODES-Cerrado." src=../imgs/02/telaCamada.png></p> <p>Por fim, o segundo exemplo apresenta a disponibilização da camada <code>bi_ce_susceptibilidade_desmatamento_menores_100_na_lapig</code> criada acima a partir de uma imagem Raster no formato TIF. O grande diferencial desta é a impossibilidade de aplicar quaisquer filtro na imagem por se tratar de um dado matricial estático, logo o parâmetro <code>times</code> não é utilizado. Portanto, de acordo com a imagem abaixo, que apresenta a estrutura criada no Front-end para esta representação no <em>descriptor</em>.</p> <p><img alt="Exemplo descriptor para PRODES-Cerrado." src=../imgs/02/telaCamadas2.png></p> </article> </div> </div> <a href=# class="md-top md-icon" data-md-component=top data-md-state=hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg> Voltar ao topo </a> </main> <footer class=md-footer> <nav class="md-footer__inner md-grid" aria-label=Rodapé> <a href=../02-arq_geral/ class="md-footer__link md-footer__link--prev" aria-label="Anterior: Visão geral" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Anterior </span> Visão geral </div> </div> </a> <a href=../02-arq_servidor_de_aplicacao/ class="md-footer__link md-footer__link--next" aria-label="Próximo: Servidor de aplicação" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Próximo </span> Servidor de aplicação </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> Copyright &copy; 2022 Araticum - Articulação pela Restauração do Cerrado </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "..", "features": ["content.code.annotate", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}}</script> <script src=../assets/javascripts/bundle.6e54b5cd.min.js></script> </body> </html>
