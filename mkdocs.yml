@@ -61,7 +61,7 @@ theme:
     code: Roboto Mono
   favicon: imgs/logos/favicon.ico
   icon:
-    logo: imgs/logos/icone.png
+    logo: logo
 
 # Plugins
 plugins:
