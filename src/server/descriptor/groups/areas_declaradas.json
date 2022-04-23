@@ -8,9 +8,9 @@
                 "idLayer": "propriedades_rurais",
                 "labelLayer": "translate",
                 "visible": false,
-                "selectedType": "geo_car_imovel",
+                "selectedType": "car_brasil",
                 "types": [
-                    "geo_car_imovel"
+                    "car_brasil"
                 ]
             },
             {
