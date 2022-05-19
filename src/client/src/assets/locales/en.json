@@ -355,7 +355,7 @@
       "area1Title": "Timeseries",
       "area2Title": "Proportional Analysis",
       "area3Title": "Bar Charts",
-      "areaTableTitle": "Pasture Area Rankings"
+      "areaTableTitle": "Restoration Area Ranking"
     },
     "region_types": {
       "city": "City",
@@ -366,13 +366,13 @@
     },
     "resumo_card": {
       "area_region": "Region Area",
-      "area_pastagem": "Pasture Area (ha)",
+      "area_pastagem": "Restoration Area (ha)",
       "classe_pasture_quality": "Class",
       "area_classe_pasture_quality": "Area of this Degradation Class",
       "complement_text": "of",
       "pasture_quality_title": "Pasture Quality",
       "complement_text_pasture_quality": "in Pasture Area of",
-      "obs_text": "*The difference between the pasture area presented here and the mapped area is explained by the area adjustment from the accuracy analysis, detailed in Parente et al. 2019 (<a target='_blank' class='link-details' href='https://doi.org/10.1016/j.rse.2019.111301'> https://doi.org/10.1016/j.rse.2019.111301</a>)",
+      "obs_text": "ARATICUM - Organization for environmental preservation - Collaborative and Multisectoral Network for the large-scale restoration of the Cerrado biome. (<a target='_blank' class='link-details' href='https://www.instagram.com/rede.araticum/'> Click here!</a>)",
       "pasture_quality": {
         "Severa": "Severe",
         "Intermediário": "Intermediary",
@@ -381,16 +381,16 @@
     },
     "area1_card": {
       "pastureAndLotacaoBovina": {
-        "title": "Pasture",
-        "text": "According to LAPIG, the Pasture area (in hectares) and the Bovine Stocking (in UA) in the #typeRegionTranslate# #textRegionTranslate# was:",
+        "title": "Title Area 1",
+        "text": "Any text with Regex #typeRegionTranslate# #textRegionTranslate# was:",
         "labelOfQuery": {
           "pasture": "Pasture",
           "lotacao_bovina_regions": "Bovine Stocking"
         }
       },
       "pastureQuality": {
-        "title": "Pasture Quality",
-        "text": "According to LAPIG, over the years, the #typeRegionTranslate# #textRegionTranslate# divided its pasture area among the following pasture degradation classes",
+        "title": "2nd timeseries",
+        "text": "Qualquer texto podendo ter um regex com: #typeRegionTranslate# #textRegionTranslate# foi de:",
         "labelOfQuery": {
           "pasture_quality": {
             "Severa": "Severe",
@@ -401,46 +401,15 @@
       }
     },
     "area2_card": {
-      "uso_solo_terraclass": {
-        "text": "According to the Terraclass Cerrado project, the #textRegionTranslate# #typeRegionTranslate# has a total area of #areaMun# ha, distribuited between the followind land uses:",
-        "Mosaíco de Ocupações": "Occupations Mosaic",
-        "Agricultura Perene": "Perennial Agriculture",
-        "Natural Não Vegetado": "Non-Vegetated Natural",
-        "Água": "Water",
-        "Silvicultura": "Silviculture",
-        "Solo Exposto": "Exposed Soil",
-        "Não Observado": "Not Observed",
-        "Pastagem": "Pasture",
-        "Agricultura Anual": "Annual Agriculture",
-        "Outros": "Others",
-        "Urbano": "Urban",
-        "Mineração": "Mining",
-        "Natural": "Natural"
-      },
-      "uso_solo_probio": {
-        "text": "According to the PROBIO Cerrado project, the #textRegionTranslate# #typeRegionTranslate# has a total area of #areaMun# ha, distribuited between the followind land uses:",
-        "Reflorestamento": "Reforestation",
-        "Savana": "Savanna",
-        "Água": "Water",
-        "Savana Estépica": "Steppe Savanna",
-        "Floresta Estacional Semi-decidual": "Seasonal Semideciduous Forest",
-        "Floresta Ombrófila Densa": "Dense Ombrophilous Forest",
-        "Floresta Estacional Decidual": "Deciduous Seasonal Forest",
-        "Floresta Ombrófila Aberta": "Open Ombrophilous Forest",
-        "Influência Urbana": "Urban Influence",
-        "Pecuária": "Livestock",
-        "Vegetação Secundária": "Secondary Vegetation",
-        "Formações Pioneiras": "Pioneer Formations",
-        "Agricultura": "Agriculture"
-      },
-      "pastureQualityPerYear": {
-        "title": "Pasture Quality",
-        "text": "According to LAPIG, in the year of #yearTranslate#, the #typeRegionTranslate# #textRegionTranslate# possess a total of #areaPasture# ha of Pasture Area, distribuited among the following Pasture Degradation Classes:",
+      "araticumRestoration": {
+        "title": "Título da Area 2",
+        "text": "Projects linked to the Araticum Network declare a Restoration area equivalent to the #areaRestoration# distributed among these projects:",
         "labelOfQuery": {
-          "pasture_quality": {
-            "Severa": "Severe",
-            "Intermediário": "Intermediary",
-            "Ausente": "Absent"
+          "areaRestorationPerProject": {
+            "CEDAC": "Fortalecer Cadeias Sociobioprodutivas em Rede Baseadas no uso Sustentavel do Cerrado",
+            "CCA": "Reward Program for Conscious Producers - Restoring Ecosystem Services in the Cerrado",
+            "Cooperagrofamiliar": "Food Products from the Forests in the Cerrado, Brazil",
+            "Aerolevantamento por veículo não tripilado DRONE": "Agroflorestas Prestadoras de Serviços Ecossistêmicos"
           }
         }
       }
@@ -455,29 +424,13 @@
       }
     },
     "area_table_card": {
-      "pastureRankingsCities": {
-        "title": "Municipalities",
-        "text": "Municipalities Ranking according to their Pasture Area (in ha)",
+      "araticumRestorationRankingsProjects": {
+        "title": "Projects",
+        "text": "Project Rankings according to the Restoration area (in ha)",
         "labelOfQuery": {
-          "municipios": "Municipalities"
+          "areaRestorationPerProject": "Projects"
         },
-        "columnsTitle": "#?Municipality?UF?Area (ha)"
-      },
-      "pastureRankingsStates": {
-        "title": "States",
-        "text": "States Ranking according to their Pasture Area (in ha)",
-        "labelOfQuery": {
-          "estados": "States"
-        },
-        "columnsTitle": "#?UF?Area (ha)"
-      },
-      "pastureRankingsBiomes": {
-        "title": "Biomes",
-        "text": "Biomes Ranking according to their Pasture Area (em ha)",
-        "labelOfQuery": {
-          "biomas": "Biomes"
-        },
-        "columnsTitle": "#?Biome?Area (ha)"
+        "columnsTitle": "#?Project?Source?Area (ha)"
       }
     },
     "area_table_card_auxiliar": {

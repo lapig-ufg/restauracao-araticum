@@ -367,13 +367,13 @@
     },
     "resumo_card": {
       "area_region": "Área da Região",
-      "area_pastagem": "Área de Pastagem (ha)",
+      "area_pastagem": "Área de Restauração (ARATICUM) (ha)",
       "classe_pasture_quality": "Classe",
       "area_classe_pasture_quality": "Área desta Classe de Degradação",
       "complement_text": "do(a)",
       "pasture_quality_title": "Qualidade de Pastagem",
       "complement_text_pasture_quality": "da área de Pastagem do(a)",
-      "obs_text": "*A diferença entre a área de pastagem aqui apresentada e a área mapeada, é explicada pelo ajuste de área a partir da análise de acurácia, detalhada em Parente et al. 2019 (<a target='_blank' class='link-details' href='https://doi.org/10.1016/j.rse.2019.111301'> https://doi.org/10.1016/j.rse.2019.111301</a>)",
+      "obs_text": "ARATICUM - Organização para preservação ambiental - Rede Colaborativa e Multisetorial em prol da restauração em larga escala do bioma Cerrado. (<a target='_blank' class='link-details' href='https://www.instagram.com/rede.araticum/'> Clique aqui!</a>)",
       "pasture_quality": {
         "Severa": "Severa",
         "Intermediário": "Intermediário",
@@ -382,16 +382,16 @@
     },
     "area1_card": {
       "pastureAndLotacaoBovina": {
-        "title": "Pastagem",
-        "text": "De acordo com o LAPIG, a área de Pastagem (em hectares) e o Rebanho Bovino (em UA) no #typeRegionTranslate# #textRegionTranslate# foi de:",
+        "title": "Título Area 1",
+        "text": "Qualquer texto podendo ter um regex com: #typeRegionTranslate# #textRegionTranslate# foi de:",
         "labelOfQuery": {
           "pasture": "Pastagem",
           "lotacao_bovina_regions": "Rebanho Bovino"
         }
       },
       "pastureQuality": {
-        "title": "Qualidade de Pastagem",
-        "text": "De acordo com o LAPIG, ao longo dos anos, o #typeRegionTranslate# #textRegionTranslate# possui sua área de Pastagem (ha) distribuída entre as seguintes classes de degradação de Pastagem",
+        "title": "2nd timeseries",
+        "text": "Qualquer texto podendo ter um regex com: #typeRegionTranslate# #textRegionTranslate# foi de:",
         "labelOfQuery": {
           "pasture_quality": {
             "Severa": "Severa",
@@ -402,46 +402,15 @@
       }
     },
     "area2_card": {
-      "uso_solo_terraclass": {
-        "text": "De acordo com o projeto Terraclass Cerrado, o #typeRegionTranslate# #textRegionTranslate# possui uma área total de #areaMun# ha, distribuída entre os seguintes usos do solo:",
-        "Mosaíco de Ocupações": "Mosaico de Ocupações",
-        "Agricultura Perene": "Agricultura Perene",
-        "Natural Não Vegetado": "Natural Não-Vegetado",
-        "Água": "Água",
-        "Silvicultura": "Silvicultura",
-        "Solo Exposto": "Solo Exposto",
-        "Não Observado": "Não Observado",
-        "Pastagem": "Pastagem",
-        "Agricultura Anual": "Agricultura Anual",
-        "Outros": "Outros",
-        "Urbano": "Urbano",
-        "Mineração": "Mineração",
-        "Natural": "Natural"
-      },
-      "uso_solo_probio": {
-        "text": "De acordo com o projeto PROBIO Cerrado, o #typeRegionTranslate# #textRegionTranslate# possui uma área total de #areaMun# ha, distribuída entre os seguintes usos do solo:",
-        "Reflorestamento": "Reflorestamento",
-        "Savana": "Savana",
-        "Água": "Água",
-        "Savana Estépica": "Savana Estépica",
-        "Floresta Estacional Semi-decidual": "Floresta Estacional Semi-decidual",
-        "Floresta Ombrófila Densa": "Floresta Ombrófila Densa",
-        "Floresta Estacional Decidual": "Floresta Estacional Decidual",
-        "Floresta Ombrófila Aberta": "Floresta Ombrófila Aberta",
-        "Influência Urbana": "Influência Urbana",
-        "Pecuária": "Pecuária",
-        "Vegetação Secundária": "Vegetação Secundária",
-        "Formações Pioneiras": "Formações Pioneiras",
-        "Agricultura": "Agricultura"
-      },
-      "pastureQualityPerYear": {
-        "title": "Qualidade de Pastagem",
-        "text": "De acordo com o LAPIG, no ano de #yearTranslate#, o #typeRegionTranslate# #textRegionTranslate# possui uma área total de Pastagem mapeada em #areaPasture# ha, distribuída entre as seguintes classes de degradação de Pastagem:",
+      "araticumRestoration": {
+        "title": "Área de Restauração por Projeto",
+        "text": "Os Projetos ligados a Rede Araticum declaram uma área de Restauração equivalente à #areaRestoration# distribuídas entre estes projetos:",
         "labelOfQuery": {
-          "pasture_quality": {
-            "Severa": "Severa",
-            "Intermediário": "Intermediário",
-            "Ausente": "Ausente"
+          "areaRestorationPerProject": {
+            "CEDAC": "Fortalecer Cadeias Sociobioprodutivas em Rede Baseadas no uso Sustentavel do Cerrado",
+            "CCA": "Reward Program for Conscious Producers - Restoring Ecosystem Services in the Cerrado",
+            "Cooperagrofamiliar": "Food Products from the Forests in the Cerrado, Brazil",
+            "Aerolevantamento por veículo não tripilado DRONE": "Agroflorestas Prestadoras de Serviços Ecossistêmicos"
           }
         }
       }
@@ -456,29 +425,13 @@
       }
     },
     "area_table_card": {
-      "pastureRankingsCities": {
-        "title": "Municípios",
-        "text": "Rankings dos Municípios de acordo com a área de Pastagem (em ha)",
+      "araticumRestorationRankingsProjects": {
+        "title": "Projetos",
+        "text": "Rankings dos Projetos de acordo com a área de Restauração (em ha)",
         "labelOfQuery": {
-          "municipios": "Municípios"
+          "areaRestorationPerProject": "Projetos"
         },
-        "columnsTitle": "#?Município?UF?Área (ha)"
-      },
-      "pastureRankingsStates": {
-        "title": "Estados",
-        "text": "Rankings dos Estados de acordo com a área de Pastagem (em ha)",
-        "labelOfQuery": {
-          "estados": "Estados"
-        },
-        "columnsTitle": "#?UF?Área (ha)"
-      },
-      "pastureRankingsBiomes": {
-        "title": "Biomas",
-        "text": "Ranking de Biomas de acordo com a área de Pastagem (em ha)",
-        "labelOfQuery": {
-          "biomas": "Biomas"
-        },
-        "columnsTitle": "#?Bioma?Área (ha)"
+        "columnsTitle": "#?Projeto?Fonte?Área (ha)"
       }
     },
     "area_table_card_auxiliar": {
