@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/01-guia_dados_geograficos/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/01-guia_funcionalidades/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/01-guia_metricas_de_qualidade/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/01-guia_relatorios/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/02-arq_execucao_dpat/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/02-arq_geral/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/02-arq_servidor_de_aplicacao/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/02-arq_servidor_de_mapas/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/03-dad_rasters/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/03-dad_vetoriais/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://araticum.lapig.iesa.ufg.br/04-metricas_de_avaliacao/</loc>
-         <lastmod>2022-04-23</lastmod>
+         <lastmod>2022-05-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
