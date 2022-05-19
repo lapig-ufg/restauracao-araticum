@@ -231,10 +231,10 @@
           }
         }
       },
-      "reflorestamento": {
-        "labelGroup": "Reforestation",
+      "restauracao": {
+        "labelGroup": "Restoration",
         "layers": {
-          "reflorestamento_araticum": {
+          "restauracao_araticum": {
             "labelLayer": "Araticum"
           }
         }

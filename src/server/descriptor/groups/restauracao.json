@@ -1,16 +1,16 @@
 [
     {
-        "idGroup": "reflorestamento",
+        "idGroup": "restauracao",
         "labelGroup": "translate",
         "groupExpanded": true,
         "layers": [
             {
-                "idLayer": "reflorestamento_araticum",
+                "idLayer": "restauracao_araticum",
                 "labelLayer": "translate",
                 "visible": true,
-                "selectedType": "areas_reflorestamento_araticum",
+                "selectedType": "areas_restauracao_araticum",
                 "types": [
-                    "areas_reflorestamento_araticum"
+                    "areas_restauracao_araticum"
                 ]
             }
         ]

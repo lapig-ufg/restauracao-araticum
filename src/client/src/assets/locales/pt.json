@@ -232,10 +232,10 @@
           }
         }
       },
-      "reflorestamento": {
-        "labelGroup": "Reflorestamento",
+      "restauracao": {
+        "labelGroup": "Restauração",
         "layers": {
-          "reflorestamento_araticum": {
+          "restauracao_araticum": {
             "labelLayer": "Araticum"
           }
         }

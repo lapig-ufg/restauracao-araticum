@@ -84,7 +84,7 @@ module.exports = function (app) {
     Internal.getGroupsOrder = function () {
 
         return [
-            'reflorestamento',
+            'restauracao',
             'areas_especiais',
             'areas_declaradas',
             'agropecuaria',
