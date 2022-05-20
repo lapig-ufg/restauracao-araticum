@@ -55,6 +55,8 @@ import turfCentroid from "@turf/centroid";
 import { environment } from "../../../environments/environment";
 import { GoogleAnalyticsService } from "../services/google-analytics.service";
 import { GalleryService } from '../services/gallery.service';
+import MaskFilter from 'ol-ext/filter/Mask';
+import CropFilter from 'ol-ext/filter/Crop';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -154,7 +156,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
   public highlightStyle: Style;
   public defaultStyle: Style;
   public geoJsonStyles: any;
-
+  public maskFilter: MaskFilter
   public displayGallery: boolean;
   public gallery = [] as any;
   public galleryResponsiveOptions: any[] = [
@@ -209,7 +211,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     this.loadingDown = false;
     this.legendExpanded = true;
     this.displayGallery = false;
-
+    this.maskFilter = null;
     //IF para identificar quando o caso é mobile.
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
       this.legendExpanded = false;
@@ -740,6 +742,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     this.map.on('singleclick', (evt) => this.onDisplayFeatureInfo(evt));
     this.onMapReadyLeftSideBar.emit(map);
     this.onMapReadyRightSideBar.emit(map);
+    this.createCropFilter();
   }
 
   hideLayers() {
@@ -949,9 +952,13 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
             this.handleLayersLegend(type);
           }
         });
+        const layerMask = this.OlLayers[layerType.valueType];
 
+        if(layerMask.get('descriptorLayer').typeLayer === 'raster'){
+          layerMask.removeFilter(this.maskFilter);
+          layerMask.addFilter(this.maskFilter);
+        }
         this.OlLayers[layerType.valueType].setVisible(layerType.visible);
-
         this.handleLayersLegend(layerType);
 
         if (this.swiperControl.layers.length > 0) {
@@ -2138,5 +2145,18 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
   closeDetailsWindow() {
     this.controlOptions = !this.controlOptions;
     this.onCloseDetailsWindow.emit(this.controlOptions);
+  }
+
+  createCropFilter() {
+    this.mapService.getMask().subscribe(maskGeoJson => {
+      const features = new GeoJSON().readFeatures(maskGeoJson, {
+        dataProjection: 'EPSG:4326',
+          featureProjection: 'EPSG:3857'
+      })
+      this.maskFilter = new MaskFilter({ feature: features[0], inner: false, fill: new Fill({ color: [0, 0, 0, 0.55] }) })
+      this.map.getLayers().forEach(layer => {
+       layer.addFilter(this.maskFilter)
+      })
+    });
   }
 }

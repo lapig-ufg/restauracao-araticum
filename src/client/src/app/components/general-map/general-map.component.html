@@ -59,13 +59,13 @@
                 </div>
                 <div class="details">
                   <div *ngIf="layer.get('descriptorLayer').filterHandler === 'layername'; else noFilters" class="details-inner">
-                    <img
+                    <img *ngIf="layer.get('descriptorLayer').typeLayer !== 'raster'"
                       src="{{env.OWS}}/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{layer.get('descriptorLayer').filterSelected}}&format=image%2Fpng"
                       alt="{{layer.get('key')}}">
                   </div>
                   <ng-template #noFilters>
                     <div class="details-inner">
-                      <img
+                      <img *ngIf="layer.get('descriptorLayer').typeLayer !== 'raster'"
                         src="{{env.OWS}}/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{layer.get('key')}}&format=image%2Fpng"
                         alt="{{layer.get('key')}}">
                     </div>

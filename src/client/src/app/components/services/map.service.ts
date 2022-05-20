@@ -107,6 +107,14 @@ export class MapService {
       .pipe(catchError(this.errorHandler));
   }
 
+  getMask(): Observable<any> {
+    const url: string = `/service/map/extent?format=json&key=CERRADO&type=biome`
+    return this.httpClient.get<any>(url)
+      .pipe(map(response => response))
+      .pipe(catchError(this.errorHandler),
+      );
+  }
+
   errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

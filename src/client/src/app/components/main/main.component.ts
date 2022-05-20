@@ -32,13 +32,14 @@ export class MainComponent implements OnInit, AfterContentChecked {
     } else{
       this.isMobile = false;
     }
-    let showMessage = localStorage.getItem('showMessage');
-
-    if (showMessage === 'false' || showMessage === null){
-      this.showMessage = true;
-    }else{
-      this.showMessage = false;
-    }
+    this.showMessage = true;
+    // let showMessage = localStorage.getItem('showMessage');
+    //
+    // if (showMessage === 'false' || showMessage === null){
+    //   this.showMessage = true;
+    // }else{
+    //   this.showMessage = false;
+    // }
     this.getDescriptor();
   }
   ngAfterContentChecked(): void {
