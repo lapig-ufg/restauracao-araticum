@@ -2,7 +2,7 @@
         
     load "$JENKINS_HOME/.envvars"
     def application_name= "app_araticum"
-    int NODE_VERSION = 14.16.0 
+    def NODE_MODULES= "14.16.0"
 
         stage('Checkout') {
             git branch: 'main',
