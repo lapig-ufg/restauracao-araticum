@@ -6,7 +6,7 @@ ENV BRANCH="main"
 
 LABEL maintainer="Renato Gomes <renatogomessilverio@gmail.com>"
 
-RUN if [ -d "/APP/timeseries" ]; then rm -Rf /APP/timeseries; fi && \
+RUN if [ -d "/APP/restauracao-araticum" ]; then rm -Rf /APP/restauracao-araticum; fi && \
     cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB}
 
 ADD ./src/server/node_modules /APP/restauracao-araticum/src/server/node_modules
