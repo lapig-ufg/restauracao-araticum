@@ -372,7 +372,7 @@
       "complement_text": "of",
       "pasture_quality_title": "Pasture Quality",
       "complement_text_pasture_quality": "in Pasture Area of",
-      "obs_text": "ARATICUM - Organization for environmental preservation - Collaborative and Multisectoral Network for the large-scale restoration of the Cerrado biome. (<a target='_blank' class='link-details' href='https://www.instagram.com/rede.araticum/'> Click here!</a>)",
+      "obs_text": "ARATICUM - Organization for environmental preservation - Collaborative and Multisectoral Network for the large-scale restoration of the Cerrado biome. (<a target='_blank' class='link-details' href='https://www.instagram.com/rede.araticum/'>Click here!</a>)",
       "pasture_quality": {
         "Severa": "Severe",
         "Intermediário": "Intermediary",
@@ -402,8 +402,8 @@
     },
     "area2_card": {
       "araticumRestoration": {
-        "title": "Título da Area 2",
-        "text": "Projects linked to the Araticum Network declare a Restoration area equivalent to the #areaRestoration# distributed among these projects:",
+        "title": "Restoration Area per Project",
+        "text": "Projects linked to the Araticum Network declare a Restoration area equivalent to the #areaRestoration# ha distributed among these projects:",
         "labelOfQuery": {
           "areaRestorationPerProject": {
             "CEDAC": "Fortalecer Cadeias Sociobioprodutivas em Rede Baseadas no uso Sustentavel do Cerrado",
@@ -428,7 +428,7 @@
         "title": "Projects",
         "text": "Project Rankings according to the Restoration area (in ha)",
         "labelOfQuery": {
-          "areaRestorationPerProject": "Projects"
+          "projetos": "Projects"
         },
         "columnsTitle": "#?Project?Source?Area (ha)"
       }

@@ -7,7 +7,7 @@ module.exports = function (app) {
 
 
     Internal.numberFormat = function (numero) {
-        numero = numero.toFixed(2).split('.');
+        numero = numero.toFixed(5).split('.');
         numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
         return numero.join(',');
     }
@@ -32,7 +32,31 @@ module.exports = function (app) {
                 let queryInd = allQueriesResult[query.idOfQuery]
 
                 arrayLabels.push(...queryInd.map(a => String(a.label)))
-                let colors = [...new Set(queryInd.map(a => a.color))]
+                let colors = [
+                    {
+                        color: "blueviolet",
+                        code: "#8A2BE2"
+                    },
+                    {
+                        color: "orangered 1 (orangered)",
+                        code: "#FF4500"
+                    },
+                    {
+                        color: "springgreen",
+                        code: "#00FF7F"
+                    },
+                    {
+                        color: "darkgoldenrod",
+                        code: "#B8860B"
+                    }
+                    //   {
+                    //     color: "coral 2",
+                    //     code: {
+                    //       hex: "#EE6A50"
+                    //     },
+                    //     id: 383
+                    //   },
+                ]
 
                 if (chartDescription.type == 'line') {
 
@@ -62,16 +86,16 @@ module.exports = function (app) {
                         arrayData.push({
                             label: query.labelOfQuery,
                             data: [...queryInd.map(a => parseFloat(a.value))],
-                            backgroundColor: [...new Set(queryInd.map(element => element.color))],
-                            hoverBackgroundColor: [...new Set(queryInd.map(element => element.color))],
+                            backgroundColor: [...new Set(colors.map(element => element.code))],
+                            hoverBackgroundColor: [...new Set(colors.map(element => element.code))],
                         })
                     }
                     else {
                         arrayData.push({
                             label: query.idOfQuery,
                             data: [...queryInd.map(a => parseFloat(a.value))],
-                            backgroundColor: [...new Set(queryInd.map(element => element.color))],
-                            hoverBackgroundColor: [...new Set(queryInd.map(element => element.color))],
+                            backgroundColor: [...new Set(colors.map(element => element.code))],
+                            hoverBackgroundColor: [...new Set(colors.map(element => element.code))],
                         })
                     }
 
@@ -140,7 +164,7 @@ module.exports = function (app) {
     };
 
     Controller.handleResumo = function (request, response) {
-        const { lang, typeRegion, valueRegion, textRegion, year } = request.query;
+        const { lang, typeRegion, textRegion, year } = request.query;
         const language = lang;
 
         Internal.languageOb = UtilsLang().getLang(language).right_sidebar;
@@ -155,16 +179,10 @@ module.exports = function (app) {
             region: {
                 area: request.queryResult['region'][0].area_region,
             },
-            pasture: {
-                area: request.queryResult['pasture'][0].value,
-                percentOfRegionArea: Internal.numberFormat((request.queryResult['pasture'][0].value / request.queryResult['region'][0].area_region) * 100) + "%"
-            },
-            pasture_quality: request.queryResult['pasture_quality'].map(ob => {
-                ob.percentAreaPasture = Internal.numberFormat((ob.value / request.queryResult['pasture'][0].value) * 100) + "%"
-                ob.percentOfRegionArea = Internal.numberFormat((ob.value / request.queryResult['region'][0].area_region) * 100) + "%"
-                ob.classe = Internal.languageOb.resumo_card.pasture_quality[ob.classe]
-                return ob;
-            })
+            restoration: {
+                area: request.queryResult['restoration'][0].value,
+                percentOfRegionArea: Internal.numberFormat((request.queryResult['restoration'][0].value / request.queryResult['region'][0].area_region) * 100) + "%"
+            }
         }
 
         response.send(result)
@@ -254,13 +272,8 @@ module.exports = function (app) {
     };
 
     Controller.handleArea2Data = function (request, response) {
-        const { lang, typeRegion, valueRegion, textRegion, year } = request.query;
+        const { lang, typeRegion, valueRegion, textRegion } = request.query;
         const language = lang;
-
-        let varYear = year
-        if (!varYear) {
-            varYear = 2020
-        }
 
         Internal.languageOb = UtilsLang().getLang(language).right_sidebar;
 
@@ -271,20 +284,19 @@ module.exports = function (app) {
 
         const chartResult = [
             {
-                "id": "pastureQualityPerYear",
+                "id": "araticumRestoration",
                 "idsOfQueriesExecuted": [
-                    { idOfQuery: 'pasture_quality', labelOfQuery: Internal.languageOb["area2_card"]["pastureQualityPerYear"].labelOfQuery['pasture_quality'] },
+                    { idOfQuery: 'areaRestorationPerProject', labelOfQuery: Internal.languageOb["area2_card"]["araticumRestoration"].labelOfQuery['pasture_quality'] },
                 ],
-                "title": Internal.languageOb["area2_card"]["pastureQualityPerYear"].title,
+                "title": Internal.languageOb["area2_card"]["araticumRestoration"].title,
                 "getText": function (queriesResult, query) {
                     // replacements['areaMun'] = Number(chart['indicators'][0]["area_mun"])
                     // replacements['anthropicArea'] = chart['indicators'].reduce((a, { value }) => a + value, 0);
                     // replacements['percentArea'] = (replacements['anthropicArea'] / replacements['areaMun']) * 100.0;
 
-                    replacements['areaPasture'] = Internal.numberFormat(Number(queriesResult[query[0].idOfQuery].reduce((n, { value }) => n + parseFloat(value), 0)))
-                    replacements['yearTranslate'] = parseInt(varYear)
+                    replacements['areaRestoration'] = Internal.numberFormat(Number(queriesResult[query[0].idOfQuery].reduce((n, { value }) => n + parseFloat(value), 0)))
 
-                    const text = Internal.replacementStrings(Internal.languageOb["area2_card"]["pastureQualityPerYear"].text, replacements)
+                    const text = Internal.replacementStrings(Internal.languageOb["area2_card"]["araticumRestoration"].text, replacements)
                     return text
                 },
                 "type": 'pie',
@@ -444,55 +456,21 @@ module.exports = function (app) {
 
         const tablesDescriptor = [
             {
-                "id": "pastureRankingsCities",
+                "id": "araticumRestorationRankingsProjects",
                 "idsOfQueriesExecuted": [
-                    { idOfQuery: 'municipios', labelOfQuery: Internal.languageOb["area_table_card"]["pastureRankingsCities"].labelOfQuery['municipios'] },
+                    { idOfQuery: 'projetos', labelOfQuery: Internal.languageOb["area_table_card"]["araticumRestorationRankingsProjects"].labelOfQuery['projetos'] },
                 ],
-                "title": Internal.languageOb["area_table_card"]["pastureRankingsCities"].title,
-                "columnsTitle": Internal.languageOb["area_table_card"]["pastureRankingsCities"].columnsTitle,
+                "title": Internal.languageOb["area_table_card"]["araticumRestorationRankingsProjects"].title,
+                "columnsTitle": Internal.languageOb["area_table_card"]["araticumRestorationRankingsProjects"].columnsTitle,
                 "getText": function (chart) {
                     // replacements['areaMun'] = Number(chart['indicators'][0]["area_mun"])
                     // replacements['anthropicArea'] = chart['indicators'].reduce((a, { value }) => a + value, 0);
                     // replacements['percentArea'] = (replacements['anthropicArea'] / replacements['areaMun']) * 100.0;
 
-                    const text = Internal.replacementStrings(Internal.languageOb["area_table_card"]["pastureRankingsCities"].text, replacements)
+                    const text = Internal.replacementStrings(Internal.languageOb["area_table_card"]["araticumRestorationRankingsProjects"].text, replacements)
                     return text
                 },
-                "rows_labels": "index?city?uf?value",
-            },
-            {
-                "id": "pastureRankingsStates",
-                "idsOfQueriesExecuted": [
-                    { idOfQuery: 'estados', labelOfQuery: Internal.languageOb["area_table_card"]["pastureRankingsStates"].labelOfQuery['estados'] },
-                ],
-                "title": Internal.languageOb["area_table_card"]["pastureRankingsStates"].title,
-                "columnsTitle": Internal.languageOb["area_table_card"]["pastureRankingsStates"].columnsTitle,
-                "getText": function (chart) {
-                    // replacements['areaMun'] = Number(chart['indicators'][0]["area_mun"])
-                    // replacements['anthropicArea'] = chart['indicators'].reduce((a, { value }) => a + value, 0);
-                    // replacements['percentArea'] = (replacements['anthropicArea'] / replacements['areaMun']) * 100.0;
-
-                    const text = Internal.replacementStrings(Internal.languageOb["area_table_card"]["pastureRankingsStates"].text, replacements)
-                    return text
-                },
-                "rows_labels": "index?uf?value",
-            },
-            {
-                "id": "pastureRankingsBiomes",
-                "idsOfQueriesExecuted": [
-                    { idOfQuery: 'biomas', labelOfQuery: Internal.languageOb["area_table_card"]["pastureRankingsBiomes"].labelOfQuery['biomas'] },
-                ],
-                "title": Internal.languageOb["area_table_card"]["pastureRankingsBiomes"].title,
-                "columnsTitle": Internal.languageOb["area_table_card"]["pastureRankingsBiomes"].columnsTitle,
-                "getText": function (chart) {
-                    // replacements['areaMun'] = Number(chart['indicators'][0]["area_mun"])
-                    // replacements['anthropicArea'] = chart['indicators'].reduce((a, { value }) => a + value, 0);
-                    // replacements['percentArea'] = (replacements['anthropicArea'] / replacements['areaMun']) * 100.0;
-
-                    const text = Internal.replacementStrings(Internal.languageOb["area_table_card"]["pastureRankingsBiomes"].text, replacements)
-                    return text
-                },
-                "rows_labels": "index?biome?value",
+                "rows_labels": "index?projeto?fonte?value",
             }
         ]
 

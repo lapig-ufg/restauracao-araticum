@@ -50,6 +50,13 @@ module.exports = function (app) {
                 source: 'lapig',
                 id: 'region',
                 sql: "SELECT CAST(SUM(pol_ha) as double precision) as area_region FROM new_regions WHERE " + regionFilter + ""
+            },
+            {
+                source: 'lapig',
+                id: 'restoration',
+                sql: " SELECT  CAST(sum(a.area_ha) as double precision) as value "
+                    + " FROM araticum_restauracao a "
+                    + " WHERE " + regionFilter
             }
         ]
     }
@@ -77,7 +84,7 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'areaRestorationPerProject',
-                sql: "SELECT 'PUT HERE YOUR QUERY'",
+                sql: "SELECT projeto, fonte as label, SUM(area_ha) as value from araticum_restauracao GROUP BY 1, 2 ORDER BY 3 DESC ",
                 mantain: true
             }
         ];
@@ -104,7 +111,7 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'projetos',
-                sql: "SELECT projeto, fonte, SUM(area_ha) as area_restaurada from araticum_restauracao GROUP BY 1, 2 ORDER BY 3 DESC ",
+                sql: "SELECT projeto, fonte, SUM(area_ha) as value from araticum_restauracao GROUP BY 1, 2 ORDER BY 3 DESC ",
                 mantain: true
             }
         ]

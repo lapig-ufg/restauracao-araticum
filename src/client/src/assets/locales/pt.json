@@ -373,7 +373,7 @@
       "complement_text": "do(a)",
       "pasture_quality_title": "Qualidade de Pastagem",
       "complement_text_pasture_quality": "da área de Pastagem do(a)",
-      "obs_text": "ARATICUM - Organização para preservação ambiental - Rede Colaborativa e Multisetorial em prol da restauração em larga escala do bioma Cerrado. (<a target='_blank' class='link-details' href='https://www.instagram.com/rede.araticum/'> Clique aqui!</a>)",
+      "obs_text": "ARATICUM - Organização para preservação ambiental - Rede Colaborativa e Multisetorial em prol da restauração em larga escala do bioma Cerrado. (<a target='_blank' class='link-details' href='https://www.instagram.com/rede.araticum/'>Clique aqui!</a>)",
       "pasture_quality": {
         "Severa": "Severa",
         "Intermediário": "Intermediário",
@@ -404,7 +404,7 @@
     "area2_card": {
       "araticumRestoration": {
         "title": "Área de Restauração por Projeto",
-        "text": "Os Projetos ligados a Rede Araticum declaram uma área de Restauração equivalente à #areaRestoration# distribuídas entre estes projetos:",
+        "text": "Os Projetos ligados a Rede Araticum declaram uma área de Restauração equivalente à #areaRestoration# ha distribuídas entre estes projetos:",
         "labelOfQuery": {
           "areaRestorationPerProject": {
             "CEDAC": "Fortalecer Cadeias Sociobioprodutivas em Rede Baseadas no uso Sustentavel do Cerrado",
@@ -429,7 +429,7 @@
         "title": "Projetos",
         "text": "Rankings dos Projetos de acordo com a área de Restauração (em ha)",
         "labelOfQuery": {
-          "areaRestorationPerProject": "Projetos"
+          "projetos": "Projetos"
         },
         "columnsTitle": "#?Projeto?Fonte?Área (ha)"
       }

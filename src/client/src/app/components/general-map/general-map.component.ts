@@ -77,7 +77,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
   }
 
-  @Input()  openMenu = true as boolean;
+  @Input() openMenu = true as boolean;
   @Output() onHide = new EventEmitter<any>();
   @Output() onMapReadyLeftSideBar = new EventEmitter<any>();
   @Output() onSelectLayerSwipe = new EventEmitter<string>();
@@ -190,7 +190,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
   public isMobile: boolean;
 
   constructor(
-    public  localizationService: LocalizationService,
+    public localizationService: LocalizationService,
     private downloadService: DownloadService,
     private decimalPipe: DecimalPipe,
     private cdRef: ChangeDetectorRef,
@@ -214,7 +214,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
       this.legendExpanded = false;
       this.isMobile = true;
-    } else{
+    } else {
       this.isMobile = false;
     }
 
@@ -258,9 +258,9 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
 
     this.defaultRegion = {
-      type: 'country',
-      text: 'Brasil',
-      value: 'BRASIL'
+      type: 'biome',
+      text: 'Cerrado',
+      value: 'CERRADO'
     }
 
     this.selectRegion = this.defaultRegion;
@@ -644,7 +644,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     let defaultLayer = '';
     this._descriptor.groups.forEach(group => {
       group.layers.forEach(layer => {
-        if(layer.visible){
+        if (layer.visible) {
           defaultLayer = layer.selectedType;
         }
       });
@@ -727,7 +727,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
       this.legendExpanded = false;
       this.isMobile = true;
-    } else{
+    } else {
       this.isMobile = false;
     }
     setTimeout(() => {
@@ -916,7 +916,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     })
   }
 
-  updateObjectMapLayers(){
+  updateObjectMapLayers() {
 
   }
 
@@ -2135,7 +2135,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
   }
 
-  closeDetailsWindow(){
+  closeDetailsWindow() {
     this.controlOptions = !this.controlOptions;
     this.onCloseDetailsWindow.emit(this.controlOptions);
   }

@@ -29,7 +29,7 @@ module.exports = function (app) {
             let limitsTypes = await Controller.callServiceToObtainLayerTypes(lang, 'limits')
 
             const result = {
-                // regionFilterDefault: "bioma='CERRADO'", // Non-obrigatory property to define a filter to Region applied to EVERY layer.
+                regionFilterDefault: "bioma='CERRADO'", // Non-obrigatory property to define a filter to Region applied to EVERY layer.
                 groups: DescriptorBuilder().getGroupLayers(lang, layertypes),
                 basemaps: DescriptorBuilder().getBasemapsOrLimitsLayers(lang, 'basemaps', basemapsTypes),
                 limits: DescriptorBuilder().getBasemapsOrLimitsLayers(lang, 'limits', limitsTypes),
@@ -56,25 +56,20 @@ module.exports = function (app) {
 
     Controller.search = function (request, response) {
         var regiao;
-        var result = [];
-        var queryResult = request.queryResult
+
+        const queryResult = request.queryResult['search']
+
+        let iniResults = []
+
 
         queryResult.forEach(function (row) {
-
-            if (row.uf === null) {
-                regiao = row.text
-            } else {
-                regiao = row.text + " (" + row.uf + ")"
-            }
-
-            result.push({
-                text: regiao,
-                value: row.value,
-                type: row.type
-            })
+            delete row.priority
+            iniResults.push(row)
         })
 
-        response.send(result)
+        let result = [...new Map(iniResults.map(item => [item['value'], item])).values()]
+
+        response.send({ search: result })
         response.end()
     }
 
