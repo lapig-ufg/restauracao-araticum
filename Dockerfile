@@ -6,9 +6,10 @@ ENV BRANCH="main"
 
 LABEL maintainer="Renato Gomes <renatogomessilverio@gmail.com>"
 
-RUN cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB} && \
-    cd /APP/restauracao-araticum/src/server && npm install && rm -rfv /APP/plataform-base
-    
+RUN if [ -d "/APP/timeseries" ]; then rm -Rf /APP/timeseries; fi && \
+    cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB}
+
+ADD ./src/server/node_modules /APP/restauracao-araticum/src/server/node_modules
 ADD ./src/client/dist/client /APP/restauracao-araticum/src/client/dist/client
 
 CMD [ "/bin/bash", "-c", "/APP/src/server/prod-start.sh; tail -f /dev/null"]
