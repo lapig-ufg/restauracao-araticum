@@ -2,6 +2,7 @@
         
     load "$JENKINS_HOME/.envvars"
     def application_name= "app_agrotoxico"
+    int NODE_VERSION = 14.16.0 
 
         stage('Checkout') {
             git branch: 'main',
