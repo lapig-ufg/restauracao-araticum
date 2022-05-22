@@ -350,7 +350,7 @@
       "area1Title": "Séries Temporais",
       "area2Title": "Análise de Proporção",
       "area3Title": "Gráfico Barra",
-      "areaTableTitle": "Rankings de Área de Pastagem"
+      "areaTableTitle": "Rankings de Áreas Restauradas"
     },
     "region_types": {
       "city": "Município",
@@ -397,7 +397,7 @@
     },
     "area2_card": {
       "araticumRestoration": {
-        "title": "Área de Restauração por Projeto",
+        "title": "Área de Restauração por Método",
         "text": "Os Projetos ligados a Rede Araticum declaram uma área de Restauração equivalente à #areaRestoration# ha distribuídos entre estes métodos:",
         "labelOfQuery": {
           "areaRestorationPerProject": {

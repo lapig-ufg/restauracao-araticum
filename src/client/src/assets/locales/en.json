@@ -349,7 +349,7 @@
       "area1Title": "Timeseries",
       "area2Title": "Proportional Analysis",
       "area3Title": "Bar Charts",
-      "areaTableTitle": "Restoration Area Ranking"
+      "areaTableTitle": "Restoration Area Rankings"
     },
     "region_types": {
       "city": "City",
@@ -396,7 +396,7 @@
     },
     "area2_card": {
       "araticumRestoration": {
-        "title": "Restoration Area per Project",
+        "title": "Restoration Area per Applied Method",
         "text": "Projects linked to the Araticum Network declare a Restoration area equivalent to the #areaRestoration# ha distributed among these restoration methods:",
         "labelOfQuery": {
           "areaRestorationPerProject": {
