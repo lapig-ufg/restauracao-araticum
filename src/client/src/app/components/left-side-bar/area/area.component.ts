@@ -363,7 +363,7 @@ export class AreaComponent implements OnInit {
         self.layerFromConsulta.error = true;
       }
 
-      console.log(this.layerFromConsulta)
+      // console.log(this.layerFromConsulta)
 
     } else {
       this.layerFromUpload.analyzedAreaLoading = true;

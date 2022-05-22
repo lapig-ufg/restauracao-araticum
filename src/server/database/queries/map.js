@@ -9,7 +9,7 @@ module.exports = function (app) {
     }
 
     Internal.textDefaultParams = function () {
-        return Query.defaultParams.type + " ILIKE " + Query.defaultParams.value
+        return Query.defaultParams.type + " ILIKE '" + Query.defaultParams.value + "'"
     }
 
     Query.extent = function (params) {
@@ -57,7 +57,7 @@ module.exports = function (app) {
 
     Query.cars = function (params) {
         var key = params['key']
-        console.log("SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) geojson FROM car_brasil WHERE " + Internal.textDefaultParams() + " AND unaccent(car_code) ILIKE unaccent('" + key + "%') order by area_ha DESC LIMIT 10")
+        console.log("SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) as geojson FROM geo_car_imovel WHERE " + Internal.textDefaultParams() + " AND unaccent(cod_car) ILIKE unaccent('" + key + "%') order by area_ha DESC LIMIT 10")
         return [
             //     {
             //     source: 'general',
@@ -68,17 +68,18 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'search',
-                sql: "SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) as geojson FROM geo_car_imovel WHERE unaccent(cod_car) ILIKE unaccent(${key}%) order by area_ha DESC LIMIT 10",
+                sql: "SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) as geojson FROM geo_car_imovel WHERE " + Internal.textDefaultParams() + " AND unaccent(cod_car) ILIKE unaccent(${key}%) order by area_ha DESC LIMIT 10",
                 mantain: true
             }]
     }
 
     Query.ucs = function (params) {
         var key = params['key']
+        // console.log("SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10")
         return [{
             source: 'general',
             id: 'search',
-            sql: "SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10",
+            sql: "SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10",
             mantain: true
         }]
     }
