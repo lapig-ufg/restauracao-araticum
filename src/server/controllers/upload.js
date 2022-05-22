@@ -418,7 +418,9 @@ module.exports = function (app) {
             let qResultInitiatives = request.queryResult['initiaves_pershape']
 
             let res = {
-                projects: arrayProjects,
+                projects: arrayProjects.sort((a, b) => {
+                    return  b.area_restaurada  - a.area_restaurada;
+                }),
                 initiatives: qResultInitiatives.map(r => r.organizacao)
             }
 
@@ -426,6 +428,7 @@ module.exports = function (app) {
             response.end()
 
         } catch (err) {
+            console.error(err)
             response.status(400).send(languageJson['upload_messages']['spatial_relation_error'][Internal.language]);
             response.end()
         }

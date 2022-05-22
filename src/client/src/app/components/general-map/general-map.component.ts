@@ -960,12 +960,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
             this.handleLayersLegend(type);
           }
         });
-        const layerMask = this.OlLayers[layerType.valueType];
 
-        if(layerMask.get('descriptorLayer').typeLayer === 'raster'){
-          layerMask.removeFilter(this.maskFilter);
-          layerMask.addFilter(this.maskFilter);
-        }
         this.OlLayers[layerType.valueType].setVisible(layerType.visible);
         this.handleLayersLegend(layerType);
 
