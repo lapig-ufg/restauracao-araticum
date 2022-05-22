@@ -778,6 +778,14 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
 
       let msfilter = '&MSFILTER=' + filters.join(' AND ')
 
+      // if(msfilter.includes('true')){
+      //   msfilter = msfilter.replace('true', " bioma = 'CERRADO'")
+      // } else if(msfilter.includes('&MSFILTER=1=1 AND true')){
+      //   msfilter = msfilter.replace('&MSFILTER=1=1 AND true', "&MSFILTER=bioma = 'CERRADO'")
+      // } else if(msfilter.includes('&MSFILTER=')){
+      //   msfilter = "&MSFILTER= bioma = 'CERRADO'"
+      // }
+      // console.log(msfilter)
 
       let layername = layerType!.valueType
 
@@ -2153,7 +2161,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
         dataProjection: 'EPSG:4326',
           featureProjection: 'EPSG:3857'
       })
-      this.maskFilter = new MaskFilter({ feature: features[0], inner: false, fill: new Fill({ color: [0, 0, 0, 0.55] }) })
+      this.maskFilter = new MaskFilter({ feature: features[0], inner: false, fill: new Fill({ color: [66, 75, 52, 0.30] }) })
       this.map.getLayers().forEach(layer => {
        layer.addFilter(this.maskFilter)
       })
