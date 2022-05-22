@@ -12,6 +12,15 @@
                 "types": [
                     "areas_restauracao_araticum"
                 ]
+            },
+            {
+                "idLayer": "projetos_araticum",
+                "labelLayer": "translate",
+                "visible": false,
+                "selectedType": "or_cerrado_iniciativas_2022_araticum",
+                "types": [
+                    "or_cerrado_iniciativas_2022_araticum"
+                ]
             }
         ]
     }

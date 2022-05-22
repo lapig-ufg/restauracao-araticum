@@ -33,6 +33,13 @@ export class AreaService {
       .pipe(catchError(this.errorHandler));
   }
 
+  analysisAraticumProjects(params): Observable<any> {
+
+    return this.httpClient.get<any>(this.apiURL + '/analysisaraticum?' + params, this.httpOptions)
+      .pipe(map(response => response))
+      .pipe(catchError(this.errorHandler));
+  }
+  
   getSavedAnalysis(params): Observable<any> {
 
     return this.httpClient.get<any>(this.apiURL + '/getanalysis?' + params, this.httpOptions)

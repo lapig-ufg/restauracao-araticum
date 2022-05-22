@@ -84,7 +84,7 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'areaRestorationPerProject',
-                sql: "SELECT projeto, fonte as label, SUM(area_ha) as value from araticum_restauracao GROUP BY 1, 2 ORDER BY 3 DESC ",
+                sql: "SELECT metodo_padrao as label, SUM(area_ha) as value from araticum_restauracao GROUP BY 1 ORDER BY 2 DESC ",
                 mantain: true
             }
         ];

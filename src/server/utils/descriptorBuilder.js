@@ -85,9 +85,9 @@ module.exports = function (app) {
 
         return [
             'restauracao',
+            'reflorestamento',
             'areas_especiais',
             'areas_declaradas',
-            'agropecuaria',
             'infraestrutura',
             'imagens'
         ]

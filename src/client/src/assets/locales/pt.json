@@ -215,20 +215,11 @@
   },
   "descriptor_labels": {
     "groups": {
-      "agropecuaria": {
-        "labelGroup": "Agropecuária",
+      "reflorestamento": {
+        "labelGroup": "Reflorestamento",
         "layers": {
-          "agricultura": {
-            "labelLayer": "Agricultura"
-          },
-          "pecuaria_censitaria": {
-            "labelLayer": "Pecuária Censitária - IBGE"
-          },
           "floresta_plantada": {
             "labelLayer": "Floresta Plantada - Mapbiomas"
-          },
-          "lavoura_mapbiomas": {
-            "labelLayer": "Lavouras"
           }
         }
       },
@@ -236,7 +227,10 @@
         "labelGroup": "Restauração",
         "layers": {
           "restauracao_araticum": {
-            "labelLayer": "Araticum"
+            "labelLayer": "Áreas Restauradas - Araticum"
+          },
+          "projetos_araticum": {
+            "labelLayer": "Projetos Araticum"
           }
         }
       },
@@ -404,7 +398,7 @@
     "area2_card": {
       "araticumRestoration": {
         "title": "Área de Restauração por Projeto",
-        "text": "Os Projetos ligados a Rede Araticum declaram uma área de Restauração equivalente à #areaRestoration# ha distribuídas entre estes projetos:",
+        "text": "Os Projetos ligados a Rede Araticum declaram uma área de Restauração equivalente à #areaRestoration# ha distribuídos entre estes métodos:",
         "labelOfQuery": {
           "areaRestorationPerProject": {
             "CEDAC": "Fortalecer Cadeias Sociobioprodutivas em Rede Baseadas no uso Sustentavel do Cerrado",

@@ -1,4 +1,5 @@
 export const environment = {
+  APP: "ARATICUM",
   APP_NAME: 'Araticum - Articulação pela Restauração do Cerrado',
   production: true,
   GTAG: '',

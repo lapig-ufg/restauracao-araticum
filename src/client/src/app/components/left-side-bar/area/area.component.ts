@@ -11,11 +11,16 @@ import VectorLayer from 'ol/layer/Vector';
 import Style from 'ol/style/Style';
 import VectorSource from 'ol/source/Vector';
 import Stroke from 'ol/style/Stroke';
-
+import { environment } from "../../../../environments/environment";
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { AreaService } from '../../services/area.service';
 import { Descriptor } from "../../../@core/interfaces";
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import { LocalizationService } from 'src/app/@core/internationalization/localization.service';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 
 @Component({
@@ -74,16 +79,12 @@ export class AreaComponent implements OnInit {
   // Nas demais deve-se criar o controle para cada análise.
   public isPromiseFinished = {
     areainfo: false,
-    // desmatperyear: false,
-    // car: false,
-    // terraclass: false,
-    // focos: false,
-    // queimadas: false
+    projectsAraticum: false
   };
 
   selectedIndexUpload: number;
 
-  constructor(private areaService: AreaService, private googleAnalyticsService: GoogleAnalyticsService) {
+  constructor(private areaService: AreaService, public localizationService: LocalizationService, private googleAnalyticsService: GoogleAnalyticsService) {
     this.httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -201,14 +202,88 @@ export class AreaComponent implements OnInit {
 
   }
 
-  async printRegionsIdentification(token) {
-    console.log("TO DO")
+  printRegionsIdentification(token) {
+    let dd = {
+      pageSize: { width: 400, height: 400 },
+
+      // by default we use portrait, you can change it to landscape if you wish
+      pageOrientation: 'portrait',
+
+      content: [],
+      styles: {
+        titleReport: {
+          fontSize: 16,
+          bold: true
+        },
+        textFooter: {
+          fontSize: 9
+        },
+        textImglegend: {
+          fontSize: 9
+        },
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        },
+        data: {
+          bold: true,
+        },
+        subheader: {
+          fontSize: 16,
+          bold: true,
+          margin: [0, 10, 0, 5]
+        },
+        codCar: {
+          fontSize: 11,
+          bold: true,
+        },
+        textObs: {
+          fontSize: 11,
+        },
+        tableDpat: {
+          margin: [0, 5, 0, 15],
+          fontSize: 11,
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 13,
+          color: 'black'
+        },
+        token: {
+          bold: true,
+          fontSize: 16,
+        },
+        metadata: {
+          background: '#0b4e26',
+          color: '#fff'
+        }
+      }
+    }
+
+    // @ts-ignore
+    dd.content.push({ image: this.localizationService.translate('area.token.logo'), width: 50, alignment: 'center' });
+    // @ts-ignore
+    dd.content.push({ text: this.localizationService.translate('area.token.description'), alignment: 'center', margin: [10, 10, 20, 0] });
+    // @ts-ignore
+    dd.content.push({ text: token, alignment: 'center', style: 'token', margin: [20, 20, 20, 10] });
+
+    // @ts-ignore
+    dd.content.push({ qr: token.toString(), fit: '200', alignment: 'center' });
+
+    const filename = this.localizationService.translate('area.token.title') + ' - ' + token + '.pdf'
+    // const win = window.open('', '_blank');
+    // pdfMake.createPdf(dd).open({}, win);
+    pdfMake.createPdf(dd).download(filename);
+
+    this.googleAnalyticsService.eventEmitter("Print_Identification_Token_Layer", "Upload", "uploadLayer");
   }
 
   analyzeUploadShape(fromConsulta = false) {
 
     this.isPromiseFinished = {
-      areainfo: false
+      areainfo: false,
+      projectsAraticum: false
     };
 
     let params: string[] = [];
@@ -223,11 +298,12 @@ export class AreaComponent implements OnInit {
     }
 
     this.doAnalysisAreaInfo(fromConsulta, params) //Trigger Analysis AreaInfo
-
+    this.doAnalysisAraticumProjects(fromConsulta, params) //Trigger Analysis AraticumProjects
   }
 
   async doAnalysisAreaInfo(fromConsulta, params) {
     let self = this;
+    let analiseName = 'areainfo'
 
     if (fromConsulta) {
       this.layerFromConsulta.analyzedAreaLoading = true; // criar um loading para cada análise, para controlar a abertura do card.
@@ -239,7 +315,7 @@ export class AreaComponent implements OnInit {
         this.layerFromConsulta.analyzedArea = result;
         this.layerFromConsulta.analyzedAreaLoading = false;
 
-        this.checkIfAllPromiseAreDone(fromConsulta, 'areainfo')
+        this.checkIfAllPromiseAreDone(fromConsulta, analiseName )
 
       } catch (err) {
         self.layerFromConsulta.analyzedAreaLoading = false;
@@ -256,13 +332,58 @@ export class AreaComponent implements OnInit {
         this.layerFromUpload.analyzedArea = result;
         this.layerFromUpload.analyzedAreaLoading = false;
 
-        this.checkIfAllPromiseAreDone(fromConsulta, 'areainfo')
+        this.checkIfAllPromiseAreDone(fromConsulta, analiseName)
       } catch (err) {
         self.layerFromUpload.analyzedAreaLoading = false;
         self.layerFromUpload.error = true;
       }
 
     }
+
+  }
+
+  async doAnalysisAraticumProjects(fromConsulta, params) {
+    let self = this;
+    let analiseName = 'araticumProjects'
+
+    if (fromConsulta) {
+      this.layerFromConsulta.analyzedAreaLoading = true; // criar um loading para cada análise, para controlar a abertura do card.
+      this.layerFromConsulta.error = false;
+
+      try {
+
+        let result = await this.areaService.analysisAraticumProjects(params.join('&')).toPromise()
+        this.layerFromConsulta[analiseName] = result;
+        this.layerFromConsulta.analyzedAreaLoading = false;
+
+        this.checkIfAllPromiseAreDone(fromConsulta, analiseName)
+
+      } catch (err) {
+        self.layerFromConsulta.analyzedAreaLoading = false;
+        self.layerFromConsulta.error = true;
+      }
+
+      console.log(this.layerFromConsulta)
+
+    } else {
+      this.layerFromUpload.analyzedAreaLoading = true;
+
+      this.layerFromUpload.error = false;
+
+      try {
+        let result = await this.areaService.analysisAraticumProjects(params.join('&')).toPromise()
+        this.layerFromUpload[analiseName] = result;
+        this.layerFromUpload.analyzedAreaLoading = false;
+
+        this.checkIfAllPromiseAreDone(fromConsulta, analiseName)
+      } catch (err) {
+        self.layerFromUpload.analyzedAreaLoading = false;
+        self.layerFromUpload.error = true;
+      }
+
+    }
+
+
 
   }
 
@@ -373,12 +494,10 @@ export class AreaComponent implements OnInit {
 
     if (done) {
       if (fromConsulta) {
-
         let dados = {
           token: this.layerFromConsulta.token,
           analysis: this.layerFromConsulta.analyzedArea
         }
-
         this.saveCompleteAnalysis(dados)
       }
       else {
@@ -409,6 +528,8 @@ export class AreaComponent implements OnInit {
 
     let params: string[] = []
     params.push('token=' + this.layerFromConsulta.token)
+    params.push('origin=' + environment.APP)
+    params.push('lang=' + this.localizationService.currentLang())
 
 
     try {

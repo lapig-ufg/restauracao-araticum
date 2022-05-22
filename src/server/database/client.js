@@ -6,8 +6,8 @@ module.exports = function(app) {
     var Client = {}
 
     const config = app.config;
+    
     Internal['pool-lapig'] = new Pool(config['pg_lapig'])
-
     Internal['pool-general'] = new Pool(config['pg_general'])
 
     Internal.prepareQuery = function(sqlQuery, params) {
