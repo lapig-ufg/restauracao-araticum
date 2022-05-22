@@ -187,14 +187,14 @@
 <!--            </button>-->
             <small style="margin-top: 10px">
               {{'area.analyzed_area_total_area' | translate }}
-              <strong>{{layerFromConsulta.analyzedArea.shape_upload.area_upload | number:'1.2-2' }}ha </strong>
+              <strong>{{layerFromUpload.analyzedArea.shape_upload.area_upload | number:'1.2-2' }}ha </strong>
             </small>
           </div>
-          <div *ngIf="layerFromConsulta.araticumProjects">
+          <div *ngIf="layerFromUpload.araticumProjects">
             <h6 class="card-upload-analysed-table-title">
               {{'area.araticum.projects' | translate}}
             </h6>
-            <p-table *ngIf="layerFromConsulta.araticumProjects.hasOwnProperty('projects')" [value]="layerFromConsulta.araticumProjects.projects"  responsiveLayout="scroll">
+            <p-table *ngIf="layerFromUpload.araticumProjects.hasOwnProperty('projects')" [value]="layerFromUpload.araticumProjects.projects"  responsiveLayout="scroll">
               <ng-template pTemplate="header">
                 <tr>
                   <th style="font-size: 10px;">Projects</th>
@@ -211,13 +211,13 @@
                 </tr>
               </ng-template>
             </p-table>
-            <div *ngIf="layerFromConsulta.araticumProjects.hasOwnProperty('initiatives')"
+            <div *ngIf="layerFromUpload.araticumProjects.hasOwnProperty('initiatives')"
                  class="card-upload-analysed-table">
               <h6 class="card-upload-analysed-table-title">
                 {{'area.araticum.initiatives' | translate}}
               </h6>
               <p>
-                {{layerFromConsulta.araticumProjects.initiatives.join(', ')}}
+                {{layerFromUpload.araticumProjects.initiatives.join(', ')}}
               </p>
             </div>
           </div>
