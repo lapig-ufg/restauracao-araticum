@@ -1,4 +1,5 @@
 <section id="main" class="container">
+  <p-toast></p-toast>
   <p-dialog
     header="{{'wellcome.title' | translate}}"
     [maximizable]="true"
@@ -11,11 +12,41 @@
     (onHide)="onMessageHide($event)"
   >
     <div class="message-content">
-      <p>
-        {{'wellcome.p1' | translate}}
-      </p>
+      <p [innerHTML]="'wellcome.p1' | translate"></p>
       <p [innerHTML]="'wellcome.p2' | translate"></p>
+      <p [innerHTML]="'wellcome.p3' | translate"></p>
+      <p [innerHTML]="'wellcome.p4' | translate"></p>
+      <p>
+        <p-inputSwitch (onChange)="changeTerms($event)" [(ngModel)]="acceptTerms"></p-inputSwitch> {{'wellcome.p5' | translate}}
+        <a class="terms" (click)="showTerms = true">  {{'terms.view' | translate}}</a>
+      </p>
       <img src="../../../assets/logos/marcas.png">
+    </div>
+  </p-dialog>
+
+  <p-dialog
+    header="{{'terms.title' | translate}}"
+    [maximizable]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [appendTo]="'body'"
+    [modal]="true"
+    [style]="{width: isMobile ? '98vw' : '45vw'}"
+    [(visible)]="showTerms"
+  >
+    <div class="message-content">
+      <p [innerHTML]="'terms.p1' | translate"></p>
+      <p [innerHTML]="'terms.p2' | translate"></p>
+      <p [innerHTML]="'terms.p3' | translate"></p>
+      <p [innerHTML]="'terms.p4' | translate"></p>
+      <p [innerHTML]="'terms.p5' | translate"></p>
+      <p [innerHTML]="'terms.p6' | translate"></p>
+      <p [innerHTML]="'terms.p7' | translate"></p>
+      <p [innerHTML]="'terms.p8' | translate"></p>
+      <p [innerHTML]="'terms.p9' | translate"></p>
+      <p [innerHTML]="'terms.p10' | translate"></p>
+      <p [innerHTML]="'terms.p11' | translate"></p>
+      <p [innerHTML]="'terms.p12' | translate"></p>
     </div>
   </p-dialog>
 

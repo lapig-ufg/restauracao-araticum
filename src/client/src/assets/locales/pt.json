@@ -673,8 +673,29 @@
     "videos_drone": "Vídeos de Drone"
   },
   "wellcome": {
-    "title": "Notificação de boas-vindas",
-    "p1": "Bem-vindo ao Módulo de Integração de Dados de Restauração Ecológica e Reflorestamento no bioma Cerrado. Nosso objetivo é apresentar o status das ações de restauração no Cerrado, propiciando a consulta, visualização e análises em nível municipal, estadual e de bacias hidrográficas, na forma de mapas e gráficos, bem como a exportação das informações na forma de arquivos vetoriais e tabelas.",
-    "p2": "Este módulo, integrado à Plataforma de Conhecimento do Cerrado, foi financiado pelo <a target='_blank' href='https://www.wwf.org.br/' alt=' WWF Brasil'> WWF Brasil</a> e contou com as parcerias do <a target='_blank' href='https://lapig.iesa.ufg.br' alt='LAPIG'>LAPIG/UFG</a> e <a target='_blank' href='https://www.instagram.com/rede.araticum/' alt=' Rede Araticum'>Rede Araticum</a>."
+    "title": "Boas-vindas",
+    "p1": "Bem-vindo ao Módulo de Integração de Dados de Restauração no bioma Cerrado. Nosso objetivo é apresentar o status das ações de restauração no Cerrado, propiciando a consulta, visualização e análises em nível municipal, estadual e de bacias hidrográficas, na forma de mapas e gráficos, bem como a exportação das informações na forma de tabelas.",
+    "p2": "Este módulo, integrado à Plataforma de Conhecimento do Cerrado, foi financiado pelo <a target='_blank' href='https://www.wwf.org.br/' alt='WWF Brazil'>WWF Brasil</a> e contou com as parcerias do <a target='_blank' href='https://lapig.iesa.ufg.br' alt='LAPIG'>LAPIG/UFG</a> e <a target='_blank' href='https://www.instagram.com/rede.araticum/' alt='Araticum Network'>Rede Araticum </a>.",
+    "p3": "Mais informações sobre os dados e contribuição para inclusão de novas áreas para a Plataforma, entre em contato pelo correio eletrônico: <a target='_blank' href='rede.araticum@gmail.com' alt='rede.araticum@gmail.com '>rede.araticum@gmail.com</a>",
+    "p4": "Leia o texto do Termo de Uso para continuar navegando. Ao enviar uma mensagem para <a target='_blank' href='rede.araticum@gmail.com' alt='rede.araticum@gmail.com '>rede.araticum@gmail.com</a> ou utilizar os dados públicos ou privados disponibilizados pela Plataforma de Monitoramento da Restauração do Cerrado, o usuário declara ciência e concordância com essa Política. Please read our Terms of Use to continue browsing. By sending a message to <a target='_blank' href='rede.araticum@gmail.com' alt='rede.araticum@gmail.com '>rede.araticum@gmail.com</a>.",
+    "p5": "Aceito o Termos de Uso da plataforma"
+  },
+  "terms": {
+    "title": "Termos de Uso",
+    "error_title": "Erro",
+    "error_msg": "Você precisa aceitar os Termos de Uso da Plataforma",
+    "view": "Visualizar Termo de Uso",
+    "p1": "A Araticum - Articulação pela Restauração do Cerrado é uma rede colaborativa multisetorial representada por agentes governamentais, academia, iniciativa privada, terceiro setor, produtores, praticantes da restauração que buscam somar esforços para promover maior eficiência ecológica e ganho de escala na restauração. Acreditamos na restauração inclusiva, sempre respeitando a diversidade (social e ambiental) do Cerrado e seus arranjos regionais. A Araticum contribui para o estabelecimento de conexões que fortalecem e aceleram projetos e o compartilhamento do conhecimento produzido.",
+    "p2": "Considerando que a Plataforma de Monitoramento da Restauração do Cerrado reúne informações espaciais das iniciativas e das áreas em processo de restauração, esta ferramenta espacial e pública tem o objetivo de contribuir para transparência das ações de restauração para a sociedade civil, subsidiar estratégias de larga escala para novos projetos e engajamento de atores para expansão e fortalecimento da agenda da restauração e da Araticum.",
+    "p3": "Este Termo visa orientar os usuários e estabelecer regras mínimas para o uso dos dados provenientes da Plataforma de Monitoramento da Restauração do Cerrado.",
+    "p4": "Ao usar esse site, o usuário concorda que a Araticum e seus parceiros não assumem nenhuma responsabilidade legal sobre a acurácia, confiabilidade, qualidade, conteúdo, natureza ou completude de qualquer informação divulgada neste ambiente on-line.",
+    "p5": "Ao utilizar a informação deste site, o usuário assume toda responsabilidade e risco por qualquer decisão tomada como resultado da informação disponibilizada pela plataforma.",
+    "p6": "A Plataforma dispõe de dados públicos e privados. Os dados públicos são disponibilizados por fontes oficiais, e podem ser obtidos pela internet, enquanto os dados privados, enviados pela Araticum, poderão ser utilizados pelo usuário com o uso restrito para atividades sem fins lucrativos.",
+    "p7": "Os usuários assumem toda e qualquer responsabilidade, de caráter civil e/ou criminal, pela utilização indevida de informações, textos, gráficos, marcas, imagens, enfim, de todo e qualquer direito de propriedade intelectual ou industrial da Araticum.",
+    "p8": "A Araticum e parceiros não se responsabilizam pelo uso indevido dos dados e por erros cartográficos gerados por terceiros.",
+    "p9": "Ao utilizar a Plataforma, o usuário se compromete em reportar problemas identificados na Plataforma para o e-mail: <a target='_blank' href='rede.araticum@gmail.com'>rede.araticum@gmail.com</a>",
+    "p10": "As informações contidas no site foram fornecidas por diversos membros e parceiros da rede, podendo não ser atuais, e podem ser suplantadas por informações mais recentes quando disponíveis. A veracidade das informações é de responsabilidade dos detentores do direito de uso e deve ser validada pelos usuários, com dados próprios, sempre que possível.",
+    "p11": "Os mantenedores da Plataforma do Monitoramento da Restauração do Cerrado não se responsabilizam por dados desatualizados utilizados pelos usuários. A atualização será feita periodicamente por especialistas e os usuários poderão contribuir enviando novos registros publicados para: <a target='_blank' href='rede.araticum@gmail.com'>rede.araticum@gmail.com</a> ",
+    "p12": "Leia o texto completo do Termo de Uso para continuar navegando. Ao enviar uma mensagem para <a target='_blank' href='rede.araticum@gmail.com'>rede.araticum@gmail.com</a> ou utilizar os dados públicos ou privados disponibilizados pela Plataforma de Restauração do Cerrado, o usuário declara ciência e concordância com essa Política."
   }
 }
