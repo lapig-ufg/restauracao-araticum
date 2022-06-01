@@ -101,7 +101,7 @@
       "description": "Access token of the geometry submitted on the platform."
     },
     "araticum": {
-      "projects": "Restoration projects that intersect with the submitted area",
+      "projects": "Restoration iniciatives that intersect with the submitted area",
       "initiatives": "Restoration initiatives that intersect with the submitted area"
     }
   },
@@ -233,7 +233,7 @@
             "labelLayer": "Araticum"
           },
           "projetos_araticum": {
-            "labelLayer": "Araticum Projects"
+            "labelLayer": "Araticum Iniciatives"
           }
         }
       },
@@ -401,7 +401,7 @@
     "area2_card": {
       "araticumRestoration": {
         "title": "Restoration Area per Applied Method",
-        "text": "Projects linked to the Araticum Network declare a Restoration area equivalent to the #areaRestoration# ha distributed among these restoration methods:",
+        "text": "Projects and/or Iniciatives linked to the Araticum Network declare a Restoration area equivalent to the #areaRestoration# ha distributed among these restoration methods:",
         "labelOfQuery": {
           "areaRestorationPerProject": {
             "CEDAC": "Fortalecer Cadeias Sociobioprodutivas em Rede Baseadas no uso Sustentavel do Cerrado",
@@ -423,12 +423,12 @@
     },
     "area_table_card": {
       "araticumRestorationRankingsProjects": {
-        "title": "Projects",
+        "title": "Iniciatives",
         "text": "Project Rankings according to the Restoration area (in ha)",
         "labelOfQuery": {
-          "projetos": "Projects"
+          "projetos": "Iniciatives"
         },
-        "columnsTitle": "#?Project?Source?Area (ha)"
+        "columnsTitle": "#?Iniciative?Source?Area (ha)"
       }
     },
     "area_table_card_auxiliar": {

@@ -234,7 +234,7 @@
             "labelLayer": "Áreas Restauradas - Araticum"
           },
           "projetos_araticum": {
-            "labelLayer": "Projetos Araticum"
+            "labelLayer": "Iniciativas Araticum"
           }
         }
       },
@@ -424,12 +424,12 @@
     },
     "area_table_card": {
       "araticumRestorationRankingsProjects": {
-        "title": "Projetos",
-        "text": "Rankings dos Projetos de acordo com a área de Restauração (em ha)",
+        "title": "Iniciativas",
+        "text": "Rankings das Iniciativas de acordo com a área de Restauração (em ha)",
         "labelOfQuery": {
-          "projetos": "Projetos"
+          "projetos": "Iniciativas"
         },
-        "columnsTitle": "#?Projeto?Fonte?Área (ha)"
+        "columnsTitle": "#?Iniciativa?Fonte?Área (ha)"
       }
     },
     "area_table_card_auxiliar": {
