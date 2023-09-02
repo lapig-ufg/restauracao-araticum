@@ -16,7 +16,8 @@ jobs:
 
       - name: Define a variável application_name
         run: |
-          echo "branch='${GITHUB_REF##*/}'" >> $GITHUB_ENV
+          branch=$(echo "${GITHUB_REF##*/}" | tr '-' '_')
+          echo "branch=${branch}" >> $GITHUB_ENV
           echo "Branch: $branch"
           repo_full_name=$GITHUB_REPOSITORY
           repo_name=${repo_full_name##*/}
