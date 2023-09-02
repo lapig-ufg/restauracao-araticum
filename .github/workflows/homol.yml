@@ -18,10 +18,10 @@ jobs:
         with:
           node-version: '16.4.2'
 
-
       - name: Define a variável application_name
         run: |
           echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo "Branch: $branch"
           repo_full_name=$GITHUB_REPOSITORY
           repo_name=${repo_full_name##*/}
           echo "START_TIME=$(date -u +%s)" >> $GITHUB_ENV
@@ -54,10 +54,6 @@ jobs:
       - name: Create version.json
         run: echo '{"commitId":"$LAST_COMMIT_HASH"}' > version.json
 
-      - name: Determine branch
-        id: get_branch
-        run: echo "::set-output name=branch::${GITHUB_REF##*/}"
-
       - name: Build Server and client
         run: |
           npm set progress=false
@@ -68,7 +64,7 @@ jobs:
 
       - name: Validate and Build
         run: |
-          git pull origin develop
+          git pull origin ${branch}
           docker build -t ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH} -t ${{secrets.REGISTRYHOMOL}}/$application_name:latest  -f docker/homologation/Dockerfile . --no-cache
 
 
