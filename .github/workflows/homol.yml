@@ -61,6 +61,7 @@ jobs:
           npm set progress=false
           cd ${{ github.workspace }}/src/server && npm install
           cd ${{ github.workspace }}/src/client && npm install
+          npm install -g @angular/cli
           cd ${{ github.workspace }}/src/client && ng build --stats-json --source-map=false --no-progress
 
 
