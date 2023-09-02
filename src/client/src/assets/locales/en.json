@@ -226,6 +226,18 @@
           }
         }
       },
+      "climate_adaptation": {
+        "labelGroup": "Climate adaptation"
+      },
+      "regeneration_potential": {
+        "labelGroup": "Regeneration potential",
+        "layers": {
+          "regeneration_potential": {
+            "labelLayer": "Regeneration potential of native vegetation in cultivated pastures of the Cerrado"
+          }
+        }
+
+      },
       "restauracao": {
         "labelGroup": "Restoration",
         "layers": {

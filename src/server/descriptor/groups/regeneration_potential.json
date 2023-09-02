@@ -1,0 +1,18 @@
+[
+  {
+    "idGroup": "regeneration_potential",
+    "labelGroup": "translate",
+    "groupExpanded": false,
+    "layers": [
+      {
+        "idLayer": "regeneration_potential",
+        "labelLayer": "translate",
+        "visible": false,
+        "selectedType": "regeneration_potential",
+        "types": [
+          "regeneration_potential"
+        ]
+      }
+    ]
+  }
+]
