@@ -54,14 +54,14 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14.2.6'
+          node-version: '16.2.6'
 
       - name: Build Server and client
         run: |
           npm set progress=false
           cd ${{ github.workspace }}/src/server && npm install
           cd ${{ github.workspace }}/src/client && npm install
-          npm install -g @angular/cli
+          npm install -g @angular/cli@14.2.6
           cd ${{ github.workspace }}/src/client && ng build --stats-json --source-map=false --no-progress
 
 
