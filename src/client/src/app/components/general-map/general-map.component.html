@@ -2,7 +2,6 @@
   <div [class]="classes">
     <ol-map [lat]="-14.275989237335484" [lon]="-49.58145030201959" [zoom]="6" [width]="'100%'" [height]="'100vh'" [loading]="loadingMap"
       (onReady)="setMap($event)">
-
       <ol-control class="mobileHide" control="FullScreen" [options]="{ source:'main'}">
       </ol-control>
       <ol-control control="ScaleLine" [options]="options">
@@ -11,15 +10,11 @@
       </ol-control>
       <ol-control control="Zoom">
       </ol-control>
-
-
       <!-- add layers-->
       <ol-layer *ngFor="let layer of layers" [layer]="layer"></ol-layer>
-
       <ol-map-marker *ngIf="!showFormPoint && lat && lon" [lat]="lat" [lon]="lon"
         [text]="'Lat: ' + lat + '\nLon: ' + lon">
       </ol-map-marker>
-
       <div *ngIf="showFormPoint" class="search-point">
         <div class="search-point-container">
           <span class="p-float-label">
@@ -64,13 +59,13 @@
                 </div>
                 <div class="details">
                   <div *ngIf="layer.get('descriptorLayer').filterHandler === 'layername'; else noFilters" class="details-inner">
-                    <img
+                    <img *ngIf="layer.get('descriptorLayer').typeLayer !== 'raster'"
                       src="{{env.OWS}}/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{layer.get('descriptorLayer').filterSelected}}&format=image%2Fpng"
                       alt="{{layer.get('key')}}">
                   </div>
                   <ng-template #noFilters>
                     <div class="details-inner">
-                      <img
+                      <img *ngIf="layer.get('descriptorLayer').typeLayer !== 'raster'"
                         src="{{env.OWS}}/ows?EXCEPTIONS=application%2Fvnd.ogc.se_xml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetLegendGraphic&layer={{layer.get('key')}}&format=image%2Fpng"
                         alt="{{layer.get('key')}}">
                     </div>

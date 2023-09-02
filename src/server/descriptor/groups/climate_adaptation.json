@@ -1,0 +1,99 @@
+[
+  {
+    "idGroup": "climate_adaptation",
+    "labelGroup": "translate",
+    "groupExpanded": false,
+    "layers": [
+      {
+        "idLayer": "anacardium_humile",
+        "labelLayer": "Cajuzinho-do-cerrado (<i>Anacardium humile</i>)",
+        "visible": false,
+        "selectedType": "anacardium_humile",
+        "types": [
+          "anacardium_humile"
+        ]
+      },
+      {
+        "idLayer": "annona_crassiflora",
+        "labelLayer": "Araticum (<i>Annona crassiflora</i>)",
+        "visible": false,
+        "selectedType": "annona_crassiflora",
+        "types": [
+          "annona_crassiflora"
+        ]
+      },
+      {
+        "idLayer": "attalea_speciosa",
+        "labelLayer": "Babaçu (<i>Attalea speciosa</i>)",
+        "visible": false,
+        "selectedType": "attalea_speciosa",
+        "types": [
+          "attalea_speciosa"
+        ]
+      },
+      {
+        "idLayer": "byrsonima_crassifolia",
+        "labelLayer": "Murici (<i>Byrsonima crassifolia</i>)",
+        "visible": false,
+        "selectedType": "byrsonima_crassifolia",
+        "types": [
+          "byrsonima_crassifolia"
+        ]
+      },
+      {
+        "idLayer": "caryocar_brasiliense",
+        "labelLayer": "Pequi (<i>Caryocar brasiliense</i>)",
+        "visible": false,
+        "selectedType": "caryocar_brasiliense",
+        "types": [
+          "caryocar_brasiliense"
+        ]
+      },
+      {
+        "idLayer": "dipteryx_alata",
+        "labelLayer": "Baru (<i>Dipteryx alata</i>)",
+        "visible": false,
+        "selectedType": "dipteryx_alata",
+        "types": [
+          "dipteryx_alata"
+        ]
+      },
+      {
+        "idLayer": "eugenia_dysenterica",
+        "labelLayer": "Cagaita (<i>Eugenia dysenterica</i>)",
+        "visible": false,
+        "selectedType": "eugenia_dysenterica",
+        "types": [
+          "eugenia_dysenterica"
+        ]
+      },
+      {
+        "idLayer": "hancornia_speciosa",
+        "labelLayer": "Mangaba (<i>Hancornia speciosa</i>)",
+        "visible": false,
+        "selectedType": "hancornia_speciosa",
+        "types": [
+          "hancornia_speciosa"
+        ]
+      },
+      {
+        "idLayer": "syagrus_oleracea",
+        "labelLayer": "Guariroba (<i>Syagrus oleracea</i>)",
+        "visible": false,
+        "selectedType": "syagrus_oleracea",
+        "types": [
+          "syagrus_oleracea"
+        ]
+      },
+      {
+        "idLayer": "syngonanthus_nitens",
+        "labelLayer": "Capim-dourado (<i>Syngonanthus nitens</i>)",
+        "visible": false,
+        "selectedType": "syngonanthus_nitens",
+        "types": [
+          "syngonanthus_nitens"
+        ]
+      }
+    ]
+  }
+]

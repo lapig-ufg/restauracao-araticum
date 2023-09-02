@@ -1,0 +1,27 @@
+[
+    {
+        "idGroup": "restauracao",
+        "labelGroup": "translate",
+        "groupExpanded": true,
+        "layers": [
+            {
+                "idLayer": "restauracao_araticum",
+                "labelLayer": "translate",
+                "visible": true,
+                "selectedType": "areas_restauracao_araticum",
+                "types": [
+                    "areas_restauracao_araticum"
+                ]
+            },
+            {
+                "idLayer": "projetos_araticum",
+                "labelLayer": "translate",
+                "visible": false,
+                "selectedType": "or_cerrado_iniciativas_2022_araticum",
+                "types": [
+                    "or_cerrado_iniciativas_2022_araticum"
+                ]
+            }
+        ]
+    }
+]

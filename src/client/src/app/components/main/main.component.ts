@@ -2,11 +2,13 @@ import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angu
 import { MapService } from "../services/map.service";
 import { LocalizationService } from "../../@core/internationalization/localization.service";
 import { Descriptor } from "../../@core/interfaces";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  providers: [MessageService]
 })
 
 export class MainComponent implements OnInit, AfterContentChecked {
@@ -15,12 +17,17 @@ export class MainComponent implements OnInit, AfterContentChecked {
   public limit: any;
   public descriptor: Descriptor;
   public showMessage: boolean;
+  public showTerms: boolean;
+  public acceptTerms:boolean;
   public isMobile: boolean;
   constructor(
     private mapService: MapService,
     private localizationService: LocalizationService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    protected messageService: MessageService,
   ) {
+    this.showTerms = false;
+    this.acceptTerms = false;
     this.openMenu = true;
     this.showLayers = false;
   }
@@ -32,12 +39,13 @@ export class MainComponent implements OnInit, AfterContentChecked {
     } else{
       this.isMobile = false;
     }
-    let showMessage = localStorage.getItem('showMessage');
+    this.showMessage = true;
+    let acceptTerms = localStorage.getItem('acceptTerms');
 
-    if (showMessage === 'false' || showMessage === null){
-      this.showMessage = true;
+    if (acceptTerms === 'false' || acceptTerms === null){
+      this.acceptTerms = false;
     }else{
-      this.showMessage = false;
+      this.acceptTerms = true;
     }
     this.getDescriptor();
   }
@@ -70,8 +78,25 @@ export class MainComponent implements OnInit, AfterContentChecked {
   }
 
   onMessageHide(evt){
-    localStorage.setItem('showMessage', 'true');
-    this.showMessage = false;
+    if(this.acceptTerms){
+      localStorage.setItem('acceptTerms', 'true');
+      this.showMessage = false;
+    } else{
+      this.showMessage = true;
+      this.messageService.add({
+        life: 2000,
+        severity: 'error',
+        summary: this.localizationService.translate('terms.error_title'),
+        detail: this.localizationService.translate('terms.error_msg', )
+      });
+    }
   }
+
+  changeTerms(evt){
+    this.acceptTerms = evt.checked
+    localStorage.setItem('acceptTerms', evt.checked ? 'true' : 'false');
+  }
+
+
 }
 

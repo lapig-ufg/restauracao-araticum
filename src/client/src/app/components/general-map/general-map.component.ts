@@ -55,6 +55,8 @@ import turfCentroid from "@turf/centroid";
 import { environment } from "../../../environments/environment";
 import { GoogleAnalyticsService } from "../services/google-analytics.service";
 import { GalleryService } from '../services/gallery.service';
+import MaskFilter from 'ol-ext/filter/Mask';
+import CropFilter from 'ol-ext/filter/Crop';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -77,7 +79,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
   }
 
-  @Input()  openMenu = true as boolean;
+  @Input() openMenu = true as boolean;
   @Output() onHide = new EventEmitter<any>();
   @Output() onMapReadyLeftSideBar = new EventEmitter<any>();
   @Output() onSelectLayerSwipe = new EventEmitter<string>();
@@ -154,7 +156,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
   public highlightStyle: Style;
   public defaultStyle: Style;
   public geoJsonStyles: any;
-
+  public maskFilter: MaskFilter
   public displayGallery: boolean;
   public gallery = [] as any;
   public galleryResponsiveOptions: any[] = [
@@ -190,7 +192,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
   public isMobile: boolean;
 
   constructor(
-    public  localizationService: LocalizationService,
+    public localizationService: LocalizationService,
     private downloadService: DownloadService,
     private decimalPipe: DecimalPipe,
     private cdRef: ChangeDetectorRef,
@@ -209,12 +211,12 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     this.loadingDown = false;
     this.legendExpanded = true;
     this.displayGallery = false;
-
+    this.maskFilter = null;
     //IF para identificar quando o caso é mobile.
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
       this.legendExpanded = false;
       this.isMobile = true;
-    } else{
+    } else {
       this.isMobile = false;
     }
 
@@ -258,9 +260,9 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
 
     this.defaultRegion = {
-      type: 'country',
-      text: 'Brasil',
-      value: 'BRASIL'
+      type: 'biome',
+      text: 'Cerrado',
+      value: 'CERRADO'
     }
 
     this.selectRegion = this.defaultRegion;
@@ -300,7 +302,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
           source: new XYZ({
             wrapX: false,
             url:
-              'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+              'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFpcm9tciIsImEiOiJjbG0wd253b3MwZHBoM2ptMXg2eWNnZTk0In0.aLY0DcNuQrcpk_mFUHODuw'
           }),
           visible: true
         })
@@ -315,7 +317,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
           source: new XYZ({
             wrapX: false,
             url:
-              'https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+              'https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFpcm9tciIsImEiOiJjbG0wd253b3MwZHBoM2ptMXg2eWNnZTk0In0.aLY0DcNuQrcpk_mFUHODuw'
           }),
           visible: false
         })
@@ -644,7 +646,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     let defaultLayer = '';
     this._descriptor.groups.forEach(group => {
       group.layers.forEach(layer => {
-        if(layer.visible){
+        if (layer.visible) {
           defaultLayer = layer.selectedType;
         }
       });
@@ -727,7 +729,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
       this.legendExpanded = false;
       this.isMobile = true;
-    } else{
+    } else {
       this.isMobile = false;
     }
     setTimeout(() => {
@@ -740,6 +742,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     this.map.on('singleclick', (evt) => this.onDisplayFeatureInfo(evt));
     this.onMapReadyLeftSideBar.emit(map);
     this.onMapReadyRightSideBar.emit(map);
+    this.createCropFilter();
   }
 
   hideLayers() {
@@ -775,6 +778,14 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
 
       let msfilter = '&MSFILTER=' + filters.join(' AND ')
 
+      // if(msfilter.includes('true')){
+      //   msfilter = msfilter.replace('true', " bioma = 'CERRADO'")
+      // } else if(msfilter.includes('&MSFILTER=1=1 AND true')){
+      //   msfilter = msfilter.replace('&MSFILTER=1=1 AND true', "&MSFILTER=bioma = 'CERRADO'")
+      // } else if(msfilter.includes('&MSFILTER=')){
+      //   msfilter = "&MSFILTER= bioma = 'CERRADO'"
+      // }
+      // console.log(msfilter)
 
       let layername = layerType!.valueType
 
@@ -916,7 +927,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     })
   }
 
-  updateObjectMapLayers(){
+  updateObjectMapLayers() {
 
   }
 
@@ -951,7 +962,6 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
         });
 
         this.OlLayers[layerType.valueType].setVisible(layerType.visible);
-
         this.handleLayersLegend(layerType);
 
         if (this.swiperControl.layers.length > 0) {
@@ -2135,8 +2145,21 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     }
   }
 
-  closeDetailsWindow(){
+  closeDetailsWindow() {
     this.controlOptions = !this.controlOptions;
     this.onCloseDetailsWindow.emit(this.controlOptions);
+  }
+
+  createCropFilter() {
+    this.mapService.getMask().subscribe(maskGeoJson => {
+      const features = new GeoJSON().readFeatures(maskGeoJson, {
+        dataProjection: 'EPSG:4326',
+          featureProjection: 'EPSG:3857'
+      })
+      this.maskFilter = new MaskFilter({ feature: features[0], inner: false, fill: new Fill({ color: [66, 75, 52, 0.30] }) })
+      this.map.getLayers().forEach(layer => {
+       layer.addFilter(this.maskFilter)
+      })
+    });
   }
 }

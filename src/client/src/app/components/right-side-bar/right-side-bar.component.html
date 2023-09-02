@@ -31,11 +31,11 @@
               </div>
               <div class="resumo-card">
                 <div class="resumo-card-title">{{'right_sidebar.resumo_card.area_pastagem' | translate}}</div>
-                <div class="resumo-card-content">{{infoResumo.pasture.area | number:'1.2-3' }} ha
-                  ({{infoResumo.pasture.percentOfRegionArea}}
+                <div class="resumo-card-content">{{infoResumo.restoration.area | number:'1.2-3' }} ha
+                  ({{infoResumo.restoration.percentOfRegionArea}}
                   {{'right_sidebar.resumo_card.complement_text' | translate}} {{selectRegion.text}})</div>
               </div>
-              <div class="resumo-card">
+              <!-- <div class="resumo-card">
                 <div class="resumo-card-title">{{'right_sidebar.resumo_card.pasture_quality_title' | translate}}</div>
                 <div class="resumo-card-content">
                   <div class="resumo-card-content" *ngFor="let cl of infoResumo.pasture_quality"
@@ -47,7 +47,7 @@
                       {{selectRegion.text}})</div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="resumo-card">
                 <div class="resumo-card-title">Obs. </div>
                 <div class="resumo-card-content obs" [innerHTML]="'right_sidebar.resumo_card.obs_text' | translate">

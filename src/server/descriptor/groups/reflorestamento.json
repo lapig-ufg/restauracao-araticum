@@ -2,15 +2,15 @@
     {
         "idGroup": "reflorestamento",
         "labelGroup": "translate",
-        "groupExpanded": true,
+        "groupExpanded": false,
         "layers": [
             {
-                "idLayer": "reflorestamento_araticum",
+                "idLayer": "floresta_plantada",
                 "labelLayer": "translate",
-                "visible": true,
-                "selectedType": "areas_reflorestamento_araticum",
+                "visible": false,
+                "selectedType": "floresta_plantada_mapbiomas",
                 "types": [
-                    "areas_reflorestamento_araticum"
+                    "floresta_plantada_mapbiomas"
                 ]
             }
         ]

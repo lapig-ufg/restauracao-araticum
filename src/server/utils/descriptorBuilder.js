@@ -84,10 +84,12 @@ module.exports = function (app) {
     Internal.getGroupsOrder = function () {
 
         return [
+            'restauracao',
+            'climate_adaptation',
+            'regeneration_potential',
             'reflorestamento',
             'areas_especiais',
             'areas_declaradas',
-            'agropecuaria',
             'infraestrutura',
             'imagens'
         ]

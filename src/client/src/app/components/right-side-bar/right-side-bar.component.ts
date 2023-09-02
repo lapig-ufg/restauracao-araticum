@@ -38,6 +38,7 @@ export class RightSideBarComponent implements OnInit {
 
 
 
+
   @Input() set displayOptions(value: boolean) {
     this.onSideBarToggle.emit(value);
     this._displayOptions = value;
@@ -62,6 +63,7 @@ export class RightSideBarComponent implements OnInit {
   public infoResumo: any;
 
   //Charts Variables
+  public defaultRegion: any;
   public selectRegion: any;
   public objectFullScreenChart: any = {};
 
@@ -112,12 +114,14 @@ export class RightSideBarComponent implements OnInit {
     this.displayDashboard = false;
     this.chartObject = {};
 
-
-    this.selectRegion = {
-      type: 'country',
-      text: 'BRASIL',
-      value: 'Brasil'
+    this.defaultRegion = {
+      type: 'biome',
+      text: 'Cerrado',
+      value: 'CERRADO'
     };
+
+
+    this.selectRegion = this.defaultRegion;
 
     this.filterSelectedOnLayersForStatistics = "year=2020"
 
@@ -134,7 +138,7 @@ export class RightSideBarComponent implements OnInit {
 
     this.cardsToDisplay = {
       resumo: true,
-      area1: true,
+      area1: false,
       area2: true,
       area3: false,
       rankingTable: true
@@ -257,17 +261,25 @@ export class RightSideBarComponent implements OnInit {
     if (region) {
       this.selectRegion = region;
     } else {
-      this.selectRegion = {
-        type: 'country',
-        text: 'BRASIL',
-        value: 'Brasil'
-      };
+      this.selectRegion = this.defaultRegion;
     }
-    this.updateResumo();
-    this.updateArea1Charts();
-    this.updateArea2Charts();
-    // this.updateArea3Charts();
-    this.updateAreaTable();
+
+
+    if (this.cardsToDisplay.resumo) {
+      this.updateResumo();
+    }
+    if (this.cardsToDisplay.area1) {
+      this.updateArea1Charts()
+    }
+    if (this.cardsToDisplay.area2) {
+      this.updateArea2Charts()
+    }
+    if (this.cardsToDisplay.area3) {
+      this.updateArea3Charts();
+    }
+    if (this.cardsToDisplay.rankingTable) {
+      this.updateAreaTable();
+    }
 
   }
 

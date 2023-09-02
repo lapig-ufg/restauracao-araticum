@@ -4,8 +4,12 @@ module.exports = function (app) {
     var Query = {};
 
     Query.defaultParams = {
-        'type': 'bioma',
-        'region': 'Cerrado'
+        type: 'bioma',
+        value: 'CERRADO'
+    }
+
+    Internal.textDefaultParams = function () {
+        return Query.defaultParams.type + " ILIKE '" + Query.defaultParams.value + "'"
     }
 
     Query.extent = function (params) {
@@ -22,11 +26,11 @@ module.exports = function (app) {
             source: 'general',
             id: 'search',
             sql: "With priority_search AS ("
-                + " SELECT distinct concat_ws(' - ', text , uf) as text, value, type, 1 AS priority FROM regions_geom "
-                + "WHERE unaccent(text) ILIKE unaccent(${key})  AND type NOT in ('country') "
+                + " SELECT distinct concat_ws(' - ', text , uf) as text, value, type, 1 AS priority FROM v_regions_geom_cerrado_cities_states "
+                + "WHERE unaccent(text) ILIKE unaccent(${key})  AND type NOT in ('country', 'biome') "
                 + "UNION ALL "
-                + "SELECT distinct concat_ws(' - ', text , uf) as text, value, type, 2 AS priority FROM regions_geom "
-                + "WHERE unaccent(text) ILIKE unaccent(${key}%) AND type NOT in ('country') )"
+                + "SELECT distinct concat_ws(' - ', text , uf) as text, value, type, 2 AS priority FROM v_regions_geom_cerrado_cities_states "
+                + "WHERE unaccent(text) ILIKE unaccent(${key}%) AND type NOT in ('country', 'biome') )"
                 + "select * from priority_search order by priority asc limit 10",
             mantain: true
         }]
@@ -51,21 +55,31 @@ module.exports = function (app) {
         }]
     }
 
-    Query.cars = function () {
-        return [{
-            source: 'general',
-            id: 'search',
-            sql: "SELECT car_code as text, area_ha, ST_AsGeoJSON(geom) geojson FROM car_brasil WHERE unaccent(car_code) ILIKE unaccent(${key}%) order by area_ha DESC LIMIT 10",
-            mantain: true
-        }]
+    Query.cars = function (params) {
+        var key = params['key']
+        console.log("SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) as geojson FROM geo_car_imovel WHERE " + Internal.textDefaultParams() + " AND unaccent(cod_car) ILIKE unaccent('" + key + "%') order by area_ha DESC LIMIT 10")
+        return [
+            //     {
+            //     source: 'general',
+            //     id: 'search',
+            //     sql: "SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) geojson FROM car_brasil WHERE " + Internal.textDefaultParams() + " AND unaccent(car_code) ILIKE unaccent('" + key + "%') order by area_ha DESC LIMIT 10",
+            //     mantain: true
+            // },
+            {
+                source: 'lapig',
+                id: 'search',
+                sql: "SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) as geojson FROM geo_car_imovel WHERE " + Internal.textDefaultParams() + " AND unaccent(cod_car) ILIKE unaccent(${key}%) order by area_ha DESC LIMIT 10",
+                mantain: true
+            }]
     }
 
     Query.ucs = function (params) {
         var key = params['key']
+        // console.log("SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10")
         return [{
             source: 'general',
             id: 'search',
-            sql: "SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10",
+            sql: "SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10",
             mantain: true
         }]
     }

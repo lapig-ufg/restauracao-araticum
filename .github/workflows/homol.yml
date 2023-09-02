@@ -1,0 +1,139 @@
+name: Build and Deploy in Homology Server
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.4.2'
+
+
+      - name: Define a variável application_name
+        run: |
+          echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          repo_full_name=$GITHUB_REPOSITORY
+          repo_name=${repo_full_name##*/}
+          echo "START_TIME=$(date -u +%s)" >> $GITHUB_ENV
+          echo "Nome do repositório: $repo_name"
+
+          echo "application_name=app_araticum" >> $GITHUB_ENV
+
+          echo "LAST_COMMIT_HASH=$(git log --pretty=format:%h -n 1)" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_NAME=$(git show -s --pretty=%an)" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_EMAIL=$(git show -s --pretty=%ae)" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_DATE=$(git log -1 --format=%cd --date=local)" >> $GITHUB_ENV
+          echo "LAPIG_PROJECT_NAME=$(git config --local remote.origin.url)" >> $GITHUB_ENV
+          echo "LAPIG_LAST_COMMIT=$(git show --summary | grep 'commit' | awk '{print $2}')" >> $GITHUB_ENV
+          echo "LAPIG_COMMIT_COMMENT=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+          echo "LAPIG_COMMIT_DATE=$(git show -s --format=%ci)" >> $GITHUB_ENV
+          echo "LAPIG_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+          echo "NODE_OPTIONS=--max-old-space-size=8096"  >> $GITHUB_ENV
+
+      - name: Use Git outputs
+        run: |
+          echo "Author Name: $LAPIG_AUTHOR_NAME"
+          echo "Author Email: $LAPIG_AUTHOR_EMAIL"
+          echo "Author Date: $LAPIG_AUTHOR_DATE"
+          echo "Project Name: $LAPIG_PROJECT_NAME"
+          echo "Last Commit: $LAPIG_LAST_COMMIT"
+          echo "Commit Comment: $LAPIG_COMMIT_COMMENT"
+          echo "Commit Date: $LAPIG_COMMIT_DATE"
+          echo "Branch Name: $LAPIG_BRANCH_NAME"
+
+      - name: Create version.json
+        run: echo '{"commitId":"$LAST_COMMIT_HASH"}' > version.json
+
+      - name: Determine branch
+        id: get_branch
+        run: echo "::set-output name=branch::${GITHUB_REF##*/}"
+
+      - name: Build Server and client
+        run: |
+          npm set progress=false
+          cd ${{ github.workspace }}/src/server && npm install
+          cd ${{ github.workspace }}/src/client && npm install
+          cd ${{ github.workspace }}/src/client && ng build --stats-json --source-map=false --no-progress
+
+
+      - name: Validate and Build
+        run: |
+          git pull origin develop
+          docker build -t ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH} -t ${{secrets.REGISTRYHOMOL}}/$application_name:latest  -f docker/homologation/Dockerfile . --no-cache
+
+
+      - name: Login to Docker Registry
+        run: echo "${{ secrets.HARBOR_PASS }}" | docker login -u "${{ secrets.HARBOR_USER }}" --password-stdin "${{ secrets.URL_PRIVATE_REGISTRY }}"
+
+      - name: Push Image to Registry
+        run: |
+          docker push ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH}
+          docker push ${{secrets.REGISTRYHOMOL}}/$application_name:latest
+
+      - name: Remove image locally
+        run: |
+          docker rmi ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH}
+          docker rmi ${{secrets.REGISTRYHOMOL}}/$application_name:latest
+
+
+      - name: Add SSH key to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -t rsa ${{secrets.SERVER_HOMOL_KNOWN}} >> ~/.ssh/known_hosts  2>/dev/null 
+          chmod 644 ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Pull Image on Server
+        run: |
+          ssh ${{secrets.SERVER_HOMOL_SSH}} "docker pull ${{secrets.REGISTRYHOMOL}}/$application_name:latest"
+
+
+      - name: Deploy Container
+        run: |
+          
+          delete_status=$(ssh ${{secrets.SERVER_HOMOL_SSH}} "curl -v -X DELETE -w "%{http_code}"  http://${{secrets.SERVER_HOMOL}}/containers/$application_name?force=true  2>/dev/null")  
+          echo "Delete Status: $delete_status"
+          
+          create_status=$(ssh ${{secrets.SERVER_HOMOL_SSH}} "curl -v -X POST -H 'Content-Type: application/json' -d @${{secrets.CONFIG_FILES}}$application_name.json -s -o /dev/null -w "%{http_code}"  http://${{secrets.SERVER_HOMOL}}/containers/create?name=$application_name  2>/dev/null")  
+          echo "Create Status: $create_status"
+
+          echo "CREATE_STATUS=$create_status" >> $GITHUB_ENV
+          echo "DELETE_STATUS=$delete_status" >> $GITHUB_ENV
+      - name: Start Container
+        run: |
+          start_status=$(ssh ${{secrets.SERVER_HOMOL_SSH}} "curl -v -X POST -s -o /dev/null -w "%{http_code}"   http://${{secrets.SERVER_HOMOL}}/containers/$application_name/start  2>/dev/null") 
+          echo "Start Status: $start_status"
+          echo "START_STATUS=$start_status" >> $GITHUB_ENV
+
+      - name: Send message to Telegram
+        run: |
+          end_time=$(date -u +%s)
+          echo "LAPIG_DURATION=$((end_time - START_TIME))" >> $GITHUB_ENV
+          curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d "chat_id=${CHAT_ID}" -d "parse_mode=markdown" -d "text=*Project*: *${LAPIG_PROJECT_NAME}*\n*Branch*: ${LAPIG_BRANCH_NAME}\n*Author*: *${LAPIG_AUTHOR_NAME}*\n*Author_Email*: *${LAPIG_AUTHOR_EMAIL}*\n*Commit_ID*: *${LAPIG_LAST_COMMIT}*\n*Message_Commit*: *${LAPIG_COMMIT_COMMENT}*\n*Date_Commit*: *${LAPIG_COMMIT_DATE}*\n*Duration*: *${LAPIG_DURATION}*'"
+
+      - name: Send message to Discord
+        run: |
+          if [[ "${{ job.status }}" == "success" && "$START_STATUS" == "204" && "$DELETE_STATUS" == "204" && "$CREATE_STATUS" == "201"  ]]; then
+            echo "avatar_url='${{vars.LAPIG_SUCCESS}}'" >> $GITHUB_ENV
+          else
+            echo "avatar_url='${{vars.LAPIG_ERROR}}'" >> $GITHUB_ENV
+          fi
+          echo "discordDesc='Result: ${{ job.status }}\n Project: $LAPIG_PROJECT_NAME\n Commit: $LAPIG_LAST_COMMIT\n Author: $LAPIG_AUTHOR_NAME\n Author_Email: $LAPIG_AUTHOR_EMAIL\n Message: $LAPIG_COMMIT_COMMENT\n Date: $LAPIG_COMMIT_DATE\n Delete Status: $delete_status\n Create Status: $create_status\n Start Status: $start_status\n Duration: $LAPIG_DURATION seconds'" >> $GITHUB_ENV
+
+          echo "discordFooter='${{ github.workflow }} (#${{ github.run_number }})'" >> $GITHUB_ENV
+          echo "discordTitle='${{ github.workflow }} (build #${{ github.run_number }})'" >> $GITHUB_ENV
+          
+          
+          curl -H "Content-Type: application/json" -X POST -d '{"content": "${discordTitle}", "embeds": [ { "title": "${$discordTitle}", "description": "${discordDesc}", "footer": { "text": "${discordFooter}" } } ], "username": "GitHub Actions", "avatar_url": "${avatar_url}" }' https://discord.com/api/webhooks/${{ secrets.DISCORD_KEY }}
+            

@@ -39,8 +39,7 @@ module.exports = function (app) {
             "connectionTimeoutMillis": 0,
         },
         "port": env.PORT,
-        "ows_host": env.OWS_HOST,
-        "lapig-maps": env.LAPIG_MAPS
+        "ows_host": env.OWS,
     };
 
     if (env.NODE_ENV === 'prod') {

@@ -525,5 +525,9 @@ export class LeftSideBarComponent implements AfterViewInit {
     let bodyStyles = window.getComputedStyle(document.body);
     return bodyStyles.getPropertyValue('--' + name).trim();
   }
+  isHtmlString(str: string): boolean {
+    const doc = new DOMParser().parseFromString(str, 'text/html');
+    return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
+  }
 
 }
