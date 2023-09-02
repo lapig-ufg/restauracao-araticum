@@ -13,10 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.4.2'
 
       - name: Define a variável application_name
         run: |
@@ -53,6 +49,11 @@ jobs:
 
       - name: Create version.json
         run: echo '{"commitId":"$LAST_COMMIT_HASH"}' > version.json
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.4.2'
 
       - name: Build Server and client
         run: |
