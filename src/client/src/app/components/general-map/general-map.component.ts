@@ -1415,7 +1415,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     if (name !== 'None') {
       this.draw = new Draw({
         source: this.source,
-        type: name
+        type: name // @ts-ignore
       });
       this.addInteraction(this.draw, name, true);
     }

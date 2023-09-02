@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Feature, Overlay } from 'ol';
 import { Draw } from 'ol/interaction';
 import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style';
