@@ -4,6 +4,7 @@
       <div class="logo-details">
           <img src="../../../assets/logos/icone.png" (click)='toggleMenu()'>
       </div>
+
       <ul #leftSidebar class="nav-list">
         <drag-scroll class="nav-list-drag" [scrollbar-hidden]="true" [drag-scroll-x-disabled]="true">
           <li (click)="onFilter()">
@@ -202,6 +203,9 @@
     <div class="footer">
       <div class="partners">
         <img src="assets/logos/marcas.png" alt="">
+      </div>
+      <div class="build_version">
+        <p>{{COMMIT_ID}}</p>
       </div>
     </div>
   </p-sidebar>
