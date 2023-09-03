@@ -26,6 +26,8 @@ import Text from "ol/style/Text";
 import Graticule from 'ol-ext/control/Graticule';
 import Compass from 'ol-ext/control/Compass';
 import { GoogleAnalyticsService } from "../services/google-analytics.service";
+import { environment } from "../../../environments/environment";
+
 
 @Component({
   selector: 'app-left-side-bar',
@@ -86,6 +88,7 @@ export class LeftSideBarComponent implements AfterViewInit {
 
   public metadata: Metadata;
   public displayMetadata: boolean;
+  public COMMIT_ID = `Build: ${environment.COMMIT_ID}`
 
   constructor(
     protected el: ElementRef,
