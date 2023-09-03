@@ -56,7 +56,7 @@ import { environment } from "../../../environments/environment";
 import { GoogleAnalyticsService } from "../services/google-analytics.service";
 import { GalleryService } from '../services/gallery.service';
 import MaskFilter from 'ol-ext/filter/Mask';
-import CropFilter from 'ol-ext/filter/Crop';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -302,7 +302,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
           source: new XYZ({
             wrapX: false,
             url:
-              'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+              'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFpcm9tciIsImEiOiJjbG0wd253b3MwZHBoM2ptMXg2eWNnZTk0In0.aLY0DcNuQrcpk_mFUHODuw'
           }),
           visible: true
         })
@@ -317,7 +317,7 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
           source: new XYZ({
             wrapX: false,
             url:
-              'https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+              'https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFpcm9tciIsImEiOiJjbG0wd253b3MwZHBoM2ptMXg2eWNnZTk0In0.aLY0DcNuQrcpk_mFUHODuw'
           }),
           visible: false
         })
@@ -1410,9 +1410,11 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     return writer.writeFeatures(geom);
   }
 
-  addDrawInteraction(name: string): void {
+  // @ts-ignore
+  addDrawInteraction(name: any): void {
     this.drawing = true;
     if (name !== 'None') {
+      // @ts-ignore
       this.draw = new Draw({
         source: this.source,
         type: name

@@ -227,6 +227,17 @@
           }
         }
       },
+      "climate_adaptation": {
+        "labelGroup": "Adaptação climática"
+      },
+      "regeneration_potential": {
+        "labelGroup": "Potencial de regeneração",
+        "layers": {
+          "regeneration_potential": {
+            "labelLayer": "Capacidade de regeneração natural do Cerrado em áreas de pastagens"
+          }
+        }
+        },
       "restauracao": {
         "labelGroup": "Restauração",
         "layers": {

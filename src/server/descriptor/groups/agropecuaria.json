@@ -1,0 +1,18 @@
+[
+    {
+        "idGroup": "agropecuaria",
+        "labelGroup": "translate",
+        "groupExpanded": false,
+        "layers": [
+            {
+                "idLayer": "floresta_plantada",
+                "labelLayer": "translate",
+                "visible": false,
+                "selectedType": "floresta_plantada_mapbiomas",
+                "types": [
+                    "floresta_plantada_mapbiomas"
+                ]
+            }
+        ]
+    }
+]
