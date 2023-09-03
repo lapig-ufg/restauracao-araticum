@@ -28,7 +28,7 @@ jobs:
       - name: Define a variável application_name
         id: creat_env
         run: |
-          echo "START_TIME=$(date -u +%s)" >> $GITHUB_ENV
+          echo "START_TIME=$(date -u +%s)" >> "$GITHUB_OUTPUT"
           
           repo_full_name=$GITHUB_REPOSITORY
           repo_name=${repo_full_name##*/}
@@ -37,14 +37,16 @@ jobs:
           echo "application_name=app_araticum" >> $GITHUB_ENV
 
           echo "LAST_COMMIT_HASH=$(git log --pretty=format:%h -n 1)" >> $GITHUB_ENV
-          echo "LAPIG_AUTHOR_NAME=$(git show -s --pretty=%an)" >> $GITHUB_ENV
-          echo "LAPIG_AUTHOR_EMAIL=$(git show -s --pretty=%ae)" >> $GITHUB_ENV
-          echo "LAPIG_AUTHOR_DATE=$(git log -1 --format=%cd --date=local)" >> $GITHUB_ENV
-          echo "LAPIG_PROJECT_NAME=$(git config --local remote.origin.url)" >> $GITHUB_ENV
-          echo "LAPIG_LAST_COMMIT=$(git show --summary | grep 'commit' | awk '{print $2}')" >> $GITHUB_ENV
-          echo "LAPIG_COMMIT_COMMENT=$(git log -1 --pretty=%B | tr '-' '')" >> $GITHUB_ENV
-          echo "LAPIG_COMMIT_DATE=$(git show -s --format=%ci)" >> $GITHUB_ENV
-          echo "LAPIG_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD | tr '-' '')" >> $GITHUB_ENV
+          
+          echo "LAST_COMMIT_HASH=${{needs.build-and-deploy.outputs.LAST_COMMIT_HASH}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_AUTHOR_NAME=${{needs.build-and-deploy.outputs.LAPIG_AUTHOR_NAME}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_AUTHOR_EMAIL=${{needs.build-and-deploy.outputs.LAPIG_AUTHOR_EMAIL}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_AUTHOR_DATE=${{needs.build-and-deploy.outputs.LAPIG_AUTHOR_DATE}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_PROJECT_NAME=${{needs.build-and-deploy.outputs.LAPIG_PROJECT_NAME}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_LAST_COMMIT=${{needs.build-and-deploy.outputs.LAPIG_LAST_COMMIT}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_COMMIT_COMMENT=${{needs.build-and-deploy.outputs.LAPIG_COMMIT_COMMENT}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_COMMIT_DATE=${{needs.build-and-deploy.outputs.LAPIG_COMMIT_DATE}}" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_BRANCH_NAME=${{needs.build-and-deploy.outputs.LAPIG_BRANCH_NAME}}" >> "$GITHUB_OUTPUT"
           
           echo "NODE_OPTIONS=--max-old-space-size=8096"  >> $GITHUB_ENV
 
