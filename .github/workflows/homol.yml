@@ -17,7 +17,7 @@ jobs:
       - name: Define a variável application_name
         run: |
           branch=$(echo "${GITHUB_REF##*/}" | tr '-' '_')
-          echo "branch=${branch}" >> $GITHUB_ENV
+          echo "branch=$branch" >> $GITHUB_ENV
           echo "Branch: $branch"
           repo_full_name=$GITHUB_REPOSITORY
           repo_name=${repo_full_name##*/}
@@ -67,7 +67,8 @@ jobs:
 
       - name: Validate and Build
         run: |
-          git pull origin develop
+          echo "Validate and Build $branch"
+          git pull origin $branch
           docker build -t ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH} -t ${{secrets.REGISTRYHOMOL}}/$application_name:latest  -f docker/homologation/Dockerfile . --no-cache
 
 
