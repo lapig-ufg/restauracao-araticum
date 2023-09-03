@@ -155,7 +155,7 @@ jobs:
           else
             echo "avatar_url=${{vars.LAPIG_ERROR}}" >> $GITHUB_ENV
           fi
-          echo "discordDesc=Result: ${{ job.status }}\n Project: $LAPIG_PROJECT_NAME\n Commit: $LAPIG_LAST_COMMIT\n Author: $LAPIG_AUTHOR_NAME\n Author_Email: $LAPIG_AUTHOR_EMAIL\n Message: $LAPIG_COMMIT_COMMENT\n Date: $LAPIG_COMMIT_DATE\n Delete Status: $delete_status\n Create Status: $create_status\n Start Status: $start_status\n Duration: $LAPIG_DURATION seconds" >> $GITHUB_ENV
+          echo "discordDesc=Result: ${{ needs.build-and-deploy.result }}\n Project: $LAPIG_PROJECT_NAME\n Commit: $LAPIG_LAST_COMMIT\n Author: $LAPIG_AUTHOR_NAME\n Author_Email: $LAPIG_AUTHOR_EMAIL\n Message: $LAPIG_COMMIT_COMMENT\n Date: $LAPIG_COMMIT_DATE\n Delete Status: $delete_status\n Create Status: $create_status\n Start Status: $start_status\n Duration: $LAPIG_DURATION seconds" >> $GITHUB_ENV
 
           echo "discordFooter=${{ github.workflow }} (#${{ github.run_number }})" >> $GITHUB_ENV
           echo "discordTitle=${{ github.workflow }} (build #${{ github.run_number }})" >> $GITHUB_ENV
