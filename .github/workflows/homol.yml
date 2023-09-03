@@ -60,7 +60,6 @@ jobs:
 
       - name: Build Server and client
         run: |
-          cat arquivo_inexistente.txt
           npm set progress=false
           cd ${{ github.workspace }}/src/server && npm install
           cd ${{ github.workspace }}/src/client && npm install
