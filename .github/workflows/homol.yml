@@ -116,7 +116,7 @@ jobs:
           echo "START_STATUS=$start_status" >> $GITHUB_ENV
   post-deploy:
     runs-on: ubuntu-latest
-    if: always()
+    needs: build-and-deploy
     steps:
       - name: Send message to Telegram
         run: |
