@@ -9,7 +9,16 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     outputs:
-      START_TIME: ${{ steps.step2.outputs.START_TIME }}
+      START_TIME: ${{ steps.creat_env.outputs.START_TIME }}
+      LAST_COMMIT_HASH: ${{ steps.creat_env.outputs.LAST_COMMIT_HASH }}
+      LAPIG_AUTHOR_NAME: ${{ steps.creat_env.outputs.LAPIG_AUTHOR_NAME }}
+      LAPIG_AUTHOR_EMAIL: ${{ steps.creat_env.outputs.LAPIG_AUTHOR_EMAIL }}
+      LAPIG_AUTHOR_DATE: ${{ steps.creat_env.outputs.LAPIG_AUTHOR_DATE }}
+      LAPIG_PROJECT_NAME: ${{ steps.creat_env.outputs.LAPIG_PROJECT_NAME }}
+      LAPIG_LAST_COMMIT: ${{ steps.creat_env.outputs.LAPIG_LAST_COMMIT }}
+      LAPIG_COMMIT_COMMENT: ${{ steps.creat_env.outputs.LAPIG_COMMIT_COMMENT }}
+      LAPIG_COMMIT_DATE: ${{ steps.creat_env.outputs.LAPIG_COMMIT_DATE }}
+      LAPIG_BRANCH_NAME: ${{ steps.creat_env.outputs.LAPIG_BRANCH_NAME }}
 
     steps:
       - name: Checkout code
@@ -28,6 +37,15 @@ jobs:
           echo "application_name=app_araticum" >> $GITHUB_ENV
 
           echo "LAST_COMMIT_HASH=$(git log --pretty=format:%h -n 1)" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_NAME=$(git show -s --pretty=%an)" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_EMAIL=$(git show -s --pretty=%ae)" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_DATE=$(git log -1 --format=%cd --date=local)" >> $GITHUB_ENV
+          echo "LAPIG_PROJECT_NAME=$(git config --local remote.origin.url)" >> $GITHUB_ENV
+          echo "LAPIG_LAST_COMMIT=$(git show --summary | grep 'commit' | awk '{print $2}')" >> $GITHUB_ENV
+          echo "LAPIG_COMMIT_COMMENT=$(git log -1 --pretty=%B | tr '-' '')" >> $GITHUB_ENV
+          echo "LAPIG_COMMIT_DATE=$(git show -s --format=%ci)" >> $GITHUB_ENV
+          echo "LAPIG_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD | tr '-' '')" >> $GITHUB_ENV
+          
           echo "NODE_OPTIONS=--max-old-space-size=8096"  >> $GITHUB_ENV
 
       - name: Create version.json
@@ -103,22 +121,21 @@ jobs:
     needs: build-and-deploy
     if: ${{ always() || needs.build-and-deploy.result == 'failure' }}
     steps:
-      - name: Get Infos
+      - name: Load env
         run: |
-          echo "LAST_COMMIT_HASH=$(git log --pretty=format:%h -n 1)" >> $GITHUB_ENV
-          echo "LAPIG_AUTHOR_NAME=$(git show -s --pretty=%an)" >> $GITHUB_ENV
-          echo "LAPIG_AUTHOR_EMAIL=$(git show -s --pretty=%ae)" >> $GITHUB_ENV
-          echo "LAPIG_AUTHOR_DATE=$(git log -1 --format=%cd --date=local)" >> $GITHUB_ENV
-          echo "LAPIG_PROJECT_NAME=$(git config --local remote.origin.url)" >> $GITHUB_ENV
-          echo "LAPIG_LAST_COMMIT=$(git show --summary | grep 'commit' | awk '{print $2}')" >> $GITHUB_ENV
-          echo "LAPIG_COMMIT_COMMENT=$(git log -1 --pretty=%B | tr '-' '')" >> $GITHUB_ENV
-          echo "LAPIG_COMMIT_DATE=$(git show -s --format=%ci)" >> $GITHUB_ENV
-          echo "LAPIG_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD | tr '-' '')" >> $GITHUB_ENV
-
+          echo "LAST_COMMIT_HASH=${{needs.build-and-deploy.outputs.LAST_COMMIT_HASH}}" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_NAME=${{needs.build-and-deploy.outputs.LAPIG_AUTHOR_NAME}}" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_EMAIL=${{needs.build-and-deploy.outputs.LAPIG_AUTHOR_EMAIL}}" >> $GITHUB_ENV
+          echo "LAPIG_AUTHOR_DATE=${{needs.build-and-deploy.outputs.LAPIG_AUTHOR_DATE}}" >> $GITHUB_ENV
+          echo "LAPIG_PROJECT_NAME=${{needs.build-and-deploy.outputs.LAPIG_PROJECT_NAME}}" >> $GITHUB_ENV
+          echo "LAPIG_LAST_COMMIT=${{needs.build-and-deploy.outputs.LAPIG_LAST_COMMIT}}" >> $GITHUB_ENV
+          echo "LAPIG_COMMIT_COMMENT=${{needs.build-and-deploy.outputs.LAPIG_COMMIT_COMMENT}}" >> $GITHUB_ENV
+          echo "LAPIG_COMMIT_DATE=${{needs.build-and-deploy.outputs.LAPIG_COMMIT_DATE}}" >> $GITHUB_ENV
+          echo "LAPIG_BRANCH_NAME=${{needs.build-and-deploy.outputs.LAPIG_BRANCH_NAME}}" >> $GITHUB_ENV
       - name: Send message to Telegram
         run: |
           end_time=$(date -u +%s)
-          echo "LAPIG_DURATION=$((end_time - ${{needs.job1.build-and-deploy.START_TIME}}))" >> $GITHUB_ENV
+          echo "LAPIG_DURATION=$((end_time - $START_TIME))" >> $GITHUB_ENV
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_API_KEY }}/sendMessage" -d "chat_id=${{ secrets.CHAT_ID }}" -d "parse_mode=markdown" -d "text=*Project*: *${LAPIG_PROJECT_NAME}*\
           *Status:*${{ needs.build-and-deploy.result }}\
           *Branch*: ${LAPIG_BRANCH_NAME}\
