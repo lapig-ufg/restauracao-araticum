@@ -120,7 +120,7 @@ jobs:
           echo "LAPIG_DURATION=$((end_time - START_TIME))" >> $GITHUB_ENV
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_API_KEY }}/sendMessage" -d "chat_id=${{ secrets.CHAT_ID }}" -d "parse_mode=markdown" -d "text=*Project*: *${LAPIG_PROJECT_NAME}*\n*Branch*: ${LAPIG_BRANCH_NAME}\n*Author*: *${LAPIG_AUTHOR_NAME}*\n*Author_Email*: *${LAPIG_AUTHOR_EMAIL}*\n*Commit_ID*: *${LAPIG_LAST_COMMIT}*\n*Message_Commit*: *${LAPIG_COMMIT_COMMENT}*\n*Date_Commit*: *${LAPIG_COMMIT_DATE}*\n*Duration*: *${LAPIG_DURATION}*'"
 
-      - name: Send message to Discord
+      - name: creat message to Discord
         run: |
           if [[ "${{ job.status }}" == "success" && "$START_STATUS" == "204" && "$DELETE_STATUS" == "204" && "$CREATE_STATUS" == "201"  ]]; then
             echo "avatar_url='${{vars.LAPIG_SUCCESS}}'" >> $GITHUB_ENV
@@ -131,8 +131,9 @@ jobs:
 
           echo "discordFooter='${{ github.workflow }} (#${{ github.run_number }})'" >> $GITHUB_ENV
           echo "discordTitle='${{ github.workflow }} (build #${{ github.run_number }})'" >> $GITHUB_ENV
-          
+
+      - name: Send menssage to Discord
+        run: |
           echo "{\"content\": \"$discordTitle\", \"embeds\": [ { \"title\": \"$discordTitle\", \"description\": \"$discordDesc\", \"footer\": { \"text\": \"$discordFooter\" } } ], \"username\": \"GitHub Actions\", \"avatar_url\": \"$avatar_url\" }"
-          
           curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$discordTitle\", \"embeds\": [ { \"title\": \"$discordTitle\", \"description\": \"$discordDesc\", \"footer\": { \"text\": \"$discordFooter\" } } ], \"username\": \"GitHub Actions\", \"avatar_url\": \"$avatar_url\" }" https://discord.com/api/webhooks/${{ secrets.DISCORD_KEY }}
             
