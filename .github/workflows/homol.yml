@@ -65,10 +65,8 @@ jobs:
           cd ${{ github.workspace }}/src/client && ng build -c homolog --stats-json --source-map=false --no-progress
 
 
-      - name: Validate and Build
+      - name: Build Docker
         run: |
-          echo "Validate and Build $branch"
-          git pull origin $branch
           docker build -t ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH} -t ${{secrets.REGISTRYHOMOL}}/$application_name:latest  -f docker/homologation/Dockerfile . --no-cache
 
 
