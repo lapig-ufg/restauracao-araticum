@@ -56,7 +56,7 @@ import { environment } from "../../../environments/environment";
 import { GoogleAnalyticsService } from "../services/google-analytics.service";
 import { GalleryService } from '../services/gallery.service';
 import MaskFilter from 'ol-ext/filter/Mask';
-import CropFilter from 'ol-ext/filter/Crop';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -1410,12 +1410,13 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
     return writer.writeFeatures(geom);
   }
 
+  // @ts-ignore
   addDrawInteraction(name: string): void {
     this.drawing = true;
     if (name !== 'None') {
       this.draw = new Draw({
         source: this.source,
-        type: name // @ts-ignore
+        type: name
       });
       this.addInteraction(this.draw, name, true);
     }
