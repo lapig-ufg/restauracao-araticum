@@ -1,9 +1,9 @@
-name: Build and Deploy in Homology Server
+name: Build and Deploy in Production Server
 
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   build-and-deploy:
@@ -64,12 +64,12 @@ jobs:
           cd ${{ github.workspace }}/src/server && npm install
           cd ${{ github.workspace }}/src/client && npm install
           npm install -g @angular/cli@12.2.16
-          cd ${{ github.workspace }}/src/client && ng build -c homolog --stats-json --source-map=false --no-progress
+          cd ${{ github.workspace }}/src/client && ng build --stats-json --source-map=false --no-progress
 
 
       - name: Build Docker
         run: |
-          docker build -t ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH} -t ${{secrets.REGISTRYHOMOL}}/$application_name:latest  -f docker/homologation/Dockerfile . --no-cache
+          docker build -t ${{secrets.REGISTRYPROD}}/$application_name:${LAST_COMMIT_HASH} -t ${{secrets.REGISTRYPROD}}/$application_name:latest  -f docker/production/Dockerfile . --no-cache
 
 
       - name: Login to Docker Registry
@@ -77,42 +77,42 @@ jobs:
 
       - name: Push Image to Registry
         run: |
-          docker push ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH}
-          docker push ${{secrets.REGISTRYHOMOL}}/$application_name:latest
+          docker push ${{secrets.REGISTRYPROD}}/$application_name:${LAST_COMMIT_HASH}
+          docker push ${{secrets.REGISTRYPROD}}/$application_name:latest
 
       - name: Remove image locally
         run: |
-          docker rmi ${{secrets.REGISTRYHOMOL}}/$application_name:${LAST_COMMIT_HASH}
-          docker rmi ${{secrets.REGISTRYHOMOL}}/$application_name:latest
+          docker rmi ${{secrets.REGISTRYPROD}}/$application_name:${LAST_COMMIT_HASH}
+          docker rmi ${{secrets.REGISTRYPROD}}/$application_name:latest
 
 
       - name: Add SSH key to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -t rsa ${{secrets.SERVER_HOMOL_KNOWN}} >> ~/.ssh/known_hosts  2>/dev/null 
+          ssh-keyscan -t rsa ${{secrets.SERVER_PROD_KNOWN}} >> ~/.ssh/known_hosts  2>/dev/null 
           chmod 644 ~/.ssh/known_hosts
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa 
           chmod 600 ~/.ssh/id_rsa
 
       - name: Pull Image on Server
         run: |
-          ssh ${{secrets.SERVER_HOMOL_SSH}} "docker pull ${{secrets.REGISTRYHOMOL}}/$application_name:latest"
+          ssh ${{secrets.SERVER_PROD_SSH}} "docker pull ${{secrets.REGISTRYPROD}}/$application_name:latest"
 
 
       - name: Deploy Container
         run: |
           
-          delete_status=$(ssh ${{secrets.SERVER_HOMOL_SSH}} "curl -v -X DELETE -w "%{http_code}"  http://${{secrets.SERVER_HOMOL}}/containers/$application_name?force=true  2>/dev/null")  
+          delete_status=$(ssh ${{secrets.SERVER_PROD_SSH}} "curl -v -X DELETE -w "%{http_code}"  http://${{secrets.SERVER_PROD}}/containers/$application_name?force=true  2>/dev/null")  
           echo "Delete Status: $delete_status"
           
-          create_status=$(ssh ${{secrets.SERVER_HOMOL_SSH}} "curl -v -X POST -H 'Content-Type: application/json' -d @${{secrets.CONFIG_FILES}}$application_name.json -s -o /dev/null -w "%{http_code}"  http://${{secrets.SERVER_HOMOL}}/containers/create?name=$application_name  2>/dev/null")  
+          create_status=$(ssh ${{secrets.SERVER_PROD_SSH}} "curl -v -X POST -H 'Content-Type: application/json' -d @${{secrets.CONFIG_FILES}}$application_name.json -s -o /dev/null -w "%{http_code}"  http://${{secrets.SERVER_PROD}}/containers/create?name=$application_name  2>/dev/null")  
           echo "Create Status: $create_status"
 
           echo "CREATE_STATUS=$create_status" >> $GITHUB_ENV
           echo "DELETE_STATUS=$delete_status" >> $GITHUB_ENV
       - name: Start Container
         run: |
-          start_status=$(ssh ${{secrets.SERVER_HOMOL_SSH}} "curl -v -X POST -s -o /dev/null -w "%{http_code}"   http://${{secrets.SERVER_HOMOL}}/containers/$application_name/start  2>/dev/null") 
+          start_status=$(ssh ${{secrets.SERVER_PROD_SSH}} "curl -v -X POST -s -o /dev/null -w "%{http_code}"   http://${{secrets.SERVER_PROD}}/containers/$application_name/start  2>/dev/null") 
           echo "Start Status: $start_status"
           echo "START_STATUS=$start_status" >> $GITHUB_ENV
           
