@@ -47,7 +47,7 @@ jobs:
           echo "LAPIG_PROJECT_NAME=$(git config --local remote.origin.url)" >> "$GITHUB_OUTPUT"
           echo "LAPIG_COMMIT_COMMENT=$(git log -1 --pretty=%B)" >> "$GITHUB_OUTPUT"
           echo "LAPIG_COMMIT_DATE=$(git show -s --format=%ci)" >> "$GITHUB_OUTPUT"
-          echo "LAPIG_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD )" >> "$GITHUB_OUTPUT"
+          echo "LAPIG_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD | tr '-' '_')" >> "$GITHUB_OUTPUT"
           
           echo "NODE_OPTIONS=--max-old-space-size=8096"  >> $GITHUB_ENV
 
