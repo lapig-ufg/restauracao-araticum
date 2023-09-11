@@ -33,6 +33,7 @@ export class MainComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
+
     //IF para identificar quando o caso é mobile.
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
       this.isMobile = true;
@@ -46,7 +47,10 @@ export class MainComponent implements OnInit, AfterContentChecked {
       this.acceptTerms = false;
     }else{
       this.acceptTerms = true;
+      this.showMessage = false
     }
+
+    console.log(this.acceptTerms,this.showMessage)
     this.getDescriptor();
   }
   ngAfterContentChecked(): void {
