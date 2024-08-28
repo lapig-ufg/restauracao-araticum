@@ -9,7 +9,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      SERVER_KNOWN: ${{secrets.SERVER_PROD_KNOWN}}
+      SERVER_KNOWN: ${{secrets.SERVER_LAMCAD_KNOWN}}
       DOCKER_SERVER: ${{secrets.DOCKER_LAMCAD}}
       SSH_SERVER: ${{secrets.SERVER_LAMCAD_SSH}}
       DOCKER_PATH: "prod"
