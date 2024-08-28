@@ -111,7 +111,7 @@ jobs:
         id: deploy_container
         run: |
           delete_status=$(ssh $SSH_SERVER "curl -v -X DELETE -w "%{http_code}"  http://$DOCKER_SERVER/containers/$application_name?force=true  2>/dev/null")  
-          create_status=$(ssh $SSH_SERVER "curl -v -X POST -H 'Content-Type: application/json' -d @${{secrets.CONFIG_FILES}}$application_name.json -s -o /dev/null -w "%{http_code}"  http://$DOCKER_SERVER/containers/create?name=$application_name  2>/dev/null")  
+          create_status=$(ssh $SSH_SERVER "curl -v -X POST -H 'Content-Type: application/json' -d @${{secrets.LAMCAD_FILES}}$application_name.json -s -o /dev/null -w "%{http_code}"  http://$DOCKER_SERVER/containers/create?name=$application_name  2>/dev/null")  
           case $delete_status in
             204) delete_status_text="OK";;
             *) delete_status_text="ERROR";;
