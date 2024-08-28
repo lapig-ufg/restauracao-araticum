@@ -14,5 +14,6 @@ ADD ./src/client/dist/client /APP/restauracao-araticum/src/client/dist/client
 WORKDIR /APP/restauracao-araticum
 CMD [ "/bin/bash", "-c", "/APP/src/server/prod-start.sh; tail -f /dev/null"]
 
+
 ENTRYPOINT [ "/APP/Monitora.sh"]
 
