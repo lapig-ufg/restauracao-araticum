@@ -1,4 +1,4 @@
-FROM registry.lapig.iesa.ufg.br/lapig-images-prod/app_araticum:base
+FROM lapig/app_araticum:base
 
 # Clone app and npm install on server
 ENV URL_TO_APPLICATION_GITHUB="https://github.com/lapig-ufg/restauracao-araticum.git"
@@ -15,3 +15,4 @@ WORKDIR /APP/restauracao-araticum
 CMD [ "/bin/bash", "-c", "/APP/src/server/prod-start.sh; tail -f /dev/null"]
 
 ENTRYPOINT [ "/APP/Monitora.sh"]
+
