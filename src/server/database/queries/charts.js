@@ -54,8 +54,8 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'restoration',
-                sql: " SELECT  CAST(sum(a.area_ha) as double precision) as value "
-                    + " FROM araticum_restauracao a "
+                sql: " SELECT  CAST(st_area(st_union(geometry)::geography)/10000 as double precision) as value "
+                    + " FROM araticum_restauracao_2024 a "
                     + " WHERE " + regionFilter
             }
         ]
@@ -84,7 +84,7 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'areaRestorationPerProject',
-                sql: "SELECT metodo_padrao as label, SUM(area_ha) as value from araticum_restauracao GROUP BY 1 ORDER BY 2 DESC ",
+                sql: "SELECT metprinc as label, st_area(st_union(geometry)::geography)/10000 as value from araticum_restauracao_2024 GROUP BY 1 ORDER BY 2 DESC ",
                 mantain: true
             }
         ];
@@ -111,7 +111,7 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'projetos',
-                sql: "SELECT projeto, fonte, SUM(area_ha) as value from araticum_restauracao GROUP BY 1, 2 ORDER BY 3 DESC ",
+            sql: "SELECT projeto, fonte, st_area(st_union(geometry)::geography)/10000  as value from araticum_restauracao_2024 GROUP BY 1, 2 ORDER BY 3 DESC ",
                 mantain: true
             }
         ]

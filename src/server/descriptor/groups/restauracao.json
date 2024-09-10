@@ -8,9 +8,9 @@
                 "idLayer": "restauracao_araticum",
                 "labelLayer": "translate",
                 "visible": true,
-                "selectedType": "areas_restauracao_araticum",
+                "selectedType": "araticum_restauracao_2024",
                 "types": [
-                    "areas_restauracao_araticum"
+                    "araticum_restauracao_2024"
                 ]
             },
             {
