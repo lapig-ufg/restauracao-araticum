@@ -106,4 +106,4 @@ jobs:
           docker pull lapig/$application_name:${DOCKER_PATH}_latest
 
       - name: Restart app
-        run: /compose/resetapp.sh $application_name
+        run: /compose/resetapp.sh --title 'Plataforma Araticum' $application_name
