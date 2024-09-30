@@ -9,64 +9,38 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-
       APPLICATION_NAME: ${{ steps.creat_env.outputs.APPLICATION_NAME }}
       DOCKER_PATH: ${{ steps.creat_env.outputs.DOCKER_PATH }}
-
-      START_TIME: ${{ steps.creat_env.outputs.START_TIME }}
       LAST_COMMIT_HASH: ${{ steps.creat_env.outputs.LAST_COMMIT_HASH }}
-
-      LAPIG_AUTHOR_NAME: ${{ steps.creat_env.outputs.LAPIG_AUTHOR_NAME }}
-      LAPIG_AUTHOR_EMAIL: ${{ steps.creat_env.outputs.LAPIG_AUTHOR_EMAIL }}
-      LAPIG_AUTHOR_DATE: ${{ steps.creat_env.outputs.LAPIG_AUTHOR_DATE }}
-      LAPIG_PROJECT_NAME: ${{ steps.creat_env.outputs.LAPIG_PROJECT_NAME }}
-      LAPIG_COMMIT_DATE: ${{ steps.creat_env.outputs.LAPIG_COMMIT_DATE }}
-
-      CREATE_STATUS: ${{steps.deploy_container.outputs.CREATE_STATUS}}
-      DELETE_STATUS: ${{steps.delete_container.outputs.DELETE_STATUS}}
-      START_STATUS: ${{steps.start_container.outputs.START_STATUS}}
-
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-
-      - name: Define a variável application_name
+      - name: Define environment variables
         id: creat_env
         run: |
-          echo "START_TIME=$(date -u +%s)" >> "$GITHUB_OUTPUT"
-          echo "DOCKER_PATH=prod" >> $GITHUB_ENV
-          echo "DOCKER_PATH=prod" >> $GITHUB_OUTPUT
-          repo_full_name=$GITHUB_REPOSITORY
-          repo_name=${repo_full_name##*/}
-          echo "Nome do repositório: $repo_name"
+           # Função para definir variáveis no GITHUB_ENV e GITHUB_OUTPUT
+          set_var() {
+            echo "$1=$2" >> $GITHUB_ENV
+            echo "$1=$2" >> $GITHUB_OUTPUT
+          }
 
-          echo "application_name=app_araticum" >> $GITHUB_ENV
-          echo "APPLICATION_NAME=app_araticum" >> $GITHUB_OUTPUT
-
-          echo "LAST_COMMIT_HASH=$(git log --pretty=format:%h -n 1)" >> $GITHUB_ENV
-          
-          echo "LAST_COMMIT_HASH=$(git log --pretty=format:%h -n 1)" >> "$GITHUB_OUTPUT"
-          
-          echo "LAPIG_AUTHOR_NAME=$(git show -s --pretty=%an)" >> "$GITHUB_OUTPUT"
-          echo "LAPIG_AUTHOR_EMAIL=$(git show -s --pretty=%ae)" >> "$GITHUB_OUTPUT"
-          echo "LAPIG_AUTHOR_DATE=$(git log -1 --format=%cd --date=local)" >> "$GITHUB_OUTPUT"
-          echo "LAPIG_PROJECT_NAME=$repo_name" >> "$GITHUB_OUTPUT"
-          echo "LAPIG_COMMIT_DATE=$(git show -s --format=%ci)" >> "$GITHUB_OUTPUT"
-          
-          
-          echo "NODE_OPTIONS=--max-old-space-size=8096"  >> $GITHUB_ENV
+          # Defina as variáveis
+          set_var "DOCKER_PATH" "prod"
+          set_var "APPLICATION_NAME" "app_araticum"
+          set_var "LAST_COMMIT_HASH" "$(git log --pretty=format:%h -n 1)"
+          echo "NODE_OPTIONS=--max-old-space-size=8096" >> $GITHUB_ENV
 
       - name: Create version.json
         run: echo "{\"commitId\":\"$LAST_COMMIT_HASH\"}" > version.json
 
-      - name: Configurar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16.4.2'
 
-      - name: Build Server and client
+      - name: Build Server and Client
         run: |
           npm set progress=false
           cd ${{ github.workspace }}/src/server && npm install
@@ -74,9 +48,11 @@ jobs:
           npm install -g @angular/cli@12.2.16
           cd ${{ github.workspace }}/src/client && ng build --stats-json --source-map=false --no-progress
 
-      - name: Build Docker
+      - name: Build Docker image
         run: |
-          docker build -t lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH} -t lapig/$application_name:${DOCKER_PATH}_latest  -f docker/$DOCKER_PATH/Dockerfile . --no-cache
+          docker build -t lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH} \
+                        -t lapig/$application_name:${DOCKER_PATH}_latest \
+                        -f docker/$DOCKER_PATH/Dockerfile . --no-cache
 
       - name: Login to Docker Registry
         run: echo "${{ secrets.DOCKERHUB_PASS }}" | docker login -u "lapig" --password-stdin
@@ -86,24 +62,23 @@ jobs:
           docker push lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH}
           docker push lapig/$application_name:${DOCKER_PATH}_latest
 
-      - name: Remove image locally
+      - name: Remove local images
         run: |
           docker rmi lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH}
           docker rmi lapig/$application_name:${DOCKER_PATH}_latest
 
   deploy:
-     needs: build
-     runs-on: self-hosted
+    needs: build
+    runs-on: self-hosted
      
-     steps:
-      - name: Load env
-        run: |
-          echo "application_name=${{needs.build.outputs.APPLICATION_NAME}}" >> $GITHUB_ENV
-          echo "DOCKER_PATH=${{needs.build.outputs.DOCKER_PATH}}" >> $GITHUB_ENV
-
+    steps:
       - name: Pull Image on Server
         run: |
-          docker pull lapig/$application_name:${DOCKER_PATH}_latest
+          docker pull lapig/${{ needs.build.outputs.APPLICATION_NAME }}:${{ needs.build.outputs.DOCKER_PATH }}_latest
 
-      - name: Restart app
-        run: /compose/resetapp.sh --title 'Plataforma Araticum' $application_name
+      - name: Restart Application
+        run: |
+          /compose/resetapp.sh --title "Plataforma Araticum" \
+          --github "https://github.com/${{ github.repository }}" \
+          --commit "${{ needs.build.outputs.LAST_COMMIT_HASH }}" \
+          ${{ needs.build.outputs.APPLICATION_NAME }}
