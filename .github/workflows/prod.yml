@@ -20,7 +20,7 @@ jobs:
       - name: Define environment variables
         id: creat_env
         run: |
-           # Função para definir variáveis no GITHUB_ENV e GITHUB_OUTPUT
+          # Função para definir variáveis no GITHUB_ENV e GITHUB_OUTPUT
           set_var() {
             echo "$1=$2" >> $GITHUB_ENV
             echo "$1=$2" >> $GITHUB_OUTPUT
