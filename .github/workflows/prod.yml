@@ -1,10 +1,8 @@
 name: Build and Deploy in DockerHUB Server Araticum
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,7 +23,6 @@ jobs:
             echo "$1=$2" >> $GITHUB_ENV
             echo "$1=$2" >> $GITHUB_OUTPUT
           }
-
           # Defina as variáveis
           set_var "DOCKER_PATH" "prod"
           set_var "APPLICATION_NAME" "app_araticum"
