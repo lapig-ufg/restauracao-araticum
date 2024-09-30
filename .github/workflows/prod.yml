@@ -30,7 +30,6 @@ jobs:
           set_var "DOCKER_PATH" "prod"
           set_var "APPLICATION_NAME" "app_araticum"
           set_var "LAST_COMMIT_HASH" "$(git log --pretty=format:%h -n 1)"
-          echo "NODE_OPTIONS=--max-old-space-size=8096" >> $GITHUB_ENV
 
       - name: Create version.json
         run: echo "{\"commitId\":\"$LAST_COMMIT_HASH\"}" > version.json
@@ -42,6 +41,7 @@ jobs:
 
       - name: Build Server and Client
         run: |
+          export NODE_OPTIONS=--max-old-space-size=8096
           npm set progress=false
           cd ${{ github.workspace }}/src/server && npm install
           cd ${{ github.workspace }}/src/client && npm install
@@ -50,8 +50,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH} \
-                        -t lapig/$application_name:${DOCKER_PATH}_latest \
+          docker build -t lapig/$APPLICATION_NAME:${DOCKER_PATH}_${LAST_COMMIT_HASH} \
+                        -t lapig/$APPLICATION_NAME:${DOCKER_PATH}_latest \
                         -f docker/$DOCKER_PATH/Dockerfile . --no-cache
 
       - name: Login to Docker Registry
@@ -59,13 +59,8 @@ jobs:
 
       - name: Push Image to Registry
         run: |
-          docker push lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH}
-          docker push lapig/$application_name:${DOCKER_PATH}_latest
-
-      - name: Remove local images
-        run: |
-          docker rmi lapig/$application_name:${DOCKER_PATH}_${LAST_COMMIT_HASH}
-          docker rmi lapig/$application_name:${DOCKER_PATH}_latest
+          docker push lapig/$APPLICATION_NAME:${DOCKER_PATH}_${LAST_COMMIT_HASH}
+          docker push lapig/$APPLICATION_NAME:${DOCKER_PATH}_latest
 
   deploy:
     needs: build
