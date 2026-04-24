@@ -1,8 +1,10 @@
-name: Build and Deploy in Production Server AGROTÓXICOS
+name: Build and Deploy in Production - Restauração Araticum
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,21 +20,14 @@ jobs:
       - name: Define environment variables
         id: creat_env
         run: |
-          # Função para definir variáveis no GITHUB_ENV e GITHUB_OUTPUT
           set_var() {
             echo "$1=$2" >> $GITHUB_ENV
             echo "$1=$2" >> $GITHUB_OUTPUT
           }
-          REPO_NAME="${{ github.event.repository.name }}"
-          # Defina as variáveis
-          set_var "DOCKER_PATH" "prod"
-          set_var "APPLICATION_NAME" "$REPO_NAME"
-          set_var "LAST_COMMIT_HASH" "$(git log --pretty=format:%h -n 1)"
 
-          # Log para debug
-          echo "Repository: $REPO_NAME"
-          echo "Docker Path: prod"
-          echo "Commit Hash: $(git log --pretty=format:%h -n 1)"
+          set_var "DOCKER_PATH" "prod"
+          set_var "APPLICATION_NAME" "${{ github.event.repository.name }}"
+          set_var "LAST_COMMIT_HASH" "$(git log --pretty=format:%h -n 1)"
 
       - name: Create version.json
         run: |
@@ -75,6 +70,4 @@ jobs:
       - name: Restart Application
         run: |
           zelador ${{ needs.build.outputs.APPLICATION_NAME }}  ${{ needs.build.outputs.DOCKER_PATH }} \
-            --title="Araticum"   \
-           --commit=${{ needs.build.outputs.LAST_COMMIT_HASH }} \
-           --repo=${{ github.repository }}     
+            --title="Araticum" --commit=${{ needs.build.outputs.LAST_COMMIT_HASH }} --repo=${{ github.repository }}     
