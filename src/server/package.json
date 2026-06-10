@@ -64,7 +64,7 @@
         "zlib": "^1.0.5"
     },
     "scripts": {
-        "start": "NODE_ENV=dev npx nodemon app-cluster.js",
+        "start": "npx nodemon app-cluster.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": "",
