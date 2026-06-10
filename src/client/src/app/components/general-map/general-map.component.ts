@@ -46,7 +46,7 @@ import { WmtsService } from "../services/wmts.service";
 import WMTS, { Options, optionsFromCapabilities } from 'ol/source/WMTS';
 import { HttpService } from "../services/http.service";
 import { DecimalPipe } from "@angular/common";
-import * as moment from 'moment';
+import moment from 'moment';
 import buffer from "@turf/buffer";
 import turfDistance from "@turf/distance";
 import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
