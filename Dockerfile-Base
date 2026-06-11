@@ -1,5 +1,5 @@
 # Build initial image
-ARG IMAGE_NODE_ALPINE_VERSION=node:14-alpine3.15 
+ARG IMAGE_NODE_ALPINE_VERSION=node:16.20.2-alpine3.18
 
 FROM ${IMAGE_NODE_ALPINE_VERSION} AS builder
 
