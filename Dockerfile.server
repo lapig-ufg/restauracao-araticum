@@ -1,0 +1,7 @@
+FROM node:16.20.2
+
+WORKDIR /app
+
+COPY ./src/server/package*.json ./
+
+RUN npm install
