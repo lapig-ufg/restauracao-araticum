@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express'),
     load = require('express-load'),
     util = require('util'),

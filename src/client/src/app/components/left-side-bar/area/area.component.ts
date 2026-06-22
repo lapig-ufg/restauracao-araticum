@@ -19,7 +19,6 @@ import { GoogleAnalyticsService } from '../../services/google-analytics.service'
 import { LocalizationService } from 'src/app/@core/internationalization/localization.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 

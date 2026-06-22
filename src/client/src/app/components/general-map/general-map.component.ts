@@ -57,8 +57,6 @@ import { GoogleAnalyticsService } from "../services/google-analytics.service";
 import { GalleryService } from '../services/gallery.service';
 import MaskFilter from 'ol-ext/filter/Mask';
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
 @Component({
   selector: 'app-general-map',
   templateUrl: './general-map.component.html',
