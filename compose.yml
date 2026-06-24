@@ -27,4 +27,5 @@ services:
       - /app/node_modules
     env_file:
       - ./src/server/.env
+      - ./src/server/.env.docker
     
