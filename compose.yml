@@ -1,0 +1,31 @@
+services:
+  web-client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    command: npm start
+    container_name: node_client_app
+    
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./src/client:/app
+      - /app/node_modules
+
+  web-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    command: npm run start
+    container_name: node_server_app
+    
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/server:/app
+      - ./src/client/src/assets/locales:/app/locales
+      - /app/node_modules
+    env_file:
+      - ./src/server/.env
+      - ./src/server/.env.docker
+    
