@@ -16,14 +16,14 @@ module.exports = function (app) {
         return [{
             source: 'lapig',
             id: 'extent',
-            sql: "SELECT geom_json as geojson FROM general_regions_geom WHERE type=${type} AND unaccent(value) ilike unaccent(${key}) LIMIT 1",
+            sql: "SELECT geom_json as geojson FROM regions_geom WHERE type=${type} AND unaccent(value) ilike unaccent(${key}) LIMIT 1",
             mantain: true
         }]
     }
 
     Query.search = function () {
         return [{
-            source: 'lapig',
+            source: 'general',
             id: 'search',
             sql: "With priority_search AS ("
                 + " SELECT distinct concat_ws(' - ', text , uf) as text, value, type, 1 AS priority FROM v_regions_geom_cerrado_cities_states "
