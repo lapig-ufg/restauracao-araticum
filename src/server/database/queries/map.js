@@ -14,16 +14,16 @@ module.exports = function (app) {
 
     Query.extent = function (params) {
         return [{
-            source: 'general',
+            source: 'lapig',
             id: 'extent',
-            sql: "SELECT geom_json as geojson FROM regions_geom WHERE type=${type} AND unaccent(value) ilike unaccent(${key}) LIMIT 1",
+            sql: "SELECT geom_json as geojson FROM general_regions_geom WHERE type=${type} AND unaccent(value) ilike unaccent(${key}) LIMIT 1",
             mantain: true
         }]
     }
 
     Query.search = function () {
         return [{
-            source: 'general',
+            source: 'lapig',
             id: 'search',
             sql: "With priority_search AS ("
                 + " SELECT distinct concat_ws(' - ', text , uf) as text, value, type, 1 AS priority FROM v_regions_geom_cerrado_cities_states "
@@ -39,18 +39,18 @@ module.exports = function (app) {
 
     Query.searchregion = function () {
         return [{
-            source: 'general',
+            source: 'lapig',
             id: 'search',
-            sql: "SELECT text, value, type FROM regions_geom WHERE unaccent(value) ILIKE unaccent(${key}%) AND type = (${type}) LIMIT 10",
+            sql: "SELECT text, value, type FROM general_regions_geom WHERE unaccent(value) ILIKE unaccent(${key}%) AND type = (${type}) LIMIT 10",
             mantain: true
         }]
     }
 
     Query.cdgeocmu = function () {
         return [{
-            source: 'general',
+            source: 'lapig',
             id: 'search',
-            sql: "SELECT text, value, type, cd_geocmu FROM regions WHERE cd_geocmu=${key} LIMIT 10",
+            sql: "SELECT text, value, type, cd_geocmu FROM general_regions_geom WHERE cd_geocmu=${key} LIMIT 10",
             mantain: true
         }]
     }
@@ -60,7 +60,7 @@ module.exports = function (app) {
         console.log("SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) as geojson FROM geo_car_imovel WHERE " + Internal.textDefaultParams() + " AND unaccent(cod_car) ILIKE unaccent('" + key + "%') order by area_ha DESC LIMIT 10")
         return [
             //     {
-            //     source: 'general',
+            //     source: 'lapig',
             //     id: 'search',
             //     sql: "SELECT cod_car as text, area_ha, ST_AsGeoJSON(geom) geojson FROM car_brasil WHERE " + Internal.textDefaultParams() + " AND unaccent(car_code) ILIKE unaccent('" + key + "%') order by area_ha DESC LIMIT 10",
             //     mantain: true
@@ -77,9 +77,9 @@ module.exports = function (app) {
         var key = params['key']
         // console.log("SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10")
         return [{
-            source: 'general',
+            source: 'lapig',
             id: 'search',
-            sql: "SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10",
+            sql: "SELECT nome || ' - ' || uf as text, uf, cd_geocmu, ST_AsGeoJSON(geom) geojson FROM general_ucs WHERE " + Internal.textDefaultParams() + " AND unaccent(nome) ILIKE unaccent('%" + key + "%') order by nome ASC LIMIT 10",
             mantain: true
         }]
     }
