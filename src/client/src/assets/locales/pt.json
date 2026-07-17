@@ -242,10 +242,10 @@
         "labelGroup": "Restauração",
         "layers": {
           "restauracao_araticum": {
-            "labelLayer": "Áreas Restauradas - Araticum"
+            "labelLayer": "Áreas em restauração"
           },
           "projetos_araticum": {
-            "labelLayer": "Iniciativas Araticum"
+            "labelLayer": "Membros Araticum"
           }
         }
       },

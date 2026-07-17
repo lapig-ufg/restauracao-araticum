@@ -664,7 +664,9 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
           typeLayer.download['loading'] = false;
         })
         layer.selectedTypeObject = layer.types.find(type => type.valueType === layer.selectedType);
-        layer.selectedTypeObject!.visible = layer.visible;
+        if (layer.selectedTypeObject) {
+          layer.selectedTypeObject.visible = layer.visible;
+        }
         for (let types of layer.types) {
           this.layersTypes.push(types)
         }
@@ -674,7 +676,9 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
 
     for (let basemap of this._descriptor.basemaps) {
       basemap.selectedTypeObject = basemap.types.find(type => type.valueType === basemap.selectedType);
-      basemap.selectedTypeObject!.visible = basemap.visible;
+      if (basemap.selectedTypeObject) {
+        basemap.selectedTypeObject.visible = basemap.visible;
+      }
       for (let types of basemap.types) {
 
         const baseMapAvaliable = this.bmaps.find(b => {

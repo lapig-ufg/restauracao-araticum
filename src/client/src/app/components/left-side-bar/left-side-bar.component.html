@@ -71,7 +71,7 @@
                     <p-inputSwitch (onChange)="changeLayerVisibility(layer)" [id]=layer.idLayer
                       (ngModelChange)="layer.visible = !layer.visible" [(ngModel)]="layer.visible"></p-inputSwitch>
                     <h5 [innerHTML]="layer.labelLayer"></h5>
-                    <i *ngIf="layer.selectedTypeObject!.metadata &&  layer.selectedTypeObject!.visible" pTooltip="{{'left_sidebar.layer.metadata' | translate}}"
+                    <i *ngIf="layer.selectedTypeObject?.metadata && layer.selectedTypeObject?.visible" pTooltip="{{'left_sidebar.layer.metadata' | translate}}"
                       class='bx bxs-info-circle' (click)="showMetadata(layer)"></i>
                   </div>
                   <div class="layer-card-body" *ngIf="layer.visible">

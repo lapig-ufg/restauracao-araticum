@@ -52,10 +52,10 @@ module.exports = function (app) {
                 sql: "SELECT CAST(SUM(pol_ha) as double precision) as area_region FROM new_regions WHERE " + regionFilter + ""
             },
             {
-                source: 'lapig',
+                source: 'localhost',
                 id: 'restoration',
-                sql: " SELECT  CAST(sum(a.area_ha) as double precision) as value "
-                    + " FROM araticum_restauracao a "
+                sql: " SELECT  CAST(st_area(st_union(st_makevalid(geom))::geography)/10000 as double precision) as value "
+                    + " FROM araticum_restauracao_2026 a "
                     + " WHERE " + regionFilter
             }
         ]
@@ -77,18 +77,15 @@ module.exports = function (app) {
     }
 
     Query.area2 = function (params) {
-
-        // var regionFilter = Internal.getRegionFilter(params['typeRegion'], params['valueRegion']);
-
-        return [
-            {
-                source: 'lapig',
-                id: 'areaRestorationPerProject',
-                sql: "SELECT metodo_padrao as label, SUM(area_ha) as value from araticum_restauracao GROUP BY 1 ORDER BY 2 DESC ",
-                mantain: true
-            }
-        ];
-    }
+    return [
+        {
+            source: 'localhost',
+            id: 'areaRestorationPerProject',
+            sql: "SELECT metprinc as label, st_area(st_union(st_makevalid(geom))::geography)/10000 as value FROM araticum_restauracao_2026 GROUP BY 1 ORDER BY 2 DESC",
+            mantain: true
+        }
+    ];
+}
 
     Query.area3 = function (params) {
 
@@ -109,9 +106,9 @@ module.exports = function (app) {
 
         return [
             {
-                source: 'lapig',
+                source: 'localhost',
                 id: 'projetos',
-                sql: "SELECT projeto, fonte, SUM(area_ha) as value from araticum_restauracao GROUP BY 1, 2 ORDER BY 3 DESC ",
+            sql: "SELECT projeto, fonte, st_area(st_union(st_makevalid(geom))::geography)/10000  as value from araticum_restauracao_2026 GROUP BY 1, 2 ORDER BY 3 DESC ",
                 mantain: true
             }
         ]
