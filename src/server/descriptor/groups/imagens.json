@@ -8,9 +8,8 @@
                 "idLayer": "satelite",
                 "labelLayer": "translate",
                 "visible": false,
-                "selectedType": "planet",
+                "selectedType": "sentinel",
                 "types": [
-                    "planet",
                     "sentinel"
                 ]
             }
