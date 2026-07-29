@@ -117,6 +117,14 @@
     "msg_error_title": "Erro",
     "msg_error": "Não foi possível realizar o download do Descritor de Estilo da Camada (SLD)"
   },
+  "options": {
+    "basemaps": "Mapas Base",
+    "legend": "Legenda",
+    "limits": "Limites",
+    "options": "Outras Opções",
+    "compass": "Bússola",
+    "graticule": "Grade de Coordenadas"
+  },
   "primeng": {
     "startsWith": "Começa com",
     "contains": "Contém",

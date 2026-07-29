@@ -116,6 +116,14 @@
     "msg_error_title": "Error",
     "msg_error": "Unable to download Styled Layer Descriptor (SLD)"
   },
+  "options": {
+    "basemaps": "Basemaps",
+    "legend": "Legend",
+    "limits": "Limits",
+    "options": "Other Options",
+    "compass": "Compass",
+    "graticule": "Graticule"
+  },
   "primeng": {
     "startsWith": "Starts with",
     "contains": "Contains",
