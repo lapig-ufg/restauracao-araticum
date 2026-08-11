@@ -18,7 +18,7 @@ module.exports = function (app) {
             else if (type == 'state')
                 regionsFilter += "uf = '" + key + "'"
             else if (type == 'biome')
-                regionsFilter += "bioma = '" + key.toUpperCase() + "'"
+                regionsFilter += "UPPER(bioma) = '" + key.toUpperCase() + "'"
             else if (type == 'fronteira') {
                 if (key == 'amz_legal') {
                     regionsFilter += "amaz_legal = 1"
@@ -54,7 +54,7 @@ module.exports = function (app) {
             {
                 source: 'lapig',
                 id: 'restoration',
-                sql: " SELECT  CAST(st_area(st_union(st_makevalid(geom))::geography)/10000 as double precision) as value "
+                sql: " SELECT  COALESCE(CAST(st_area(st_union(st_makevalid(geom))::geography)/10000 as double precision), 0) as value "
                     + " FROM araticum_restauracao_2026 a "
                     + " WHERE " + regionFilter
             }
@@ -78,13 +78,20 @@ module.exports = function (app) {
 
     Query.area2 = function (params) {
 
-        // var regionFilter = Internal.getRegionFilter(params['typeRegion'], params['valueRegion']);
+        var regionFilter = Internal.getRegionFilter(params['typeRegion'], params['valueRegion']);
 
         return [
             {
                 source: 'lapig',
                 id: 'areaRestorationPerProject',
-                sql: "SELECT metprinc as label, st_area(st_union(st_makevalid(geom))::geography)/10000 as value from araticum_restauracao_2026 GROUP BY 1 ORDER BY 2 DESC ",
+                sql: "SELECT CASE WHEN metprinc IS NULL "
+                    + "OR TRIM(metprinc) = '' "
+                    + "OR UPPER(TRIM(metprinc)) IN ('NÃO INFORMADO', 'NÃO IDENTIFICADO') "
+                    + "THEN 'Sem informação' ELSE metprinc END as label, "
+                    + "st_area(st_union(st_makevalid(geom))::geography)/10000 as value "
+                    + "FROM araticum_restauracao_2026 a "
+                    + "WHERE " + regionFilter + " "
+                    + "GROUP BY 1 ORDER BY 2 DESC ",
                 mantain: true
             }
         ];
@@ -105,13 +112,13 @@ module.exports = function (app) {
     }
 
     Query.areatable = function (params) {
-        // var regionFilter = Internal.getRegionFilter(params['typeRegion'], params['valueRegion']);
+        var regionFilter = Internal.getRegionFilter(params['typeRegion'], params['valueRegion']);
 
         return [
             {
                 source: 'lapig',
                 id: 'projetos',
-            sql: "SELECT projeto, fonte, st_area(st_union(st_makevalid(geom))::geography)/10000  as value from araticum_restauracao_2026 GROUP BY 1, 2 ORDER BY 3 DESC ",
+                sql: "SELECT projeto, fonte, st_area(st_union(st_makevalid(geom))::geography)/10000  as value from araticum_restauracao_2026 a WHERE " + regionFilter + " GROUP BY 1, 2 ORDER BY 3 DESC ",
                 mantain: true
             }
         ]

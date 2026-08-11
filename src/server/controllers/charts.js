@@ -6,8 +6,23 @@ module.exports = function (app) {
     var Internal = {}
 
 
-    Internal.numberFormat = function (numero) {
-        numero = numero.toFixed(5).split('.');
+    Internal.parseDecimal = function (value) {
+        if (value === null || value === undefined) {
+            return 0;
+        }
+        if (typeof value === 'string') {
+            value = value.trim();
+            if (value.indexOf(',') !== -1) {
+                value = value.replace(/\./g, '').replace(',', '.');
+            }
+        }
+        const number = Number(value);
+        return Number.isFinite(number) ? number : 0;
+    }
+
+    Internal.numberFormat = function (numero, digits = 5) {
+        numero = Internal.parseDecimal(numero);
+        numero = numero.toFixed(digits).split('.');
         numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
         return numero.join(',');
     }
@@ -63,7 +78,7 @@ module.exports = function (app) {
                     if (typeof query.labelOfQuery === 'string') {
                         arrayData.push({
                             label: query.labelOfQuery,
-                            data: [...queryInd.map(a => parseFloat(a.value))],
+                            data: [...queryInd.map(a => Internal.parseDecimal(a.value))],
                             fill: false,
                             borderColor: [...new Set(queryInd.map(a => a.color))],
                             tension: .4
@@ -73,7 +88,7 @@ module.exports = function (app) {
                         for (const [keyLabelQuery, valueLabelQuery] of Object.entries(query.labelOfQuery)) {
                             arrayData.push({
                                 label: valueLabelQuery,
-                                data: [...queryInd.filter(a => a.classe == keyLabelQuery).map(ob => parseFloat(ob.value))],
+                                data: [...queryInd.filter(a => a.classe == keyLabelQuery).map(ob => Internal.parseDecimal(ob.value))],
                                 fill: false,
                                 borderColor: [...new Set(queryInd.filter(a => a.classe == keyLabelQuery).map(ob => ob.color))],
                                 tension: .4
@@ -85,7 +100,7 @@ module.exports = function (app) {
                     if (typeof query.labelOfQuery === 'string') {
                         arrayData.push({
                             label: query.labelOfQuery,
-                            data: [...queryInd.map(a => parseFloat(a.value))],
+                            data: [...queryInd.map(a => Internal.parseDecimal(a.value))],
                             backgroundColor: [...new Set(colors.map(element => element.code))],
                             hoverBackgroundColor: [...new Set(colors.map(element => element.code))],
                         })
@@ -93,7 +108,7 @@ module.exports = function (app) {
                     else {
                         arrayData.push({
                             label: query.idOfQuery,
-                            data: [...queryInd.map(a => parseFloat(a.value))],
+                            data: [...queryInd.map(a => Internal.parseDecimal(a.value))],
                             backgroundColor: [...new Set(colors.map(element => element.code))],
                             hoverBackgroundColor: [...new Set(colors.map(element => element.code))],
                         })
@@ -104,7 +119,7 @@ module.exports = function (app) {
                     if (typeof query.labelOfQuery === 'string') {
                         arrayData.push({
                             label: query.labelOfQuery,
-                            data: [...queryInd.map(a => parseFloat(a.value))],
+                            data: [...queryInd.map(a => Internal.parseDecimal(a.value))],
                             backgroundColor: [...new Set(queryInd.map(a => a.color))],
                         })
                     }
@@ -112,7 +127,7 @@ module.exports = function (app) {
                         for (const [keyLabelQuery, valueLabelQuery] of Object.entries(query.labelOfQuery)) {
                             arrayData.push({
                                 label: valueLabelQuery,
-                                data: [...queryInd.filter(a => a.classe == keyLabelQuery).map(ob => parseFloat(ob.value))],
+                                data: [...queryInd.filter(a => a.classe == keyLabelQuery).map(ob => Internal.parseDecimal(ob.value))],
                                 backgroundColor: [...new Set(queryInd.filter(a => a.classe == keyLabelQuery).map(ob => ob.color))],
                             })
                         }
@@ -146,9 +161,9 @@ module.exports = function (app) {
                 let queryInd = allQueriesResult[query.idOfQuery]
                 let index = 1;
                 for (let i = 0; i < queryInd.length; i++) {
-                    queryInd[i].originalValue = parseFloat(queryInd[i].value)
+                    queryInd[i].originalValue = Internal.parseDecimal(queryInd[i].value)
                     queryInd[i].index = index++ + 'º'
-                    queryInd[i].value = String(Internal.numberFormat(parseFloat(queryInd[i].value)) + " ha")
+                    queryInd[i].value = String(Internal.numberFormat(queryInd[i].value) + " ha")
                 }
 
                 dataInfo = [...queryInd]
@@ -175,13 +190,17 @@ module.exports = function (app) {
             yearTranslate: year
         };
 
+        const regionArea = Internal.parseDecimal(request.queryResult['region'][0].area_region);
+        const restorationArea = Internal.parseDecimal(request.queryResult['restoration'][0].value);
+        const percentArea = regionArea > 0 ? (restorationArea / regionArea) * 100 : 0;
+
         let result = {
             region: {
-                area: request.queryResult['region'][0].area_region,
+                area: Number(regionArea.toFixed(3)),
             },
             restoration: {
-                area: request.queryResult['restoration'][0].value,
-                percentOfRegionArea: Internal.numberFormat((request.queryResult['restoration'][0].value / request.queryResult['region'][0].area_region) * 100) + "%"
+                area: Number(restorationArea.toFixed(3)),
+                percentOfRegionArea: Internal.numberFormat(percentArea) + "%"
             }
         }
 
@@ -294,7 +313,7 @@ module.exports = function (app) {
                     // replacements['anthropicArea'] = chart['indicators'].reduce((a, { value }) => a + value, 0);
                     // replacements['percentArea'] = (replacements['anthropicArea'] / replacements['areaMun']) * 100.0;
 
-                    replacements['areaRestoration'] = Internal.numberFormat(Number(queriesResult[query[0].idOfQuery].reduce((n, { value }) => n + parseFloat(value), 0)))
+                    replacements['areaRestoration'] = Internal.numberFormat(queriesResult[query[0].idOfQuery].reduce((n, { value }) => n + Internal.parseDecimal(value), 0), 3)
 
                     const text = Internal.replacementStrings(Internal.languageOb["area2_card"]["araticumRestoration"].text, replacements)
                     return text
