@@ -8,18 +8,18 @@
                 "idLayer": "terras_indigenas_layer",
                 "labelLayer": "translate",
                 "visible": false,
-                "selectedType": "limites_terras_indigenas",
+                "selectedType": "limites_terras_indigenas_2026",
                 "types": [
-                    "limites_terras_indigenas"
+                    "limites_terras_indigenas_2026"
                 ]
             },
             {
                 "idLayer": "assentamentos_layer",
                 "labelLayer": "translate",
                 "visible": false,
-                "selectedType": "assentamentos",
+                "selectedType": "assentamentos_2026",
                 "types": [
-                    "assentamentos"
+                    "assentamentos_2026"
                 ]
             },
             {
