@@ -16,7 +16,7 @@ module.exports = function (app) {
         return [{
             source: 'general',
             id: 'extent',
-            sql: "SELECT geom_json as geojson FROM regions_geom WHERE type=${type} AND unaccent(value) ilike unaccent(${key}) LIMIT 1",
+            sql: "SELECT geom_json_mask as geojson FROM regions_geom WHERE type=${type} AND upper(value) = upper(${key}) LIMIT 1",
             mantain: true
         }]
     }

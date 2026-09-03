@@ -2151,15 +2151,40 @@ export class GeneralMapComponent implements OnInit, Ruler, AfterContentChecked {
   }
 
   createCropFilter() {
-    this.mapService.getMask().subscribe(maskGeoJson => {
-      const features = new GeoJSON().readFeatures(maskGeoJson, {
-        dataProjection: 'EPSG:4326',
-          featureProjection: 'EPSG:3857'
-      })
-      this.maskFilter = new MaskFilter({ feature: features[0], inner: false, fill: new Fill({ color: [66, 75, 52, 0.30] }) })
-      this.map.getLayers().forEach(layer => {
-       layer.addFilter(this.maskFilter)
-      })
+    if (this.maskFilter || !this.map) {
+      return;
+    }
+
+    this.mapService.getMask().subscribe({
+      next: (maskGeoJson) => {
+        try {
+          const features = new GeoJSON().readFeatures(maskGeoJson, {
+            dataProjection: 'EPSG:4326',
+            featureProjection: 'EPSG:3857'
+          });
+
+          if (!features || !features.length) {
+            return;
+          }
+
+          this.maskFilter = new MaskFilter({
+            feature: features[0],
+            inner: false,
+            fill: new Fill({ color: [66, 75, 52, 0.30] })
+          });
+
+          this.map.getLayers().forEach(layer => {
+            if (layer && typeof layer.addFilter === 'function') {
+              layer.addFilter(this.maskFilter);
+            }
+          });
+        } catch (error) {
+          console.error('Não foi possível carregar o limite do Cerrado', error);
+        }
+      },
+      error: (error) => {
+        console.error('Erro ao consultar o limite do Cerrado', error);
+      }
     });
   }
 }

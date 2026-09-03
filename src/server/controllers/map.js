@@ -43,15 +43,27 @@ module.exports = function (app) {
     };
 
     Controller.extent = function (request, response) {
-        const queryResult = request.queryResult['extent']
-        const result = {
-            type: 'Feature',
-            geometry: JSON.parse(queryResult[0].geojson)
+        const rows = request.queryResult && request.queryResult['extent'] ? request.queryResult['extent'] : []
+
+        if (!rows.length || !rows[0] || !rows[0].geojson) {
+            return response.status(404).json({
+                error: 'Limite do bioma não encontrado'
+            })
         }
 
-        response.send(result)
-        response.end();
+        try {
+            const result = {
+                type: 'Feature',
+                geometry: JSON.parse(rows[0].geojson)
+            }
 
+            return response.json(result)
+        } catch (error) {
+            console.error('GeoJSON inválido para o limite do bioma', error)
+            return response.status(500).json({
+                error: 'Geometria do bioma inválida'
+            })
+        }
     }
 
     Controller.search = function (request, response) {
