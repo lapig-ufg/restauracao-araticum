@@ -26,9 +26,9 @@
                 "idLayer": "quilombolas_layer",
                 "labelLayer": "translate",
                 "visible": false,
-                "selectedType": "areas_quilombolas",
+                "selectedType": "areas_quilombolas_2026",
                 "types": [
-                    "areas_quilombolas"
+                    "areas_quilombolas_2026"
                 ]
             },
             {
