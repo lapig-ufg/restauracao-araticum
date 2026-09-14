@@ -35,10 +35,10 @@
                 "idLayer": "ucs_layer",
                 "labelLayer": "translate",
                 "visible": false,
-                "selectedType": "pa_br_unidades_conservacao_PI",
+                "selectedType": "pa_br_unidades_conservacao_PI_2026",
                 "types": [
-                    "pa_br_unidades_conservacao_PI",
-                    "pa_br_unidades_conservacao_US"
+                    "pa_br_unidades_conservacao_PI_2026",
+                    "pa_br_unidades_conservacao_US_2026"
                 ]
             }
         ]
